@@ -8,7 +8,6 @@ require (
 	buf.build/gen/go/ride/wallet/bufbuild/connect-go v1.10.0-20230713133935-94c2e35c4162.1
 	buf.build/gen/go/ride/wallet/protocolbuffers/go v1.31.0-20230713133935-94c2e35c4162.1
 	cloud.google.com/go/firestore v1.11.0
-	firebase.google.com/go v3.13.0+incompatible
 	firebase.google.com/go/v4 v4.12.0
 	github.com/MicahParks/keyfunc/v2 v2.1.0
 	github.com/bufbuild/connect-go v1.10.0
