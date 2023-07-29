@@ -1,6 +1,6 @@
 //go:generate go run go.uber.org/mock/mockgen -destination ../../mocks/$GOFILE -package mocks . DriverRepository
 
-package walletrepository
+package driverrepository
 
 import (
 	"context"
