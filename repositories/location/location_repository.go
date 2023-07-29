@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"cloud.google.com/go/firestore"
-	firebase "firebase.google.com/go"
+	firebase "firebase.google.com/go/v4"
 	"github.com/mmcloughlin/geohash"
 	pb "github.com/ride-app/marketplace-service/api/gen/ride/marketplace/v1alpha1"
 	"github.com/sirupsen/logrus"
