@@ -1,17 +1,29 @@
 package service
 
 import (
-	er "github.com/ride-app/entity-service/repositories/entity"
+	dr "github.com/ride-app/marketplace-service/repositories/driver"
+	lr "github.com/ride-app/marketplace-service/repositories/location"
+	sr "github.com/ride-app/marketplace-service/repositories/status"
+	wr "github.com/ride-app/marketplace-service/repositories/wallet"
 )
 
-type EntityServiceServer struct {
-	entityRepository er.EntityRepository
+type MarketplaceServiceServer struct {
+	statusRepository   sr.StatusRepository
+	locationRepository lr.LocationRepository
+	walletrepository   wr.WalletRepository
+	driverRepository   dr.DriverRepository
 }
 
 func New(
-	entityRepository er.EntityRepository,
-) *EntityServiceServer {
-	return &EntityServiceServer{
-		entityRepository: entityRepository,
+	statusRepository sr.StatusRepository,
+	locationRepository lr.LocationRepository,
+	walletrepository wr.WalletRepository,
+	driverRepository dr.DriverRepository,
+) *MarketplaceServiceServer {
+	return &MarketplaceServiceServer{
+		statusRepository:   statusRepository,
+		locationRepository: locationRepository,
+		walletrepository:   walletrepository,
+		driverRepository:   driverRepository,
 	}
 }

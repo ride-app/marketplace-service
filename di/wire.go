@@ -4,17 +4,16 @@ package di
 
 import (
 	"github.com/google/wire"
-	entityrepository "github.com/ride-app/entity-service/repositories/entity"
-	"github.com/ride-app/entity-service/service"
+	"github.com/ride-app/marketplace-service/service"
 )
 
 func InitializeService() (*service.EntityServiceServer, error) {
 	panic(
 		wire.Build(
-			entityrepository.NewSomeEntityRepository,
+			statusRepository.NewFirebaseStatusRepository,
 			wire.Bind(
-				new(entityrepository.EntityRepository),
-				new(*entityrepository.SomeImpl),
+				new(statusRepository.StatusRepository),
+				new(*statusRepository.FirebaseImpl),
 			),
 			service.New,
 		),

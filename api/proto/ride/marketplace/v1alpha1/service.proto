@@ -1,0 +1,121 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "validate/validate.proto";
+
+package ride.marketplace.v1alpha1;
+
+// Generated according to https://cloud.google.com/apis/design/standard_methods
+service MarketplaceService {
+  rpc GoOnline (GoOnlineRequest) returns (GoOnlineResponse) {
+    option (google.api.http) = {
+      post: "/v1alpha1/{name=drivers/*}:goOnline"
+      body: "*"
+    };
+  }
+
+  rpc GoOffline (GoOfflineRequest) returns (GoOfflineResponse) {
+    option (google.api.http) = {
+      post: "/v1alpha1/{name=drivers/*}:goOffline"
+      body: "*"
+    };
+  }
+
+  rpc GetStatus (GetStatusRequest) returns (GetStatusResponse) {
+    option (google.api.http) = {
+      get: "/v1alpha1/{name=drivers/*}/status"
+    };
+  }
+
+  rpc GetLocation(GetLocationRequest) returns (GetLocationResponse) {
+    option (google.api.http) = {
+      get: "/v1alpha1/{name=drivers/*/location}"
+    };
+  }
+
+  rpc UpdateLocation(UpdateLocationRequest) returns (UpdateLocationResponse) {
+    option (google.api.http) = {
+      patch: "/v1alpha1/{location.name=drivers/*/location}"
+      body: "*"
+    };
+  }
+}
+
+message Status {
+  // The relative resource name of the Status. Example: "drivers/driver1/status"
+  string name = 1 [(validate.rules).string.pattern = "^drivers/[A-Za-z0-9_-]+/status$"];
+
+  // The online status of the Driver.
+  bool online = 2;
+
+  // Output only. Timestamp when the status was last updated.
+  google.protobuf.Timestamp update_time = 3;
+}
+
+message GoOnlineRequest {
+  // The relative resource name of the Driver to go online. Example: "drivers/driver1"
+  string name = 1 [(validate.rules).string.pattern = "^drivers/[A-Za-z0-9_-]+$"];
+
+  // The location of the Driver.
+  Location location = 2 [(validate.rules).message.required = true];
+}
+
+message GoOnlineResponse {
+  // The current status of the Driver.
+  Status status = 1;
+}
+
+message GoOfflineRequest {
+  // The relative resource name of the Driver to go offline. Example: "drivers/driver1"
+  string name = 1 [(validate.rules).string.pattern = "^drivers/[A-Za-z0-9_-]+$"];
+}
+
+message GoOfflineResponse {
+  // The current status of the Driver.
+  Status status = 1;
+}
+
+message GetStatusRequest {
+  // The relative resource name of the Status. Example: "drivers/driver1/status"
+  string name = 1 [(validate.rules).string.pattern = "^drivers/[A-Za-z0-9_-]+/status$"];
+}
+
+message GetStatusResponse {
+  // The current status of the Driver.
+  Status status = 1;
+}
+
+message Location {
+  // The relative resource name of the Location. Example: "drivers/driver1/location"
+  string name = 1 [(validate.rules).string.pattern = "^drivers/[A-Za-z0-9_-]+/location$"];
+
+  // The latitude of the Driver.
+  double latitude = 2;
+
+  // The longitude of the Driver.
+  double longitude = 3;
+
+  // Output only. Timestamp when the location was last updated.
+  google.protobuf.Timestamp timestamp = 4;
+}
+
+message GetLocationRequest {
+  // The relative resource name of the Location.
+  string name = 1 [(validate.rules).string.pattern = "^drivers/[A-Za-z0-9_-]+/location$"];
+}
+
+message GetLocationResponse {
+  // The location of the Driver.
+  Location location = 1;
+}
+
+message UpdateLocationRequest {
+  // The relative resource name of the Driver.
+  string parent = 1 [(validate.rules).string.pattern = "^drivers/[A-Za-z0-9_-]+$"];
+
+  // The location of the Driver.
+  Location location = 2;
+}
+
+message UpdateLocationResponse {}
