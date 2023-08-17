@@ -6,9 +6,9 @@ import (
 	"context"
 	"net/http"
 
-	driverApi "buf.build/gen/go/ride/driver/bufbuild/connect-go/ride/driver/v1alpha1/driverv1alpha1connect"
+	driverApi "buf.build/gen/go/ride/driver/connectrpc/go/ride/driver/v1alpha1/driverv1alpha1connect"
 	pb "buf.build/gen/go/ride/driver/protocolbuffers/go/ride/driver/v1alpha1"
-	"github.com/bufbuild/connect-go"
+	"connectrpc.com/connect"
 	"github.com/ride-app/marketplace-service/config"
 	"github.com/sirupsen/logrus"
 )

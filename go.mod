@@ -3,14 +3,14 @@ module github.com/ride-app/marketplace-service
 go 1.20
 
 require (
-	buf.build/gen/go/ride/driver/bufbuild/connect-go v1.10.0-20230726101637-ddbb41b26a03.1
-	buf.build/gen/go/ride/driver/protocolbuffers/go v1.31.0-20230726101637-ddbb41b26a03.1
-	buf.build/gen/go/ride/wallet/bufbuild/connect-go v1.10.0-20230713133935-94c2e35c4162.1
+	buf.build/gen/go/ride/driver/connectrpc/go v1.11.0-20230814095448-9363e8bc008d.1
+	buf.build/gen/go/ride/driver/protocolbuffers/go v1.31.0-20230814095448-9363e8bc008d.1
+	buf.build/gen/go/ride/wallet/connectrpc/go v1.11.0-20230713133935-94c2e35c4162.1
 	buf.build/gen/go/ride/wallet/protocolbuffers/go v1.31.0-20230713133935-94c2e35c4162.1
 	cloud.google.com/go/firestore v1.11.0
+	connectrpc.com/connect v1.11.0
 	firebase.google.com/go/v4 v4.12.0
 	github.com/MicahParks/keyfunc/v2 v2.1.0
-	github.com/bufbuild/connect-go v1.10.0
 	github.com/envoyproxy/protoc-gen-validate v1.0.2
 	github.com/golang-jwt/jwt/v5 v5.0.0
 	github.com/google/wire v0.5.0

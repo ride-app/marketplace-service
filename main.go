@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/bufbuild/connect-go"
+	"connectrpc.com/connect"
 	"github.com/ilyakaznacheev/cleanenv"
 	"github.com/ride-app/marketplace-service/api/gen/ride/marketplace/v1alpha1/marketplacev1alpha1connect"
 	"github.com/ride-app/marketplace-service/config"

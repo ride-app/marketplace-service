@@ -1,11 +1,11 @@
 buf.build/gen/go/envoyproxy/protoc-gen-validate/protocolbuffers/go v1.31.0-20221025150516-6607b10f00ed.1 h1:TsyeIqC+Te5TtKrScWnd7EPCVWNeYn3U1VrvNBTedAA=
 buf.build/gen/go/envoyproxy/protoc-gen-validate/protocolbuffers/go v1.31.0-20221025150516-6607b10f00ed.1/go.mod h1:Piak8t898VnXArmyLTXHwiVis+pdk9Yxsu5TwwmFnsA=
-buf.build/gen/go/ride/driver/bufbuild/connect-go v1.10.0-20230726101637-ddbb41b26a03.1 h1:H2eikYfhaIX2d6doMq4kKpuL4HL0XET1Nw+DYk1tJMg=
-buf.build/gen/go/ride/driver/bufbuild/connect-go v1.10.0-20230726101637-ddbb41b26a03.1/go.mod h1:T7uBAT7vR0H3c0tt/hdH4erlXw3mLEFKK4zm9wNXsWs=
-buf.build/gen/go/ride/driver/protocolbuffers/go v1.31.0-20230726101637-ddbb41b26a03.1 h1:IZRuE+/aptdZpbw9Jme62e0AqUXW4tU0Umugslikz8g=
-buf.build/gen/go/ride/driver/protocolbuffers/go v1.31.0-20230726101637-ddbb41b26a03.1/go.mod h1:e8k1XqyRiMhQem+4dlvrp8ON7foKqZMObSlgHCz6e8g=
-buf.build/gen/go/ride/wallet/bufbuild/connect-go v1.10.0-20230713133935-94c2e35c4162.1 h1:O7LXSgJLNXHNxUDl4XbIiTWIXXESchZ4pjCZaCfW2uc=
-buf.build/gen/go/ride/wallet/bufbuild/connect-go v1.10.0-20230713133935-94c2e35c4162.1/go.mod h1:4DQS5NW6teKYzH8z01Zoxig4uWx3jRvJ5WWdF11ul7s=
+buf.build/gen/go/ride/driver/connectrpc/go v1.11.0-20230814095448-9363e8bc008d.1 h1:1YL1/9cg0YJh0JpgA/O1wnQRir5Wn/dj3TYys+6CZfA=
+buf.build/gen/go/ride/driver/connectrpc/go v1.11.0-20230814095448-9363e8bc008d.1/go.mod h1:C7XM6tbQAPPTZQfRfqp8JMG1/zCV+N8dRGHqO9CcnOY=
+buf.build/gen/go/ride/driver/protocolbuffers/go v1.31.0-20230814095448-9363e8bc008d.1 h1:9siC8fWwQp12zWNVGZ9TpGVgD3TKewfmitzrYvY324E=
+buf.build/gen/go/ride/driver/protocolbuffers/go v1.31.0-20230814095448-9363e8bc008d.1/go.mod h1:e8k1XqyRiMhQem+4dlvrp8ON7foKqZMObSlgHCz6e8g=
+buf.build/gen/go/ride/wallet/connectrpc/go v1.11.0-20230713133935-94c2e35c4162.1 h1:e28pwvj0Y/ny6UdwIj3MCgxKC3j87VlPjHOGK0NlHoU=
+buf.build/gen/go/ride/wallet/connectrpc/go v1.11.0-20230713133935-94c2e35c4162.1/go.mod h1:SNp7ipCB4tlUXBEsv7xtvsnzU+TBACBFTWoUildG7E0=
 buf.build/gen/go/ride/wallet/protocolbuffers/go v1.31.0-20230713133935-94c2e35c4162.1 h1:8REQ3CmAmGWewEPvSjFkqKsfLaPv1az//6dGdouZAZk=
 buf.build/gen/go/ride/wallet/protocolbuffers/go v1.31.0-20230713133935-94c2e35c4162.1/go.mod h1:hRZQ5l/wus2SckSlNLlG3961aJpXObEhBpwSdBptVzM=
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
@@ -24,6 +24,8 @@ cloud.google.com/go/longrunning v0.5.1 h1:Fr7TXftcqTudoyRJa113hyaqlGdiBQkp0Gq7tE
 cloud.google.com/go/longrunning v0.5.1/go.mod h1:spvimkwdz6SPWKEt/XBij79E9fiTkHSQl/fRUUQJYJc=
 cloud.google.com/go/storage v1.30.1 h1:uOdMxAs8HExqBlnLtnQyP0YkvbiDpdGShGKtx6U/oNM=
 cloud.google.com/go/storage v1.30.1/go.mod h1:NfxhC0UJE1aXSx7CIIbCf7y9HKT7BiccwkR7+P7gN8E=
+connectrpc.com/connect v1.11.0 h1:Av2KQXxSaX4vjqhf5Cl01SX4dqYADQ38eBtr84JSUBk=
+connectrpc.com/connect v1.11.0/go.mod h1:3AGaO6RRGMx5IKFfqbe3hvK1NqLosFNP2BxDYTPmNPo=
 firebase.google.com/go/v4 v4.12.0 h1:I6dCkcWUMFNkFdWgzlf8SLWecQnKdFgJhMv5fT9l1qI=
 firebase.google.com/go/v4 v4.12.0/go.mod h1:60c36dWLK4+j05Vw5XMllek3b3PCynU3BfI46OSwsUE=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
@@ -35,8 +37,6 @@ github.com/MicahParks/keyfunc/v2 v2.1.0 h1:6ZXKb9Rp6qp1bDbJefnG7cTH8yMN1IC/4nf+G
 github.com/MicahParks/keyfunc/v2 v2.1.0/go.mod h1:rW42fi+xgLJ2FRRXAfNx9ZA8WpD4OeE/yHVMteCkw9k=
 github.com/antihax/optional v1.0.0/go.mod h1:uupD/76wgC+ih3iEmQUL+0Ugr19nfwCT1kdvxnR2qWY=
 github.com/benbjohnson/clock v1.3.0 h1:ip6w0uFQkncKQ979AypyG0ER7mqUSBdKLOgAle/AT8A=
-github.com/bufbuild/connect-go v1.10.0 h1:QAJ3G9A1OYQW2Jbk3DeoJbkCxuKArrvZgDt47mjdTbg=
-github.com/bufbuild/connect-go v1.10.0/go.mod h1:CAIePUgkDR5pAFaylSMtNK45ANQjp9JvpluG20rhpV8=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/cespare/xxhash/v2 v2.1.1/go.mod h1:VGX0DQ3Q6kWi7AoAeZDth3/j3BFtOZR5XLFGgcrjCOs=
 github.com/chzyer/logex v1.1.10/go.mod h1:+Ywpsq7O8HXn0nuIou7OrIPyXbp3wmkHB+jjWRnGsAI=

@@ -5,7 +5,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/bufbuild/connect-go"
+	"connectrpc.com/connect"
 	pb "github.com/ride-app/marketplace-service/api/gen/ride/marketplace/v1alpha1"
 	log "github.com/sirupsen/logrus"
 )

@@ -5,7 +5,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/bufbuild/connect-go"
+	"connectrpc.com/connect"
 	pb "github.com/ride-app/marketplace-service/api/gen/ride/marketplace/v1alpha1"
 	"github.com/sirupsen/logrus"
 	"google.golang.org/protobuf/types/known/timestamppb"
