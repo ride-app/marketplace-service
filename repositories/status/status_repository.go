@@ -26,6 +26,8 @@ type StatusRepository interface {
 
 type FirebaseImpl struct {
 	firestore *firestore.Client
+
+	capacities map[driverv1alpha1.Vehicle_Type]int
 }
 
 func NewFirebaseStatusRepository(firebaseApp *firebase.App) (*FirebaseImpl, error) {
@@ -44,6 +46,11 @@ func NewFirebaseStatusRepository(firebaseApp *firebase.App) (*FirebaseImpl, erro
 	logrus.Info("Firebase status repository initialized")
 	return &FirebaseImpl{
 		firestore: firestore,
+		capacities: map[driverv1alpha1.Vehicle_Type]int{
+			driverv1alpha1.Vehicle_TYPE_AUTORICKSHAW: 4,
+			driverv1alpha1.Vehicle_TYPE_ERICKSHAW:    4,
+			driverv1alpha1.Vehicle_TYPE_MOTORCYCLE:   1,
+		},
 	}, nil
 }
 
@@ -93,7 +100,7 @@ func (r *FirebaseImpl) GoOnline(ctx context.Context, id string, vehicle *driverv
 			"vehicleId":    strings.Split(vehicle.Name, "/")[1],
 			"licensePlate": vehicle.LicensePlate,
 			"vehicleType":  strings.ToLower(vehicle.Type.String()),
-			"capacity":     4,
+			"capacity":     r.capacities[vehicle.Type],
 		})
 
 		if err != nil {
