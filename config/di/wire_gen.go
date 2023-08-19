@@ -7,11 +7,11 @@
 package di
 
 import (
+	"github.com/ride-app/marketplace-service/api/service"
 	"github.com/ride-app/marketplace-service/repositories/driver"
 	"github.com/ride-app/marketplace-service/repositories/location"
 	"github.com/ride-app/marketplace-service/repositories/status"
 	"github.com/ride-app/marketplace-service/repositories/wallet"
-	"github.com/ride-app/marketplace-service/service"
 	"github.com/ride-app/marketplace-service/third-party"
 )
 

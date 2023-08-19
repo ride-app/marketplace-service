@@ -4,11 +4,11 @@ package di
 
 import (
 	"github.com/google/wire"
+	"github.com/ride-app/marketplace-service/api/service"
 	driverrepository "github.com/ride-app/marketplace-service/repositories/driver"
 	locationrepository "github.com/ride-app/marketplace-service/repositories/location"
 	statusrepository "github.com/ride-app/marketplace-service/repositories/status"
 	walletrepository "github.com/ride-app/marketplace-service/repositories/wallet"
-	"github.com/ride-app/marketplace-service/service"
 	thirdparty "github.com/ride-app/marketplace-service/third-party"
 )
 

@@ -1,4 +1,4 @@
-//go:generate env GOLANG_PROTOBUF_REGISTRATION_CONFLICT=warn go run go.uber.org/mock/mockgen -destination ../../mocks/$GOFILE -package mocks . StatusRepository
+//go:generate env GOLANG_PROTOBUF_REGISTRATION_CONFLICT=warn go run go.uber.org/mock/mockgen -destination ../../testing/mocks/$GOFILE -package mocks . StatusRepository
 
 package statusrepository
 
