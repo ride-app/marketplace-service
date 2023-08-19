@@ -11,9 +11,10 @@ import (
 	statusrepository "github.com/ride-app/marketplace-service/repositories/status"
 	walletrepository "github.com/ride-app/marketplace-service/repositories/wallet"
 	thirdparty "github.com/ride-app/marketplace-service/third-party"
+	"github.com/ride-app/marketplace-service/utils/logger"
 )
 
-func InitializeService(config config.Config) (*service.MarketplaceServiceServer, error) {
+func InitializeService(logger logger.Logger, config *config.Config) (*service.MarketplaceServiceServer, error) {
 	panic(
 		wire.Build(
 			thirdparty.NewFirebaseApp,

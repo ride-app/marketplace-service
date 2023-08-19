@@ -14,11 +14,12 @@ import (
 	"github.com/ride-app/marketplace-service/repositories/status"
 	"github.com/ride-app/marketplace-service/repositories/wallet"
 	"github.com/ride-app/marketplace-service/third-party"
+	"github.com/ride-app/marketplace-service/utils/logger"
 )
 
 // Injectors from wire.go:
 
-func InitializeService(config2 config.Config) (*service.MarketplaceServiceServer, error) {
+func InitializeService(logger2 logger.Logger, config2 *config.Config) (*service.MarketplaceServiceServer, error) {
 	app, err := thirdparty.NewFirebaseApp(config2)
 	if err != nil {
 		return nil, err

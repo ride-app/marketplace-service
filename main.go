@@ -18,14 +18,14 @@ import (
 func main() {
 	config, err := config.New()
 
-	log := logger.New()
+	log := logger.New(config)
 
 	if err != nil {
 		log.WithError(err).Fatal("Failed to read environment variables")
 	}
 
 	// Initialize service using dependency injection
-	service, err := di.InitializeService(config)
+	service, err := di.InitializeService(log, config)
 
 	if err != nil {
 		log.Fatalf("Failed to initialize service: %v", err)
@@ -44,7 +44,7 @@ func main() {
 		log.Fatalf("Failed to initialize panic interceptor: %v", err)
 	}
 
-	authInterceptor, err := interceptors.NewAuthInterceptor(ctx)
+	authInterceptor, err := interceptors.NewAuthInterceptor(ctx, log)
 
 	if err != nil {
 		log.Fatalf("Failed to initialize auth interceptor: %v", err)

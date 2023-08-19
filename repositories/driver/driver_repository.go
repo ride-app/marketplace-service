@@ -23,7 +23,7 @@ type Impl struct {
 	driverApi driverApi.DriverServiceClient
 }
 
-func New(config config.Config) (*Impl, error) {
+func New(config *config.Config) (*Impl, error) {
 	logrus.Debug("Driver Service Host: ", config.Driver_Service_Host)
 	client := driverApi.NewDriverServiceClient(
 		http.DefaultClient,

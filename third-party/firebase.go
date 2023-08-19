@@ -8,7 +8,7 @@ import (
 	"github.com/ride-app/marketplace-service/config"
 )
 
-func NewFirebaseApp(config config.Config) (*firebase.App, error) {
+func NewFirebaseApp(config *config.Config) (*firebase.App, error) {
 	ctx := context.Background()
 	conf := &firebase.Config{ProjectID: config.Project_Id}
 	app, err := firebase.NewApp(ctx, conf)
