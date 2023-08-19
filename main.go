@@ -61,7 +61,7 @@ func main() {
 
 	// Start the server and listen on the specified port
 	panic(http.ListenAndServe(
-		fmt.Sprintf("0.0.0.0:%d", config.Env.Port),
+		fmt.Sprintf("0.0.0.0:%d", config.Port),
 		// Use h2c so we can serve HTTP/2 without TLS.
 		h2c.NewHandler(mux, &http2.Server{}),
 	))
