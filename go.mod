@@ -18,7 +18,6 @@ require (
 	github.com/mmcloughlin/geohash v0.10.0
 	github.com/onsi/ginkgo/v2 v2.11.0
 	github.com/onsi/gomega v1.27.10
-	github.com/sirupsen/logrus v1.9.3
 	go.uber.org/mock v0.2.0
 	go.uber.org/zap v1.25.0
 	golang.org/x/net v0.12.0
