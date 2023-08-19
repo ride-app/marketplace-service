@@ -7,13 +7,16 @@ import (
 
 	"connectrpc.com/connect"
 	pb "github.com/ride-app/marketplace-service/api/gen/ride/marketplace/v1alpha1"
-	log "github.com/sirupsen/logrus"
 )
 
 func (service *MarketplaceServiceServer) GoOffline(ctx context.Context,
 	req *connect.Request[pb.GoOfflineRequest]) (*connect.Response[pb.GoOfflineResponse], error) {
+	log := service.logger.WithFields(map[string]string{
+		"method": "GoOffline",
+	})
+
 	if err := req.Msg.Validate(); err != nil {
-		log.Info("Invalid request")
+		log.WithError(err).Info("Invalid request")
 		return nil, connect.NewError(connect.CodeInvalidArgument, err)
 	}
 
@@ -27,7 +30,7 @@ func (service *MarketplaceServiceServer) GoOffline(ctx context.Context,
 		return nil, connect.NewError(connect.CodePermissionDenied, errors.New("permission denied"))
 	}
 
-	status, err := service.statusRepository.GoOffline(ctx, uid)
+	status, err := service.statusRepository.GoOffline(ctx, log, uid)
 
 	log.Info("Status: ", status)
 

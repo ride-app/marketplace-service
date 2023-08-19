@@ -10,6 +10,7 @@ import (
 	time "time"
 
 	marketplacev1alpha1 "github.com/ride-app/marketplace-service/api/gen/ride/marketplace/v1alpha1"
+	logger "github.com/ride-app/marketplace-service/utils/logger"
 	gomock "go.uber.org/mock/gomock"
 )
 
@@ -37,31 +38,31 @@ func (m *MockLocationRepository) EXPECT() *MockLocationRepositoryMockRecorder {
 }
 
 // GetLocation mocks base method.
-func (m *MockLocationRepository) GetLocation(arg0 context.Context, arg1 string) (*marketplacev1alpha1.Location, error) {
+func (m *MockLocationRepository) GetLocation(arg0 context.Context, arg1 logger.Logger, arg2 string) (*marketplacev1alpha1.Location, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetLocation", arg0, arg1)
+	ret := m.ctrl.Call(m, "GetLocation", arg0, arg1, arg2)
 	ret0, _ := ret[0].(*marketplacev1alpha1.Location)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // GetLocation indicates an expected call of GetLocation.
-func (mr *MockLocationRepositoryMockRecorder) GetLocation(arg0, arg1 interface{}) *gomock.Call {
+func (mr *MockLocationRepositoryMockRecorder) GetLocation(arg0, arg1, arg2 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLocation", reflect.TypeOf((*MockLocationRepository)(nil).GetLocation), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLocation", reflect.TypeOf((*MockLocationRepository)(nil).GetLocation), arg0, arg1, arg2)
 }
 
 // UpdateLocation mocks base method.
-func (m *MockLocationRepository) UpdateLocation(arg0 context.Context, arg1 string, arg2 *marketplacev1alpha1.Location) (*time.Time, error) {
+func (m *MockLocationRepository) UpdateLocation(arg0 context.Context, arg1 logger.Logger, arg2 string, arg3 *marketplacev1alpha1.Location) (*time.Time, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "UpdateLocation", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "UpdateLocation", arg0, arg1, arg2, arg3)
 	ret0, _ := ret[0].(*time.Time)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // UpdateLocation indicates an expected call of UpdateLocation.
-func (mr *MockLocationRepositoryMockRecorder) UpdateLocation(arg0, arg1, arg2 interface{}) *gomock.Call {
+func (mr *MockLocationRepositoryMockRecorder) UpdateLocation(arg0, arg1, arg2, arg3 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateLocation", reflect.TypeOf((*MockLocationRepository)(nil).UpdateLocation), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateLocation", reflect.TypeOf((*MockLocationRepository)(nil).UpdateLocation), arg0, arg1, arg2, arg3)
 }

@@ -24,22 +24,22 @@ func InitializeService(logger2 logger.Logger, config2 *config.Config) (*service.
 	if err != nil {
 		return nil, err
 	}
-	firebaseImpl, err := statusrepository.NewFirebaseStatusRepository(app)
+	firebaseImpl, err := statusrepository.NewFirebaseStatusRepository(logger2, app)
 	if err != nil {
 		return nil, err
 	}
-	locationrepositoryFirebaseImpl, err := locationrepository.NewFirebaseLocationRepository(app)
+	locationrepositoryFirebaseImpl, err := locationrepository.NewFirebaseLocationRepository(logger2, app)
 	if err != nil {
 		return nil, err
 	}
-	impl, err := walletrepository.New(config2)
+	impl, err := walletrepository.New(logger2, config2)
 	if err != nil {
 		return nil, err
 	}
-	driverrepositoryImpl, err := driverrepository.New(config2)
+	driverrepositoryImpl, err := driverrepository.New(logger2, config2)
 	if err != nil {
 		return nil, err
 	}
-	marketplaceServiceServer := service.New(firebaseImpl, locationrepositoryFirebaseImpl, impl, driverrepositoryImpl)
+	marketplaceServiceServer := service.New(firebaseImpl, locationrepositoryFirebaseImpl, impl, driverrepositoryImpl, logger2)
 	return marketplaceServiceServer, nil
 }

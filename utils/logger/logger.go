@@ -82,14 +82,6 @@ func New(config *config.Config) *ZapLogger {
 	}
 }
 
-// func (l *LogrusLogger) Trace(args ...interface{}) {
-// 	l.logger.Trace(args...)
-// }
-
-// func (l *LogrusLogger) Tracef(format string, args ...interface{}) {
-// 	l.logger.Tracef(format, args...)
-// }
-
 func (l *ZapLogger) Debug(args ...interface{}) {
 	l.logger.Debug(args...)
 }

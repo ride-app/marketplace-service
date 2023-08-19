@@ -10,6 +10,7 @@ import (
 
 	driverv1alpha1 "buf.build/gen/go/ride/driver/protocolbuffers/go/ride/driver/v1alpha1"
 	marketplacev1alpha1 "github.com/ride-app/marketplace-service/api/gen/ride/marketplace/v1alpha1"
+	logger "github.com/ride-app/marketplace-service/utils/logger"
 	gomock "go.uber.org/mock/gomock"
 )
 
@@ -37,46 +38,46 @@ func (m *MockStatusRepository) EXPECT() *MockStatusRepositoryMockRecorder {
 }
 
 // GetStatus mocks base method.
-func (m *MockStatusRepository) GetStatus(arg0 context.Context, arg1 string) (*marketplacev1alpha1.Status, error) {
+func (m *MockStatusRepository) GetStatus(arg0 context.Context, arg1 logger.Logger, arg2 string) (*marketplacev1alpha1.Status, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetStatus", arg0, arg1)
+	ret := m.ctrl.Call(m, "GetStatus", arg0, arg1, arg2)
 	ret0, _ := ret[0].(*marketplacev1alpha1.Status)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // GetStatus indicates an expected call of GetStatus.
-func (mr *MockStatusRepositoryMockRecorder) GetStatus(arg0, arg1 interface{}) *gomock.Call {
+func (mr *MockStatusRepositoryMockRecorder) GetStatus(arg0, arg1, arg2 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetStatus", reflect.TypeOf((*MockStatusRepository)(nil).GetStatus), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetStatus", reflect.TypeOf((*MockStatusRepository)(nil).GetStatus), arg0, arg1, arg2)
 }
 
 // GoOffline mocks base method.
-func (m *MockStatusRepository) GoOffline(arg0 context.Context, arg1 string) (*marketplacev1alpha1.Status, error) {
+func (m *MockStatusRepository) GoOffline(arg0 context.Context, arg1 logger.Logger, arg2 string) (*marketplacev1alpha1.Status, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GoOffline", arg0, arg1)
+	ret := m.ctrl.Call(m, "GoOffline", arg0, arg1, arg2)
 	ret0, _ := ret[0].(*marketplacev1alpha1.Status)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // GoOffline indicates an expected call of GoOffline.
-func (mr *MockStatusRepositoryMockRecorder) GoOffline(arg0, arg1 interface{}) *gomock.Call {
+func (mr *MockStatusRepositoryMockRecorder) GoOffline(arg0, arg1, arg2 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GoOffline", reflect.TypeOf((*MockStatusRepository)(nil).GoOffline), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GoOffline", reflect.TypeOf((*MockStatusRepository)(nil).GoOffline), arg0, arg1, arg2)
 }
 
 // GoOnline mocks base method.
-func (m *MockStatusRepository) GoOnline(arg0 context.Context, arg1 string, arg2 *driverv1alpha1.Vehicle) (*marketplacev1alpha1.Status, error) {
+func (m *MockStatusRepository) GoOnline(arg0 context.Context, arg1 logger.Logger, arg2 string, arg3 *driverv1alpha1.Vehicle) (*marketplacev1alpha1.Status, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GoOnline", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "GoOnline", arg0, arg1, arg2, arg3)
 	ret0, _ := ret[0].(*marketplacev1alpha1.Status)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // GoOnline indicates an expected call of GoOnline.
-func (mr *MockStatusRepositoryMockRecorder) GoOnline(arg0, arg1, arg2 interface{}) *gomock.Call {
+func (mr *MockStatusRepositoryMockRecorder) GoOnline(arg0, arg1, arg2, arg3 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GoOnline", reflect.TypeOf((*MockStatusRepository)(nil).GoOnline), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GoOnline", reflect.TypeOf((*MockStatusRepository)(nil).GoOnline), arg0, arg1, arg2, arg3)
 }

@@ -9,6 +9,7 @@ import (
 	reflect "reflect"
 
 	driverv1alpha1 "buf.build/gen/go/ride/driver/protocolbuffers/go/ride/driver/v1alpha1"
+	logger "github.com/ride-app/marketplace-service/utils/logger"
 	gomock "go.uber.org/mock/gomock"
 )
 
@@ -36,31 +37,31 @@ func (m *MockDriverRepository) EXPECT() *MockDriverRepositoryMockRecorder {
 }
 
 // GetDriver mocks base method.
-func (m *MockDriverRepository) GetDriver(arg0 context.Context, arg1, arg2 string) (*driverv1alpha1.Driver, error) {
+func (m *MockDriverRepository) GetDriver(arg0 context.Context, arg1 logger.Logger, arg2, arg3 string) (*driverv1alpha1.Driver, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetDriver", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "GetDriver", arg0, arg1, arg2, arg3)
 	ret0, _ := ret[0].(*driverv1alpha1.Driver)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // GetDriver indicates an expected call of GetDriver.
-func (mr *MockDriverRepositoryMockRecorder) GetDriver(arg0, arg1, arg2 interface{}) *gomock.Call {
+func (mr *MockDriverRepositoryMockRecorder) GetDriver(arg0, arg1, arg2, arg3 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDriver", reflect.TypeOf((*MockDriverRepository)(nil).GetDriver), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDriver", reflect.TypeOf((*MockDriverRepository)(nil).GetDriver), arg0, arg1, arg2, arg3)
 }
 
 // GetVehicle mocks base method.
-func (m *MockDriverRepository) GetVehicle(arg0 context.Context, arg1, arg2 string) (*driverv1alpha1.Vehicle, error) {
+func (m *MockDriverRepository) GetVehicle(arg0 context.Context, arg1 logger.Logger, arg2, arg3 string) (*driverv1alpha1.Vehicle, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetVehicle", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "GetVehicle", arg0, arg1, arg2, arg3)
 	ret0, _ := ret[0].(*driverv1alpha1.Vehicle)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // GetVehicle indicates an expected call of GetVehicle.
-func (mr *MockDriverRepositoryMockRecorder) GetVehicle(arg0, arg1, arg2 interface{}) *gomock.Call {
+func (mr *MockDriverRepositoryMockRecorder) GetVehicle(arg0, arg1, arg2, arg3 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetVehicle", reflect.TypeOf((*MockDriverRepository)(nil).GetVehicle), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetVehicle", reflect.TypeOf((*MockDriverRepository)(nil).GetVehicle), arg0, arg1, arg2, arg3)
 }

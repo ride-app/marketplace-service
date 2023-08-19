@@ -10,32 +10,32 @@ import (
 	pb "buf.build/gen/go/ride/driver/protocolbuffers/go/ride/driver/v1alpha1"
 	"connectrpc.com/connect"
 	"github.com/ride-app/marketplace-service/config"
-	"github.com/sirupsen/logrus"
+	"github.com/ride-app/marketplace-service/utils/logger"
 )
 
 type DriverRepository interface {
-	GetDriver(ctx context.Context, id string, authToken string) (*pb.Driver, error)
+	GetDriver(ctx context.Context, log logger.Logger, id string, authToken string) (*pb.Driver, error)
 
-	GetVehicle(ctx context.Context, id string, authToken string) (*pb.Vehicle, error)
+	GetVehicle(ctx context.Context, log logger.Logger, id string, authToken string) (*pb.Vehicle, error)
 }
 
 type Impl struct {
 	driverApi driverApi.DriverServiceClient
 }
 
-func New(config *config.Config) (*Impl, error) {
-	logrus.Debug("Driver Service Host: ", config.Driver_Service_Host)
+func New(log logger.Logger, config *config.Config) (*Impl, error) {
+	log.Debug("Driver Service Host: ", config.Driver_Service_Host)
 	client := driverApi.NewDriverServiceClient(
 		http.DefaultClient,
 		config.Driver_Service_Host,
 	)
 
-	logrus.Info("Driver Repository initialized")
+	log.Info("Driver Repository initialized")
 	return &Impl{driverApi: client}, nil
 }
 
-func (r *Impl) GetDriver(ctx context.Context, id string, authToken string) (*pb.Driver, error) {
-	logrus.Info("Getting driver from driver service")
+func (r *Impl) GetDriver(ctx context.Context, log logger.Logger, id string, authToken string) (*pb.Driver, error) {
+	log.Info("Getting driver from driver service")
 	req := connect.NewRequest(&pb.GetDriverRequest{
 		Name: "driver/" + id,
 	})
@@ -44,18 +44,18 @@ func (r *Impl) GetDriver(ctx context.Context, id string, authToken string) (*pb.
 	res, err := r.driverApi.GetDriver(ctx, req)
 
 	if connect.CodeOf(err) == connect.CodeNotFound {
-		logrus.WithError(err).Error("Driver not found")
+		log.WithError(err).Error("Driver not found")
 		return nil, nil
 	} else if err != nil {
-		logrus.WithError(err).Error("Error getting driver from driver service")
+		log.WithError(err).Error("Error getting driver from driver service")
 		return nil, err
 	}
 
 	return res.Msg.Driver, nil
 }
 
-func (r *Impl) GetVehicle(ctx context.Context, id string, authToken string) (*pb.Vehicle, error) {
-	logrus.Info("Getting vehicle from driver service")
+func (r *Impl) GetVehicle(ctx context.Context, log logger.Logger, id string, authToken string) (*pb.Vehicle, error) {
+	log.Info("Getting vehicle from driver service")
 	req := connect.NewRequest(&pb.GetVehicleRequest{
 		Name: "driver/" + id + "/vehicle",
 	})
@@ -64,10 +64,10 @@ func (r *Impl) GetVehicle(ctx context.Context, id string, authToken string) (*pb
 	res, err := r.driverApi.GetVehicle(ctx, req)
 
 	if connect.CodeOf(err) == connect.CodeNotFound {
-		logrus.WithError(err).Error("Vehicle not found")
+		log.WithError(err).Error("Vehicle not found")
 		return nil, nil
 	} else if err != nil {
-		logrus.WithError(err).Error("Error getting vehicle from driver service")
+		log.WithError(err).Error("Error getting vehicle from driver service")
 		return nil, err
 	}
 
