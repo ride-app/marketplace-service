@@ -39,13 +39,19 @@ func main() {
 
 	defer cancel()
 
+	panicInterceptor, err := interceptors.NewPanicInterceptor(ctx, log)
+
+	if err != nil {
+		log.Fatalf("Failed to initialize panic interceptor: %v", err)
+	}
+
 	authInterceptor, err := interceptors.NewAuthInterceptor(ctx)
 
 	if err != nil {
 		log.Fatalf("Failed to initialize auth interceptor: %v", err)
 	}
 
-	connectInterceptors := connect.WithInterceptors(authInterceptor)
+	connectInterceptors := connect.WithInterceptors(panicInterceptor, authInterceptor)
 
 	// Create handler for RechargeService
 	path, handler := marketplacev1alpha1connect.NewMarketplaceServiceHandler(service, connectInterceptors)
