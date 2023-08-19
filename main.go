@@ -6,7 +6,6 @@ import (
 	"net/http"
 
 	"connectrpc.com/connect"
-	"github.com/ilyakaznacheev/cleanenv"
 	"github.com/ride-app/marketplace-service/api/gen/ride/marketplace/v1alpha1/marketplacev1alpha1connect"
 	"github.com/ride-app/marketplace-service/api/interceptors"
 	"github.com/ride-app/marketplace-service/config"
@@ -17,7 +16,7 @@ import (
 )
 
 func main() {
-	err := cleanenv.ReadEnv(&config.Env)
+	config, err := config.New()
 
 	log := logger.New()
 
@@ -26,7 +25,7 @@ func main() {
 	}
 
 	// Initialize service using dependency injection
-	service, err := di.InitializeService()
+	service, err := di.InitializeService(config)
 
 	if err != nil {
 		log.Fatalf("Failed to initialize service: %v", err)

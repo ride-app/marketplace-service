@@ -5,6 +5,7 @@ package di
 import (
 	"github.com/google/wire"
 	"github.com/ride-app/marketplace-service/api/service"
+	"github.com/ride-app/marketplace-service/config"
 	driverrepository "github.com/ride-app/marketplace-service/repositories/driver"
 	locationrepository "github.com/ride-app/marketplace-service/repositories/location"
 	statusrepository "github.com/ride-app/marketplace-service/repositories/status"
@@ -12,7 +13,7 @@ import (
 	thirdparty "github.com/ride-app/marketplace-service/third-party"
 )
 
-func InitializeService() (*service.MarketplaceServiceServer, error) {
+func InitializeService(config config.Config) (*service.MarketplaceServiceServer, error) {
 	panic(
 		wire.Build(
 			thirdparty.NewFirebaseApp,

@@ -21,11 +21,11 @@ type Impl struct {
 	walletApi walletApi.WalletServiceClient
 }
 
-func New() (*Impl, error) {
-	logrus.Debug("Wallet Service Host: ", config.Env.Wallet_Service_Host)
+func New(config config.Config) (*Impl, error) {
+	logrus.Debug("Wallet Service Host: ", config.Wallet_Service_Host)
 	client := walletApi.NewWalletServiceClient(
 		http.DefaultClient,
-		config.Env.Wallet_Service_Host,
+		config.Wallet_Service_Host,
 	)
 
 	logrus.Info("Wallet Repository initialized")

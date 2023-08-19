@@ -8,6 +8,7 @@ package di
 
 import (
 	"github.com/ride-app/marketplace-service/api/service"
+	"github.com/ride-app/marketplace-service/config"
 	"github.com/ride-app/marketplace-service/repositories/driver"
 	"github.com/ride-app/marketplace-service/repositories/location"
 	"github.com/ride-app/marketplace-service/repositories/status"
@@ -17,8 +18,8 @@ import (
 
 // Injectors from wire.go:
 
-func InitializeService() (*service.MarketplaceServiceServer, error) {
-	app, err := thirdparty.NewFirebaseApp()
+func InitializeService(config2 config.Config) (*service.MarketplaceServiceServer, error) {
+	app, err := thirdparty.NewFirebaseApp(config2)
 	if err != nil {
 		return nil, err
 	}
@@ -30,11 +31,11 @@ func InitializeService() (*service.MarketplaceServiceServer, error) {
 	if err != nil {
 		return nil, err
 	}
-	impl, err := walletrepository.New()
+	impl, err := walletrepository.New(config2)
 	if err != nil {
 		return nil, err
 	}
-	driverrepositoryImpl, err := driverrepository.New()
+	driverrepositoryImpl, err := driverrepository.New(config2)
 	if err != nil {
 		return nil, err
 	}
