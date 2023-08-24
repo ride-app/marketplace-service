@@ -12,42 +12,42 @@ func NewPanicInterceptor(ctx context.Context, log logger.Logger) (*connect.Unary
 	interceptor := func(next connect.UnaryFunc) connect.UnaryFunc {
 		var handler connect.UnaryFunc
 
-		defer func() {
-			if r := recover(); r != nil {
-				var err error
-				var errMsg string
-
-				switch e := r.(type) {
-				case string:
-					errMsg = e
-				case error:
-					errMsg = e.Error()
-				default:
-					errMsg = "unknown handler panic"
-				}
-
-    err := errors.New(errMsg)
-    
-    log.WithError(err).Panic(errMsg)
-
-				handler = connect.UnaryFunc(func(
-					_ context.Context,
-					__ connect.AnyRequest,
-				) (connect.AnyResponse, error) {
-
-					return nil, connect.NewError(connect.CodeInternal, err)
-				})
-			}
-		}()
-
-		handler = connect.UnaryFunc(func(
-			ctx context.Context,
-			req connect.AnyRequest,
-		) (connect.AnyResponse, error) {
-			return next(ctx, req)
-		})
-
-		return handler
+  defer func() {
+  	if r := recover(); r != nil {
+  		var err error
+  		var errMsg string
+  
+  		switch e := r.(type) {
+  		case string:
+  			errMsg = e
+  		case error:
+  			errMsg = e.Error()
+  		default:
+  			errMsg = "unknown handler panic"
+  		}
+  
+  		err := errors.New(errMsg)
+  
+  		log.WithError(err).Panic(strings.ToLower(errMsg))
+  
+  		handler = connect.UnaryFunc(func(
+  			_ context.Context,
+  			__ connect.AnyRequest,
+  		) (connect.AnyResponse, error) {
+  
+  			return nil, connect.NewError(connect.CodeInternal, err)
+  		})
+  	}
+  }()
+  
+  handler = connect.UnaryFunc(func(
+  	ctx context.Context,
+  	req connect.AnyRequest,
+  ) (connect.AnyResponse, error) {
+  	return next(ctx, req)
+  })
+  
+  return handler
 	}
 
 	interceptorFunc := connect.UnaryInterceptorFunc(interceptor)
