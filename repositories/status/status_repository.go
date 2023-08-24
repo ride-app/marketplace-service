@@ -4,6 +4,7 @@ package statusrepository
 
 import (
 	"context"
+	"fmt"
 	"strings"
 
 	driverv1alpha1 "buf.build/gen/go/ride/driver/protocolbuffers/go/ride/driver/v1alpha1"
@@ -18,6 +19,8 @@ import (
 
 type StatusRepository interface {
 	GetStatus(ctx context.Context, log logger.Logger, id string) (*pb.Status, error)
+
+	ListenStatus(ctx context.Context, log logger.Logger, id string, statusResponseStream chan<- StatusStreamResponse)
 
 	GoOnline(ctx context.Context, log logger.Logger, id string, vehicleType *driverv1alpha1.Vehicle) (*pb.Status, error)
 
@@ -78,6 +81,59 @@ func (r *FirebaseImpl) GetStatus(ctx context.Context, log logger.Logger, id stri
 	}
 
 	return &status, nil
+}
+
+type StatusStreamResponse struct {
+	Status *pb.Status
+	Error  error
+}
+
+func (r *FirebaseImpl) ListenStatus(ctx context.Context, log logger.Logger, id string, statusResponseStream chan<- *StatusStreamResponse) {
+	log.Info("Listening for status updates from firestore")
+	snapshots := r.firestore.Collection("activeDrivers").Doc(id).Snapshots(ctx)
+
+	for {
+		log.Info("Waiting for status update from firestore")
+		snap, err := snapshots.Next()
+		log.Info("Got status update from firestore")
+
+		if status.Code(err) == codes.DeadlineExceeded {
+			log.Info("firestore deadline exceeded")
+			statusResponseStream <- &StatusStreamResponse{
+				Status: nil,
+				Error:  nil,
+			}
+		} else if status.Code(err) == codes.NotFound {
+			log.Info("Driver does not exist in firestore")
+			statusResponseStream <- &StatusStreamResponse{
+				Status: nil,
+				Error:  nil,
+			}
+		} else if err != nil {
+			log.WithError(err).Error("Error getting status from firestore")
+			statusResponseStream <- &StatusStreamResponse{
+				Status: nil,
+				Error:  err,
+			}
+		}
+
+		if !snap.Exists() {
+			log.Info("Driver does not exist in firestore")
+			statusResponseStream <- &StatusStreamResponse{
+				Status: nil,
+				Error:  fmt.Errorf("document %s does not exist", snap.Ref.ID),
+			}
+		}
+
+		statusResponseStream <- &StatusStreamResponse{
+			Status: &pb.Status{
+				Name:       "drivers/" + id + "/status",
+				Online:     snap.Exists(),
+				UpdateTime: timestamppb.New(snap.UpdateTime),
+			},
+			Error: nil,
+		}
+	}
 }
 
 func (r *FirebaseImpl) GoOnline(ctx context.Context, log logger.Logger, id string, vehicle *driverv1alpha1.Vehicle) (*pb.Status, error) {
