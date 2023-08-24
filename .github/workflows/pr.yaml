@@ -54,7 +54,7 @@ jobs:
           node-version: 16.x
 
       - run: npm install
-        working-directory: deployment
+        working-directory: infra
 
       - name: Cache node_modules
         uses: actions/cache@v3.3.1
@@ -75,7 +75,7 @@ jobs:
 
       - uses: pulumi/actions@v4
         with:
-          work-dir: deployment
+          work-dir: infra
           command: preview
           stack-name: ride/prod
         env:
