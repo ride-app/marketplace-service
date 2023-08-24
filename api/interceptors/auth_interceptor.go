@@ -17,8 +17,7 @@ func NewAuthInterceptor(ctx context.Context, log logger.Logger) (*connect.UnaryI
 	options := keyfunc.Options{
 		Ctx: ctx,
 		RefreshErrorHandler: func(err error) {
-			formattedErrMsg := logger.FormatString("There was an error with the jwt.Keyfunc\nError: %s", err.Error())
-			log.Fatalf(formattedErrMsg)
+   log.Fatalf("There was an error with the jwt.Keyfunc\nError: %s", err.Error())
 		},
 		RefreshInterval:   time.Hour,
 		RefreshRateLimit:  time.Minute * 5,
@@ -38,38 +37,34 @@ func NewAuthInterceptor(ctx context.Context, log logger.Logger) (*connect.UnaryI
 			req connect.AnyRequest,
 		) (connect.AnyResponse, error) {
    			if req.Header().Get("authorization") == "" {
-   				formattedErrMsg := logger.FormatString("no token provided")
-   				return nil, connect.NewError(
-   					connect.CodeUnauthenticated,
-   					errors.New(formattedErrMsg),
-   				)
+       return nil, connect.NewError(
+       	connect.CodeUnauthenticated,
+       	errors.New("no token provided"),
+       )
    			}
 
    			if req.Header().Get("authorization")[:7] != "Bearer " {
-   				formattedErrMsg := logger.FormatString("invalid token format")
-   				return nil, connect.NewError(
-   					connect.CodeUnauthenticated,
-   					errors.New(formattedErrMsg),
-   				)
+       return nil, connect.NewError(
+       	connect.CodeUnauthenticated,
+       	errors.New("invalid token format"),
+       )
    			}
 			token, err := jwt.Parse(req.Header().Get("authorization")[7:], jwks.Keyfunc)
 
    			if !token.Valid {
-   				formattedErrMsg := logger.FormatString("invalid token")
-   				return nil, connect.NewError(
-   					connect.CodeUnauthenticated,
-   					errors.New(formattedErrMsg),
-   				)
+       return nil, connect.NewError(
+       	connect.CodeUnauthenticated,
+       	errors.New("invalid token"),
+       )
    			}
 
 			req.Header().Set("uid", token.Claims.(jwt.MapClaims)["user_id"].(string))
 
    			if err != nil {
-   				formattedErrMsg := logger.FormatString(err.Error())
-   				return nil, connect.NewError(
-   					connect.CodeUnauthenticated,
-   					errors.New(formattedErrMsg),
-   				)
+       return nil, connect.NewError(
+       	connect.CodeUnauthenticated,
+       	errors.New(err.Error()),
+       )
    			}
 
 			return next(ctx, req)
