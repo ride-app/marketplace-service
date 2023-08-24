@@ -91,6 +91,7 @@ type StatusStreamResponse struct {
 func (r *FirebaseImpl) ListenStatus(ctx context.Context, log logger.Logger, id string, statusResponseStream chan<- *StatusStreamResponse) {
 	log.Info("Listening for status updates from firestore")
 	snapshots := r.firestore.Collection("activeDrivers").Doc(id).Snapshots(ctx)
+	defer snapshots.Stop()
 
 	for {
 		log.Info("Waiting for status update from firestore")
