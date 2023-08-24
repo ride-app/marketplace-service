@@ -85,51 +85,51 @@ func New(config *config.Config) *ZapLogger {
 }
 
 func (l *ZapLogger) Debug(args ...interface{}) {
- l.logger.Debug(args...)
+	l.logger.Debug(formatString(args...)...)
 }
 
 func (l *ZapLogger) Debugf(format string, args ...interface{}) {
-	l.logger.Debugf(format, args...)
+	l.logger.Debugf(format, formatString(args...)...)
 }
 
 func (l *ZapLogger) Info(args ...interface{}) {
- l.logger.Info(args...)
+	l.logger.Info(formatString(args...)...)
 }
 
 func (l *ZapLogger) Infof(format string, args ...interface{}) {
-	l.logger.Infof(format, args...)
+	l.logger.Infof(format, formatString(args...)...)
 }
 
 func (l *ZapLogger) Warn(args ...interface{}) {
- l.logger.Warn(args...)
+	l.logger.Warn(formatString(args...)...)
 }
 
 func (l *ZapLogger) Warnf(format string, args ...interface{}) {
-	l.logger.Warnf(format, args...)
+	l.logger.Warnf(format, formatString(args...)...)
 }
 
 func (l *ZapLogger) Error(args ...interface{}) {
- l.logger.Error(args...)
+	l.logger.Error(formatString(args...)...)
 }
 
 func (l *ZapLogger) Errorf(format string, args ...interface{}) {
-	l.logger.Errorf(format, args...)
+	l.logger.Errorf(format, formatString(args...)...)
 }
 
 func (l *ZapLogger) Fatal(args ...interface{}) {
- l.logger.Fatal(args...)
+	l.logger.Fatal(formatString(args...)...)
 }
 
 func (l *ZapLogger) Fatalf(format string, args ...interface{}) {
-	l.logger.Fatalf(format, args...)
+	l.logger.Fatalf(format, formatString(args...)...)
 }
 
 func (l *ZapLogger) Panic(args ...interface{}) {
- l.logger.Panic(args...)
+	l.logger.Panic(formatString(args...)...)
 }
 
 func (l *ZapLogger) Panicf(format string, args ...interface{}) {
-	l.logger.Panicf(format, args...)
+	l.logger.Panicf(format, formatString(args...)...)
 }
 
 func (l *ZapLogger) WithField(key string, value interface{}) Logger {
