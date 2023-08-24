@@ -30,7 +30,7 @@ func (service *MarketplaceServiceServer) WatchStatus(ctx context.Context,
 		return connect.NewError(connect.CodePermissionDenied, errors.New("permission denied"))
 	}
 
-	statusResponseStream := make(chan statusrepository.StatusStreamResponse)
+	statusResponseStream := make(chan *statusrepository.StatusStreamResponse)
 
 	log.Info("Starting status listener goroutine")
 	go func() {
