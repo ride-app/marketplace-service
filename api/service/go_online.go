@@ -47,30 +47,30 @@ func (service *MarketplaceServiceServer) GoOnline(ctx context.Context,
 
 	if err != nil {
 		log.WithError(err).Error("Failed to get wallet")
-		return nil, connect.NewError(connect.CodeInternal, err)
-	}
-
-	if wallet.Balance <= 0 {
-  log.Info("Insufficient wallet balance: ", wallet.Balance)
-  return nil, connect.NewError(connect.CodeFailedPrecondition, errors.New("Insufficient wallet balance: "+strconv.Itoa(wallet.Balance)))
-	}
-
-	vehicle, err := service.driverRepository.GetVehicle(ctx, log, uid, req.Header().Get("Authorization"))
-
-	if err != nil {
-		log.WithError(err).Error("Failed to get vehicle")
-		return nil, connect.NewError(connect.CodeInternal, err)
-	}
-
- 	if vehicle == nil {
-   log.Info("Vehicle not found")
-   return nil, connect.NewError(connect.CodeFailedPrecondition, errors.New("Vehicle not found"))
- 	}
-
-	status, err := service.statusRepository.GoOnline(ctx, log, uid, vehicle)
-
-	if err != nil {
-		log.WithError(err).Error("Failed to go online")
+  if uid != req.Header().Get("uid") {
+     log.Info("Permission denied")
+     return nil, connect.NewError(connect.CodePermissionDenied, errors.New("permission denied"))
+  }
+  
+  if driver == nil {
+     log.Info("Driver not found")
+     return nil, connect.NewError(connect.CodeFailedPrecondition, errors.New("driver not found"))
+  }
+  
+  if wallet.Balance <= 0 {
+     log.Info("Insufficient wallet balance: ", wallet.Balance)
+     return nil, connect.NewError(connect.CodeFailedPrecondition, errors.New("insufficient wallet balance: "+strconv.Itoa(wallet.Balance)))
+  }
+  
+  if vehicle == nil {
+     log.Info("Vehicle not found")
+     return nil, connect.NewError(connect.CodeFailedPrecondition, errors.New("vehicle not found"))
+  }
+  
+  if err := res.Validate(); err != nil {
+     log.WithError(err).Error("Invalid response")
+     return nil, connect.NewError(connect.CodeInternal, errors.New("failed to update location"))
+  }
 		return nil, connect.NewError(connect.CodeInternal, err)
 	}
 
