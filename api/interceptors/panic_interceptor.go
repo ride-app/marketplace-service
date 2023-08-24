@@ -15,17 +15,21 @@ func NewPanicInterceptor(ctx context.Context, log logger.Logger) (*connect.Unary
 		defer func() {
 			if r := recover(); r != nil {
 				var err error
+				var errMsg string
 
 				switch e := r.(type) {
 				case string:
-					err = errors.New(e)
+					errMsg = e
 				case error:
-					err = e
+					errMsg = e.Error()
 				default:
-					err = errors.New("unknown handler panic")
+					errMsg = "unknown handler panic"
 				}
 
-				log.WithError(err).Panic("panic caught by interceptor")
+				formattedErrMsg := logger.FormatString(errMsg)
+				err = errors.New(formattedErrMsg)
+
+				log.WithError(err).Panic(formattedErrMsg)
 
 				handler = connect.UnaryFunc(func(
 					_ context.Context,
