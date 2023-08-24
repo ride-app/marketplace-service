@@ -16,9 +16,9 @@ func NewAuthInterceptor(ctx context.Context, log logger.Logger) (*connect.UnaryI
 
 	options := keyfunc.Options{
 		Ctx: ctx,
-		RefreshErrorHandler: func(err error) {
-   log.Fatalf("There was an error with the jwt.Keyfunc\nError: %s", err.Error())
-		},
+  RefreshErrorHandler: func(err error) {
+     log.Fatalf("There was an error with the jwt.Keyfunc\nError: %s", err.Error())
+  },
 		RefreshInterval:   time.Hour,
 		RefreshRateLimit:  time.Minute * 5,
 		RefreshTimeout:    time.Second * 10,
@@ -36,36 +36,36 @@ func NewAuthInterceptor(ctx context.Context, log logger.Logger) (*connect.UnaryI
 			ctx context.Context,
 			req connect.AnyRequest,
 		) (connect.AnyResponse, error) {
-   			if req.Header().Get("authorization") == "" {
-       return nil, connect.NewError(
-       	connect.CodeUnauthenticated,
-       	errors.New("no token provided"),
-       )
-   			}
-
-   			if req.Header().Get("authorization")[:7] != "Bearer " {
-       return nil, connect.NewError(
-       	connect.CodeUnauthenticated,
-       	errors.New("invalid token format"),
-       )
-   			}
+      if req.Header().Get("authorization") == "" {
+         return nil, connect.NewError(
+         	connect.CodeUnauthenticated,
+         	errors.New("no token provided"),
+         )
+      }
+      
+      if req.Header().Get("authorization")[:7] != "Bearer " {
+         return nil, connect.NewError(
+         	connect.CodeUnauthenticated,
+         	errors.New("invalid token format"),
+         )
+      }
 			token, err := jwt.Parse(req.Header().Get("authorization")[7:], jwks.Keyfunc)
 
-   			if !token.Valid {
-       return nil, connect.NewError(
-       	connect.CodeUnauthenticated,
-       	errors.New("invalid token"),
-       )
-   			}
+      if !token.Valid {
+         return nil, connect.NewError(
+         	connect.CodeUnauthenticated,
+         	errors.New("invalid token"),
+         )
+      }
 
 			req.Header().Set("uid", token.Claims.(jwt.MapClaims)["user_id"].(string))
 
-   			if err != nil {
-       return nil, connect.NewError(
-       	connect.CodeUnauthenticated,
-       	errors.New(err.Error()),
-       )
-   			}
+      if err != nil {
+         return nil, connect.NewError(
+         	connect.CodeUnauthenticated,
+         	errors.New(err.Error()),
+         )
+      }
 
 			return next(ctx, req)
 		})
