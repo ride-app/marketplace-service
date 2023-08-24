@@ -2,6 +2,8 @@ package logger
 
 import (
 	"os"
+	"regexp"
+	"strings"
 
 	"github.com/ride-app/marketplace-service/config"
 	"go.uber.org/zap"
@@ -83,7 +85,8 @@ func New(config *config.Config) *ZapLogger {
 }
 
 func (l *ZapLogger) Debug(args ...interface{}) {
-	l.logger.Debug(args...)
+	formattedArgs := formatString(args...)
+	l.logger.Debug(formattedArgs...)
 }
 
 func (l *ZapLogger) Debugf(format string, args ...interface{}) {
@@ -91,7 +94,8 @@ func (l *ZapLogger) Debugf(format string, args ...interface{}) {
 }
 
 func (l *ZapLogger) Info(args ...interface{}) {
-	l.logger.Info(args...)
+	formattedArgs := formatString(args...)
+	l.logger.Info(formattedArgs...)
 }
 
 func (l *ZapLogger) Infof(format string, args ...interface{}) {
@@ -99,7 +103,8 @@ func (l *ZapLogger) Infof(format string, args ...interface{}) {
 }
 
 func (l *ZapLogger) Warn(args ...interface{}) {
-	l.logger.Warn(args...)
+	formattedArgs := formatString(args...)
+	l.logger.Warn(formattedArgs...)
 }
 
 func (l *ZapLogger) Warnf(format string, args ...interface{}) {
@@ -107,7 +112,8 @@ func (l *ZapLogger) Warnf(format string, args ...interface{}) {
 }
 
 func (l *ZapLogger) Error(args ...interface{}) {
-	l.logger.Error(args...)
+	formattedArgs := formatString(args...)
+	l.logger.Error(formattedArgs...)
 }
 
 func (l *ZapLogger) Errorf(format string, args ...interface{}) {
@@ -115,7 +121,8 @@ func (l *ZapLogger) Errorf(format string, args ...interface{}) {
 }
 
 func (l *ZapLogger) Fatal(args ...interface{}) {
-	l.logger.Fatal(args...)
+	formattedArgs := formatString(args...)
+	l.logger.Fatal(formattedArgs...)
 }
 
 func (l *ZapLogger) Fatalf(format string, args ...interface{}) {
@@ -123,7 +130,8 @@ func (l *ZapLogger) Fatalf(format string, args ...interface{}) {
 }
 
 func (l *ZapLogger) Panic(args ...interface{}) {
-	l.logger.Panic(args...)
+	formattedArgs := formatString(args...)
+	l.logger.Panic(formattedArgs...)
 }
 
 func (l *ZapLogger) Panicf(format string, args ...interface{}) {
@@ -144,6 +152,22 @@ func (l *ZapLogger) WithFields(fields map[string]string) Logger {
 	return &ZapLogger{
 		logger: logger,
 	}
+}
+
+func formatString(args ...interface{}) []interface{} {
+	re := regexp.MustCompile(`([a-z])([A-Z])`)
+	formattedArgs := make([]interface{}, len(args))
+	for i, arg := range args {
+		str, ok := arg.(string)
+		if ok {
+			str = re.ReplaceAllString(str, `${1} ${2}`)
+			str = strings.ToLower(str)
+			formattedArgs[i] = str
+		} else {
+			formattedArgs[i] = arg
+		}
+	}
+	return formattedArgs
 }
 
 func (l *ZapLogger) WithError(err error) Logger {
