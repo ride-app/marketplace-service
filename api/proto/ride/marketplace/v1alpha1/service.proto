@@ -40,6 +40,12 @@ service MarketplaceService {
     };
   }
 
+  rpc WatchLocation (WatchLocationRequest) returns (stream WatchLocationResponse) {
+    option (google.api.http) = {
+      get: "/v1alpha1/{name=drivers/*/location}:watch"
+    };
+  }
+
   rpc UpdateLocation(UpdateLocationRequest) returns (UpdateLocationResponse) {
     option (google.api.http) = {
       patch: "/v1alpha1/{location.name=drivers/*/location}"
@@ -122,6 +128,16 @@ message GetLocationRequest {
 }
 
 message GetLocationResponse {
+  // The location of the Driver.
+  Location location = 1;
+}
+
+message WatchLocationRequest {
+  // The relative resource name of the Location.
+  string name = 1 [(validate.rules).string.pattern = "^drivers/[A-Za-z0-9_-]+/location$"];
+}
+
+message WatchLocationResponse {
   // The location of the Driver.
   Location location = 1;
 }
