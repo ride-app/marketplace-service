@@ -17,14 +17,14 @@ func (service *MarketplaceServiceServer) WatchLocation(ctx context.Context,
 	})
 
 	if err := req.Msg.Validate(); err != nil {
-		log.WithError(err).Info("Invalid request")
+		log.WithError(err).Info("invalid request")
 		return connect.NewError(connect.CodeInvalidArgument, err)
 	}
 
 	uid := strings.Split(req.Msg.Name, "/")[1]
 
 	log.Debug("uid: ", uid)
-	log.Debug("Request header uid: ", req.Header().Get("uid"))
+	log.Debug("request header uid: ", req.Header().Get("uid"))
 
 	if uid != req.Header().Get("uid") {
 		return connect.NewError(connect.CodePermissionDenied, errors.New("permission denied"))
@@ -32,23 +32,23 @@ func (service *MarketplaceServiceServer) WatchLocation(ctx context.Context,
 
 	locationResponseStream := make(chan *locationrepository.LocationStreamResponse)
 
-	log.Info("Starting Location listener goroutine")
+	log.Info("starting Location listener goroutine")
 	go func() {
 		service.locationRepository.ListenLocation(ctx, log, uid, locationResponseStream)
 	}()
 
 	for LocationResponse := range locationResponseStream {
-		log.Info("Got Location update")
+		log.Info("got Location update")
 		Location := LocationResponse.Location
 		err := LocationResponse.Error
 
 		if err != nil {
-			log.WithError(err).Error("Failed to get Location")
+			log.WithError(err).Error("failed to get Location")
 			return connect.NewError(connect.CodeInternal, err)
 		}
 
 		if Location == nil {
-			log.Info("Location not found")
+			log.Info("location not found")
 			return connect.NewError(connect.CodeNotFound, errors.New("location not found"))
 		}
 
@@ -57,7 +57,7 @@ func (service *MarketplaceServiceServer) WatchLocation(ctx context.Context,
 		}
 
 		if err := res.Validate(); err != nil {
-			log.WithError(err).Error("Invalid response")
+			log.WithError(err).Error("invalid response")
 			return connect.NewError(connect.CodeInternal, err)
 		}
 

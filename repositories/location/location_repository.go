@@ -31,35 +31,35 @@ func NewFirebaseLocationRepository(log logger.Logger, firebaseApp *firebase.App)
 	firestore, err := firebaseApp.Firestore(context.Background())
 
 	if err != nil {
-		log.WithError(err).Error("Error initializing firestore client")
+		log.WithError(err).Error("error initializing firestore client")
 		return nil, err
 	}
 
 	if err != nil {
-		log.WithError(err).Error("Error initializing auth client")
+		log.WithError(err).Error("error initializing auth client")
 		return nil, err
 	}
 
-	log.Info("Firebase location repository initialized")
+	log.Info("firebase location repository initialized")
 	return &FirebaseImpl{
 		firestore: firestore,
 	}, nil
 }
 
 func (r *FirebaseImpl) GetLocation(ctx context.Context, log logger.Logger, id string) (*pb.Location, error) {
-	log.Info("Checking if driver is active in firestore")
+	log.Info("checking if driver is active in firestore")
 	doc, err := r.firestore.Collection("activeDrivers").Doc(id).Get(ctx)
 
 	if status.Code(err) == codes.NotFound {
-		log.Info("Driver does not exist in active drivers in firestore")
+		log.Info("driver does not exist in active drivers in firestore")
 		return nil, nil
 	} else if err != nil {
-		log.WithError(err).Error("Error checking if driver is active in firestore")
+		log.WithError(err).Error("error checking if driver is active in firestore")
 		return nil, err
 	}
 
 	if !doc.Exists() {
-		log.Info("Driver is not active in firestore")
+		log.Info("driver is not active in firestore")
 		return nil, nil
 	}
 
@@ -81,7 +81,7 @@ type LocationStreamResponse struct {
 }
 
 func (r *FirebaseImpl) ListenLocation(ctx context.Context, log logger.Logger, id string, locationResponseStream chan<- *LocationStreamResponse) {
-	log.Info("Listening for driver location changes in firestore")
+	log.Info("listening for driver location changes in firestore")
 	snapshots := r.firestore.Collection("activeDrivers").Doc(id).Snapshots(ctx)
 
 	defer snapshots.Stop()
@@ -96,13 +96,13 @@ func (r *FirebaseImpl) ListenLocation(ctx context.Context, log logger.Logger, id
 				Error:    nil,
 			}
 		} else if status.Code(err) == codes.NotFound {
-			log.Info("Driver does not exist in firestore")
+			log.Info("driver does not exist in firestore")
 			locationResponseStream <- &LocationStreamResponse{
 				Location: nil,
 				Error:    nil,
 			}
 		} else if err != nil {
-			log.WithError(err).Error("Error listening for driver location changes from firestore")
+			log.WithError(err).Error("error listening for driver location changes from firestore")
 			locationResponseStream <- &LocationStreamResponse{
 				Location: nil,
 				Error:    err,
@@ -110,7 +110,7 @@ func (r *FirebaseImpl) ListenLocation(ctx context.Context, log logger.Logger, id
 		}
 
 		if !snapshot.Exists() {
-			log.Info("Driver location not found in firestore")
+			log.Info("driver location not found in firestore")
 			locationResponseStream <- &LocationStreamResponse{
 				Location: nil,
 				Error:    nil,
@@ -135,11 +135,10 @@ func (r *FirebaseImpl) ListenLocation(ctx context.Context, log logger.Logger, id
 }
 
 func (r *FirebaseImpl) UpdateLocation(ctx context.Context, log logger.Logger, id string, location *pb.Location) (updateTime *time.Time, err error) {
-
-	log.Info("Calculating geohash")
+	log.Info("calculating geohash")
 	hash := geohash.Encode(location.Latitude, location.Longitude)
 
-	log.Info("Updating driver location in firestore")
+	log.Info("updating driver location in firestore")
 	res, err := r.firestore.Collection("activeDrivers").Doc(id).Update(ctx, []firestore.Update{
 		{
 			Path:  "location.latitude",
@@ -156,7 +155,7 @@ func (r *FirebaseImpl) UpdateLocation(ctx context.Context, log logger.Logger, id
 	})
 
 	if err != nil {
-		log.WithError(err).Error("Error updating driver location in firestore")
+		log.WithError(err).Error("error updating driver location in firestore")
 		return nil, err
 	}
 

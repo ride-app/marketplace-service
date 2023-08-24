@@ -51,36 +51,36 @@ func (service *MarketplaceServiceServer) GoOnline(ctx context.Context,
 	}
 
 	if wallet.Balance <= 0 {
-		log.Info("Insufficient wallet balance: ", wallet.Balance)
+		log.Info("insufficient wallet balance: ", wallet.Balance)
 
 		return nil, connect.NewError(connect.CodeFailedPrecondition, errors.New("insufficient wallet balance"))
 	}
 
-	vehicle, err := service.driverRepository.GetVehicle(ctx, log, uid, req.Header().Get("Authorization"))
+	vehicle, err := service.driverRepository.GetVehicle(ctx, log, uid, req.Header().Get("authorization"))
 
 	if err != nil {
-		log.WithError(err).Error("Failed to get vehicle")
+		log.WithError(err).Error("failed to get vehicle")
 		return nil, connect.NewError(connect.CodeInternal, err)
 	}
 
 	if vehicle == nil {
-		log.Info("Vehicle not found")
+		log.Info("vehicle not found")
 		return nil, connect.NewError(connect.CodeFailedPrecondition, errors.New("vehicle not found"))
 	}
 
 	status, err := service.statusRepository.GoOnline(ctx, log, uid, vehicle)
 
 	if err != nil {
-		log.WithError(err).Error("Failed to go online")
+		log.WithError(err).Error("failed to go online")
 		return nil, connect.NewError(connect.CodeInternal, err)
 	}
 
-	log.Info("Status: ", status.Online)
+	log.Info("status: ", status.Online)
 
 	updateTime, err := service.locationRepository.UpdateLocation(ctx, log, uid, req.Msg.Location)
 
 	if err != nil {
-		log.WithError(err).Error("Failed to update location")
+		log.WithError(err).Error("failed to update location")
 		return nil, connect.NewError(connect.CodeInternal, err)
 	}
 
@@ -91,10 +91,10 @@ func (service *MarketplaceServiceServer) GoOnline(ctx context.Context,
 	}
 
 	if err := res.Validate(); err != nil {
-		log.WithError(err).Error("Invalid response")
+		log.WithError(err).Error("invalid response")
 		return nil, connect.NewError(connect.CodeInternal, err)
 	}
 
-	log.Info("Driver is online")
+	log.Info("driver is online")
 	return connect.NewResponse(res), nil
 }

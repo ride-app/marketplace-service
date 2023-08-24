@@ -16,39 +16,39 @@ func (service *MarketplaceServiceServer) UpdateLocation(ctx context.Context,
 	})
 
 	if err := req.Msg.Validate(); err != nil {
-		log.WithError(err).Info("Invalid request")
+		log.WithError(err).Info("invalid request")
 		return nil, connect.NewError(connect.CodeInvalidArgument, err)
 	}
 
 	uid := strings.Split(req.Msg.Parent, "/")[1]
 
 	log.Debug("uid: ", uid)
-	log.Debug("Request header uid: ", req.Header().Get("uid"))
+	log.Debug("request header uid: ", req.Header().Get("uid"))
 
 	if uid != req.Header().Get("uid") {
-		log.Info("Permission denied")
+		log.Info("permission denied")
 		return nil, connect.NewError(connect.CodePermissionDenied, errors.New("permission denied"))
 	}
 
 	status, err := service.statusRepository.GetStatus(ctx, log, uid)
 
 	if err != nil {
-		log.WithError(err).Error("Failed to get status")
+		log.WithError(err).Error("failed to get status")
 		return nil, connect.NewError(connect.CodeInternal, err)
 	}
 
 	if !status.Online {
-		log.Info("Driver is offline")
+		log.Info("driver is offline")
 		return nil, connect.NewError(connect.CodeFailedPrecondition, err)
 	}
 
 	_, err = service.locationRepository.UpdateLocation(ctx, log, uid, req.Msg.Location)
 
 	if err != nil {
-		log.WithError(err).Error("Failed to update location")
+		log.WithError(err).Error("failed to update location")
 		return nil, connect.NewError(connect.CodeInternal, err)
 	}
 
-	log.Info("Location updated")
+	log.Info("location updated")
 	return connect.NewResponse(&pb.UpdateLocationResponse{}), nil
 }

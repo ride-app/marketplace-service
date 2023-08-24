@@ -37,16 +37,16 @@ func NewFirebaseStatusRepository(log logger.Logger, firebaseApp *firebase.App) (
 	firestore, err := firebaseApp.Firestore(context.Background())
 
 	if err != nil {
-		log.WithError(err).Error("Error initializing firestore client")
+		log.WithError(err).Error("error initializing firestore client")
 		return nil, err
 	}
 
 	if err != nil {
-		log.WithError(err).Error("Error initializing auth client")
+		log.WithError(err).Error("error initializing auth client")
 		return nil, err
 	}
 
-	log.Info("Firebase status repository initialized")
+	log.Info("firebase status repository initialized")
 	return &FirebaseImpl{
 		firestore: firestore,
 		capacities: map[driverv1alpha1.Vehicle_Type]int{
@@ -58,19 +58,19 @@ func NewFirebaseStatusRepository(log logger.Logger, firebaseApp *firebase.App) (
 }
 
 func (r *FirebaseImpl) GetStatus(ctx context.Context, log logger.Logger, id string) (*pb.Status, error) {
-	log.Info("Getting status from firestore")
+	log.Info("getting status from firestore")
 	doc, err := r.firestore.Collection("activeDrivers").Doc(id).Get(ctx)
 
 	if status.Code(err) == codes.NotFound {
-		log.Info("Driver does not exist in firestore")
+		log.Info("driver does not exist in firestore")
 		return nil, nil
 	} else if err != nil {
-		log.WithError(err).Error("Error getting status from firestore")
+		log.WithError(err).Error("error getting status from firestore")
 		return nil, err
 	}
 
 	if !doc.Exists() {
-		log.Info("Driver does not exist in firestore")
+		log.Info("driver does not exist in firestore")
 		return nil, nil
 	}
 
@@ -89,14 +89,14 @@ type StatusStreamResponse struct {
 }
 
 func (r *FirebaseImpl) ListenStatus(ctx context.Context, log logger.Logger, id string, statusResponseStream chan<- *StatusStreamResponse) {
-	log.Info("Listening for status updates from firestore")
+	log.Info("listening for status updates from firestore")
 	snapshots := r.firestore.Collection("activeDrivers").Doc(id).Snapshots(ctx)
 	defer snapshots.Stop()
 
 	for {
-		log.Info("Waiting for status update from firestore")
+		log.Info("waiting for status update from firestore")
 		snap, err := snapshots.Next()
-		log.Info("Got status update from firestore")
+		log.Info("got status update from firestore")
 
 		if status.Code(err) == codes.DeadlineExceeded {
 			log.Info("firestore deadline exceeded")
@@ -105,13 +105,13 @@ func (r *FirebaseImpl) ListenStatus(ctx context.Context, log logger.Logger, id s
 				Error:  nil,
 			}
 		} else if status.Code(err) == codes.NotFound {
-			log.Info("Driver does not exist in firestore")
+			log.Info("driver does not exist in firestore")
 			statusResponseStream <- &StatusStreamResponse{
 				Status: nil,
 				Error:  nil,
 			}
 		} else if err != nil {
-			log.WithError(err).Error("Error getting status from firestore")
+			log.WithError(err).Error("error getting status from firestore")
 			statusResponseStream <- &StatusStreamResponse{
 				Status: nil,
 				Error:  err,
@@ -119,7 +119,7 @@ func (r *FirebaseImpl) ListenStatus(ctx context.Context, log logger.Logger, id s
 		}
 
 		if !snap.Exists() {
-			log.Info("Driver does not exist in firestore")
+			log.Info("driver does not exist in firestore")
 			statusResponseStream <- &StatusStreamResponse{
 				Status: nil,
 				Error:  fmt.Errorf("document %s does not exist", snap.Ref.ID),
@@ -138,14 +138,14 @@ func (r *FirebaseImpl) ListenStatus(ctx context.Context, log logger.Logger, id s
 }
 
 func (r *FirebaseImpl) GoOnline(ctx context.Context, log logger.Logger, id string, vehicle *driverv1alpha1.Vehicle) (*pb.Status, error) {
-	log.Info("Updating active driver in firestore")
+	log.Info("ppdating active driver in firestore")
 
 	ref := r.firestore.Collection("activeDrivers").Doc(id)
 	err := r.firestore.RunTransaction(ctx, func(ctx context.Context, tx *firestore.Transaction) error {
 		doc, err := tx.Get(ref)
 
 		if err != nil && !(status.Code(err) == codes.NotFound) {
-			log.WithError(err).Error("Error getting active driver from firestore")
+			log.WithError(err).Error("error getting active driver from firestore")
 			return err
 		}
 
@@ -161,7 +161,7 @@ func (r *FirebaseImpl) GoOnline(ctx context.Context, log logger.Logger, id strin
 		})
 
 		if err != nil {
-			log.WithError(err).Error("Error setting active driver in firestore")
+			log.WithError(err).Error("error setting active driver in firestore")
 			return err
 		}
 
@@ -169,7 +169,7 @@ func (r *FirebaseImpl) GoOnline(ctx context.Context, log logger.Logger, id strin
 	})
 
 	if err != nil {
-		log.WithError(err).Error("Error updating active driver in firestore")
+		log.WithError(err).Error("error updating active driver in firestore")
 		return nil, err
 	}
 
@@ -181,13 +181,13 @@ func (r *FirebaseImpl) GoOnline(ctx context.Context, log logger.Logger, id strin
 }
 
 func (r *FirebaseImpl) GoOffline(ctx context.Context, log logger.Logger, id string) (*pb.Status, error) {
-	log.Info("Deleting active driver from firestore")
+	log.Info("deleting active driver from firestore")
 	_, err := r.firestore.Collection("activeDrivers").Doc(id).Delete(ctx)
 
 	if status.Code(err) == codes.NotFound {
-		log.Info("Driver does not exist in active drivers in firestore")
+		log.Info("driver does not exist in active drivers in firestore")
 	} else if err != nil {
-		log.WithError(err).Error("Error deleting active driver from firestore")
+		log.WithError(err).Error("error deleting active driver from firestore")
 		return nil, err
 	}
 

@@ -22,18 +22,18 @@ type Impl struct {
 }
 
 func New(log logger.Logger, config *config.Config) (*Impl, error) {
-	log.Debug("Wallet Service Host: ", config.Wallet_Service_Host)
+	log.Debug("wallet Service Host: ", config.Wallet_Service_Host)
 	client := walletApi.NewWalletServiceClient(
 		http.DefaultClient,
 		config.Wallet_Service_Host,
 	)
 
-	log.Info("Wallet Repository initialized")
+	log.Info("wallet Repository initialized")
 	return &Impl{walletApi: client}, nil
 }
 
 func (r *Impl) GetWallet(ctx context.Context, log logger.Logger, id string, authToken string) (*pb.Wallet, error) {
-	log.Info("Getting wallet from wallet service")
+	log.Info("getting wallet from wallet service")
 	req := connect.NewRequest(&pb.GetWalletRequest{
 		Name: "users/" + id + "/wallet",
 	})
@@ -42,10 +42,10 @@ func (r *Impl) GetWallet(ctx context.Context, log logger.Logger, id string, auth
 	res, err := r.walletApi.GetWallet(ctx, req)
 
 	if connect.CodeOf(err) == connect.CodeNotFound {
-		log.WithError(err).Error("Wallet not found")
+		log.WithError(err).Error("wallet not found")
 		return nil, nil
 	} else if err != nil {
-		log.WithError(err).Error("Error getting wallet from wallet service")
+		log.WithError(err).Error("error getting wallet from wallet service")
 		return nil, err
 	}
 

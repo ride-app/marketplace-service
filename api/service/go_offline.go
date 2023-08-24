@@ -16,26 +16,26 @@ func (service *MarketplaceServiceServer) GoOffline(ctx context.Context,
 	})
 
 	if err := req.Msg.Validate(); err != nil {
-		log.WithError(err).Info("Invalid request")
+		log.WithError(err).Info("invalid request")
 		return nil, connect.NewError(connect.CodeInvalidArgument, err)
 	}
 
 	uid := strings.Split(req.Msg.Name, "/")[1]
 
 	log.Info("uid: ", uid)
-	log.Debug("Request header uid: ", req.Header().Get("uid"))
+	log.Debug("request header uid: ", req.Header().Get("uid"))
 
 	if uid != req.Header().Get("uid") {
-		log.Info("Permission denied")
+		log.Info("permission denied")
 		return nil, connect.NewError(connect.CodePermissionDenied, errors.New("permission denied"))
 	}
 
 	status, err := service.statusRepository.GoOffline(ctx, log, uid)
 
-	log.Info("Status: ", status)
+	log.Info("status: ", status)
 
 	if err != nil {
-		log.Error("Failed to go offline")
+		log.Error("failed to go offline")
 		return nil, connect.NewError(connect.CodeInternal, err)
 	}
 
@@ -44,10 +44,10 @@ func (service *MarketplaceServiceServer) GoOffline(ctx context.Context,
 	}
 
 	if err := res.Validate(); err != nil {
-		log.Error("Invalid response")
+		log.Error("invalid response")
 		return nil, connect.NewError(connect.CodeInternal, err)
 	}
 
-	log.Info("Driver went offline")
+	log.Info("driver went offline")
 	return connect.NewResponse(res), nil
 }

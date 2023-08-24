@@ -24,13 +24,13 @@ type Impl struct {
 }
 
 func New(log logger.Logger, config *config.Config) (*Impl, error) {
-	log.Debug("Driver Service Host: ", config.Driver_Service_Host)
+	log.Debug("driver Service Host: ", config.Driver_Service_Host)
 	client := driverApi.NewDriverServiceClient(
 		http.DefaultClient,
 		config.Driver_Service_Host,
 	)
 
-	log.Info("Driver Repository initialized")
+	log.Info("driver Repository initialized")
 	return &Impl{driverApi: client}, nil
 }
 
@@ -44,10 +44,10 @@ func (r *Impl) GetDriver(ctx context.Context, log logger.Logger, id string, auth
 	res, err := r.driverApi.GetDriver(ctx, req)
 
 	if connect.CodeOf(err) == connect.CodeNotFound {
-		log.WithError(err).Error("Driver not found")
+		log.WithError(err).Error("driver not found")
 		return nil, nil
 	} else if err != nil {
-		log.WithError(err).Error("Error getting driver from driver service")
+		log.WithError(err).Error("error getting driver from driver service")
 		return nil, err
 	}
 
@@ -55,7 +55,7 @@ func (r *Impl) GetDriver(ctx context.Context, log logger.Logger, id string, auth
 }
 
 func (r *Impl) GetVehicle(ctx context.Context, log logger.Logger, id string, authToken string) (*pb.Vehicle, error) {
-	log.Info("Getting vehicle from driver service")
+	log.Info("getting vehicle from driver service")
 	req := connect.NewRequest(&pb.GetVehicleRequest{
 		Name: "driver/" + id + "/vehicle",
 	})
@@ -64,10 +64,10 @@ func (r *Impl) GetVehicle(ctx context.Context, log logger.Logger, id string, aut
 	res, err := r.driverApi.GetVehicle(ctx, req)
 
 	if connect.CodeOf(err) == connect.CodeNotFound {
-		log.WithError(err).Error("Vehicle not found")
+		log.WithError(err).Error("vehicle not found")
 		return nil, nil
 	} else if err != nil {
-		log.WithError(err).Error("Error getting vehicle from driver service")
+		log.WithError(err).Error("error getting vehicle from driver service")
 		return nil, err
 	}
 

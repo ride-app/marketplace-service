@@ -24,7 +24,7 @@ func (service *MarketplaceServiceServer) WatchStatus(ctx context.Context,
 	uid := strings.Split(req.Msg.Name, "/")[1]
 
 	log.Debug("uid: ", uid)
-	log.Debug("Request header uid: ", req.Header().Get("uid"))
+	log.Debug("request header uid: ", req.Header().Get("uid"))
 
 	if uid != req.Header().Get("uid") {
 		return connect.NewError(connect.CodePermissionDenied, errors.New("permission denied"))
@@ -32,23 +32,23 @@ func (service *MarketplaceServiceServer) WatchStatus(ctx context.Context,
 
 	statusResponseStream := make(chan *statusrepository.StatusStreamResponse)
 
-	log.Info("Starting status listener goroutine")
+	log.Info("starting status listener goroutine")
 	go func() {
 		service.statusRepository.ListenStatus(ctx, log, uid, statusResponseStream)
 	}()
 
 	for statusResponse := range statusResponseStream {
-		log.Info("Got status update")
+		log.Info("got status update")
 		status := statusResponse.Status
 		err := statusResponse.Error
 
 		if err != nil {
-			log.WithError(err).Error("Failed to get status")
+			log.WithError(err).Error("failed to get status")
 			return connect.NewError(connect.CodeInternal, err)
 		}
 
 		if status == nil {
-			log.Info("Status not found")
+			log.Info("status not found")
 			return connect.NewError(connect.CodeNotFound, errors.New("status not found"))
 		}
 
@@ -57,7 +57,7 @@ func (service *MarketplaceServiceServer) WatchStatus(ctx context.Context,
 		}
 
 		if err := res.Validate(); err != nil {
-			log.WithError(err).Error("Invalid response")
+			log.WithError(err).Error("invalid response")
 			return connect.NewError(connect.CodeInternal, err)
 		}
 

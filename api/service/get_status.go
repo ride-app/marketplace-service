@@ -16,28 +16,29 @@ func (service *MarketplaceServiceServer) GetStatus(ctx context.Context,
 	})
 
 	if err := req.Msg.Validate(); err != nil {
-		log.WithError(err).Info("Invalid request")
+		log.WithError(err).Info("invalid request")
 		return nil, connect.NewError(connect.CodeInvalidArgument, err)
 	}
 
 	uid := strings.Split(req.Msg.Name, "/")[1]
 
 	log.Debug("uid: ", uid)
-	log.Debug("Request header uid: ", req.Header().Get("uid"))
+	log.Debug("request header uid: ", req.Header().Get("uid"))
 
 	if uid != req.Header().Get("uid") {
+		log.Info("permission denied")
 		return nil, connect.NewError(connect.CodePermissionDenied, errors.New("permission denied"))
 	}
 
 	status, err := service.statusRepository.GetStatus(ctx, log, uid)
 
 	if err != nil {
-		log.WithError(err).Error("Failed to get status")
+		log.WithError(err).Error("failed to get status")
 		return nil, connect.NewError(connect.CodeInternal, err)
 	}
 
 	if status == nil {
-		log.Info("Status not found")
+		log.Info("status not found")
 		return nil, connect.NewError(connect.CodeNotFound, errors.New("status not found"))
 	}
 
@@ -46,10 +47,10 @@ func (service *MarketplaceServiceServer) GetStatus(ctx context.Context,
 	}
 
 	if err := res.Validate(); err != nil {
-		log.WithError(err).Error("Invalid response")
+		log.WithError(err).Error("invalid response")
 		return nil, connect.NewError(connect.CodeInternal, err)
 	}
 
-	log.Info("Status found")
+	log.Info("status found")
 	return connect.NewResponse(res), nil
 }
