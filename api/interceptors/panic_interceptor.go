@@ -26,10 +26,9 @@ func NewPanicInterceptor(ctx context.Context, log logger.Logger) (*connect.Unary
 					errMsg = "unknown handler panic"
 				}
 
-				formattedErrMsg := logger.FormatString(errMsg)
-				err = errors.New(formattedErrMsg)
-
-				log.WithError(err).Panic(formattedErrMsg)
+    err := errors.New(errMsg)
+    
+    log.WithError(err).Panic(errMsg)
 
 				handler = connect.UnaryFunc(func(
 					_ context.Context,
