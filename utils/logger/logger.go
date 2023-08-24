@@ -85,8 +85,7 @@ func New(config *config.Config) *ZapLogger {
 }
 
 func (l *ZapLogger) Debug(args ...interface{}) {
-	formattedArgs := formatString(args...)
-	l.logger.Debug(formattedArgs...)
+ l.logger.Debug(args...)
 }
 
 func (l *ZapLogger) Debugf(format string, args ...interface{}) {
@@ -94,8 +93,7 @@ func (l *ZapLogger) Debugf(format string, args ...interface{}) {
 }
 
 func (l *ZapLogger) Info(args ...interface{}) {
-	formattedArgs := formatString(args...)
-	l.logger.Info(formattedArgs...)
+ l.logger.Info(args...)
 }
 
 func (l *ZapLogger) Infof(format string, args ...interface{}) {
@@ -103,8 +101,7 @@ func (l *ZapLogger) Infof(format string, args ...interface{}) {
 }
 
 func (l *ZapLogger) Warn(args ...interface{}) {
-	formattedArgs := formatString(args...)
-	l.logger.Warn(formattedArgs...)
+ l.logger.Warn(args...)
 }
 
 func (l *ZapLogger) Warnf(format string, args ...interface{}) {
@@ -112,8 +109,7 @@ func (l *ZapLogger) Warnf(format string, args ...interface{}) {
 }
 
 func (l *ZapLogger) Error(args ...interface{}) {
-	formattedArgs := formatString(args...)
-	l.logger.Error(formattedArgs...)
+ l.logger.Error(args...)
 }
 
 func (l *ZapLogger) Errorf(format string, args ...interface{}) {
@@ -121,8 +117,7 @@ func (l *ZapLogger) Errorf(format string, args ...interface{}) {
 }
 
 func (l *ZapLogger) Fatal(args ...interface{}) {
-	formattedArgs := formatString(args...)
-	l.logger.Fatal(formattedArgs...)
+ l.logger.Fatal(args...)
 }
 
 func (l *ZapLogger) Fatalf(format string, args ...interface{}) {
@@ -130,8 +125,7 @@ func (l *ZapLogger) Fatalf(format string, args ...interface{}) {
 }
 
 func (l *ZapLogger) Panic(args ...interface{}) {
-	formattedArgs := formatString(args...)
-	l.logger.Panic(formattedArgs...)
+ l.logger.Panic(args...)
 }
 
 func (l *ZapLogger) Panicf(format string, args ...interface{}) {
