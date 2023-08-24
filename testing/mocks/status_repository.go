@@ -10,6 +10,7 @@ import (
 
 	driverv1alpha1 "buf.build/gen/go/ride/driver/protocolbuffers/go/ride/driver/v1alpha1"
 	marketplacev1alpha1 "github.com/ride-app/marketplace-service/api/gen/ride/marketplace/v1alpha1"
+	statusrepository "github.com/ride-app/marketplace-service/repositories/status"
 	logger "github.com/ride-app/marketplace-service/utils/logger"
 	gomock "go.uber.org/mock/gomock"
 )
@@ -80,4 +81,16 @@ func (m *MockStatusRepository) GoOnline(arg0 context.Context, arg1 logger.Logger
 func (mr *MockStatusRepositoryMockRecorder) GoOnline(arg0, arg1, arg2, arg3 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GoOnline", reflect.TypeOf((*MockStatusRepository)(nil).GoOnline), arg0, arg1, arg2, arg3)
+}
+
+// ListenStatus mocks base method.
+func (m *MockStatusRepository) ListenStatus(arg0 context.Context, arg1 logger.Logger, arg2 string, arg3 chan<- *statusrepository.StatusStreamResponse) {
+	m.ctrl.T.Helper()
+	m.ctrl.Call(m, "ListenStatus", arg0, arg1, arg2, arg3)
+}
+
+// ListenStatus indicates an expected call of ListenStatus.
+func (mr *MockStatusRepositoryMockRecorder) ListenStatus(arg0, arg1, arg2, arg3 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListenStatus", reflect.TypeOf((*MockStatusRepository)(nil).ListenStatus), arg0, arg1, arg2, arg3)
 }
