@@ -20,7 +20,7 @@ import (
 type StatusRepository interface {
 	GetStatus(ctx context.Context, log logger.Logger, id string) (*pb.Status, error)
 
-	ListenStatus(ctx context.Context, log logger.Logger, id string, statusResponseStream chan<- StatusStreamResponse)
+	ListenStatus(ctx context.Context, log logger.Logger, id string, statusResponseStream chan<- *StatusStreamResponse)
 
 	GoOnline(ctx context.Context, log logger.Logger, id string, vehicleType *driverv1alpha1.Vehicle) (*pb.Status, error)
 
