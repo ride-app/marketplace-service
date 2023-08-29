@@ -2,10 +2,10 @@
   "name": "marketplace-service",
   "main": "index.ts",
   "devDependencies": {
-    "@types/node": "^16"
+    "@types/node": "^16.18.46"
   },
   "dependencies": {
-    "@pulumi/pulumi": "^3.0.0",
-    "@pulumi/gcp": "^6.0.0"
+    "@pulumi/gcp": "^6.64.0",
+    "@pulumi/pulumi": "^3.79.0"
   }
 }
