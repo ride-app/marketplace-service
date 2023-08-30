@@ -1,5 +1,5 @@
 substitutions:
-  _SERVICE_NAME: recharge-service
+  _SERVICE_NAME: marketplace-service
 
 steps:
   # Step 1: Generate from Protobuf
