@@ -37,7 +37,7 @@ func New(log logger.Logger, config *config.Config) (*Impl, error) {
 func (r *Impl) GetDriver(ctx context.Context, log logger.Logger, id string, authToken string) (*pb.Driver, error) {
 	log.Info("Getting driver from driver service")
 	req := connect.NewRequest(&pb.GetDriverRequest{
-		Name: "driver/" + id,
+		Name: "drivers/" + id,
 	})
 	req.Header().Add("Authorization", authToken)
 
@@ -57,7 +57,7 @@ func (r *Impl) GetDriver(ctx context.Context, log logger.Logger, id string, auth
 func (r *Impl) GetVehicle(ctx context.Context, log logger.Logger, id string, authToken string) (*pb.Vehicle, error) {
 	log.Info("getting vehicle from driver service")
 	req := connect.NewRequest(&pb.GetVehicleRequest{
-		Name: "driver/" + id + "/vehicle",
+		Name: "drivers/" + id + "/vehicle",
 	})
 	req.Header().Add("Authorization", authToken)
 
