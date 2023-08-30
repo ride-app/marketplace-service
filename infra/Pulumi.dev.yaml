@@ -1,3 +1,5 @@
 config:
   gcp:project: ride-app-dev-2
   logDebug: true
+  walletServiceHost: https://wallet-service-gbbsdms5pq-em.a.run.app
+  driverServiceHost: https://driver-service-gbbsdms5pq-em.a.run.app

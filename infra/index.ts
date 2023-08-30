@@ -28,6 +28,8 @@ new gcp.cloudbuild.Trigger("build-trigger", {
   },
   substitutions: {
     _LOG_DEBUG: new pulumi.Config().get("logDebug") ?? "false",
+    _WALLET_SERVICE_HOST: new pulumi.Config().require("walletServiceHost"),
+    _DRIVER_SERVICE_HOST: new pulumi.Config().require("driverServiceHost"),
   },
   filename: "cloudbuild.yaml",
   includeBuildLogs: "INCLUDE_BUILD_LOGS_WITH_STATUS",
