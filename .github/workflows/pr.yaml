@@ -73,7 +73,7 @@ jobs:
           workload_identity_provider: projects/486946551871/locations/global/workloadIdentityPools/github-actions/providers/github-actions-provider
           service_account: pulumi@ride-app-prod.iam.gserviceaccount.com
 
-      - uses: pulumi/actions@v4
+      - uses: pulumi/actions@v5
         with:
           work-dir: infra
           command: preview
