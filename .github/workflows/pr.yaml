@@ -1,82 +1,69 @@
-name: pr
+name: PR
+
+permissions: read-all
 
 on:
   pull_request:
     branches:
       - main
-  push:
-    branches:
-      - trunk-merge/**
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
-    name: Lint
-    env:
-      GOPRIVATE: buf.build/gen/go
-      BUF_USER: debkanchan
-
+    timeout-minutes: 10
+    name: Build
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
-      - uses: actions/setup-go@v4
-        with:
-          go-version-file: go.mod
-
-      - uses: bufbuild/buf-setup-action@v1.28.1
-        with:
-          github_token: ${{ github.token }}
-
-      - name: Authenticate buf
-        run: echo ${{ secrets.BUF_TOKEN }} | buf registry login --username ${{ env.BUF_USER }} --token-stdin
-
-      - name: Build protobuf
-        run: buf generate
-
-      - name: Lint
-        uses: trunk-io/trunk-action@v1
-
-  preview:
-    name: Preview Deployment
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
-    env:
-      SERVICE_NAME: marketplace-service
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-
-      - run: npm install
-        working-directory: infra
-
-      - name: Cache node_modules
-        uses: actions/cache@v3.3.2
+      - name: Cache Bazel
+        uses: actions/cache@e12d46a63a90f2fae62d114769bbf2a179198b5c # v3
         with:
           path: |
-            **/node_modules
-          key: |
-            node-${{ hashfiles('**/package-lock.json') }}
+            ~/.cache/bazel
+          key: ${{ runner.os }}-bazel-${{ hashFiles('WORKSPACE','MODULE.bazel') }}
           restore-keys: |
-            node-
+            ${{ runner.os }}-bazel-
 
-      - name: Authenticate Google Cloud
-        uses: google-github-actions/auth@v1
-        with:
-          token_format: access_token
-          workload_identity_provider: projects/486946551871/locations/global/workloadIdentityPools/github-actions/providers/github-actions-provider
-          service_account: pulumi@ride-app-prod.iam.gserviceaccount.com
+      # - uses: bufbuild/buf-setup-action@382440cdb8ec7bc25a68d7b4711163d95f7cc3aa # v1.28.1
+      #   with:
+      #     buf_user: ${{ env.BUF_USER }}
+      #     buf_api_token: ${{ secrets.BUF_TOKEN }}
+      #     github_token: ${{ github.token }}
+      # - name: Build protobuf
+      #   run: buf generate
+      - name: Build
+        run: bazelisk build //...
+        # env:
+        #   USE_BAZEL_VERSION: 6.4.0
 
-      - uses: pulumi/actions@v4
+      # - name: Lint
+      #   uses: trunk-io/trunk-action@v1
+
+      # - name: Unit Tests
+      #   run: go run github.com/onsi/ginkgo/v2/ginkgo -r --randomize-all --randomize-suites --fail-on-pending --keep-going --cover --coverprofile=cover.json --race --trace --json-report=report.json --timeout=10m -ldflags "-X google.golang.org/protobuf/reflect/protoregistry.conflictPolicy=warn" -tags=unit_tests
+
+      # - name: Upload coverage to Codecov
+      #   uses: codecov/codecov-action@v3
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     flags: unit-tests
+      #     files: ./cover.json,./report.json
+      #     fail_ci_if_error: true
+      #     verbose: true
+
+  compute_impacted_targets:
+    timeout-minutes: 10
+    name: Compute Impacted Targets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+
+      - name: Compute Impacted Targets
+        uses: trunk-io/merge-action@6a6b8568cb140a4d11bb9be876bdcf9c21094e5b # v1
         with:
-          work-dir: infra
-          command: preview
-          stack-name: ride/prod
-        env:
-          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+          # Use your Trunk repo or org API token to authenticate impacted targets uploads.
+          # This secret should be provided as a GitHub secret.
+          # See https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions.
+          trunk-token: ${{ secrets.TRUNK_TOKEN }}
