@@ -1,0 +1,60 @@
+load("@container_structure_test//:defs.bzl", "container_structure_test")
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_tarball")
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+go_library(
+    name = "api-server_lib",
+    srcs = [
+        "main.go",
+        "wire_gen.go",
+    ],
+    importpath = "github.com/ride-app/marketplace-service/cmd/api-server",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//api/ride/marketplace/v1alpha1/v1alpha1connect",
+        "//config",
+        "//internal/api-handlers",
+        "//internal/api-handlers/interceptors",
+        "//internal/repositories/driver",
+        "//internal/repositories/location",
+        "//internal/repositories/status",
+        "//internal/repositories/wallet",
+        "//internal/utils/logger",
+        "//third-party",
+        "@com_connectrpc_connect//:connect",
+        "@org_golang_x_net//http2",
+        "@org_golang_x_net//http2/h2c",
+    ],
+)
+
+go_binary(
+    name = "api-server",
+    embed = [":api-server_lib"],
+    visibility = ["//visibility:public"],
+)
+
+pkg_tar(
+    name = "tar_layer",
+    srcs = [":api-server"],
+)
+
+oci_image(
+    name = "image",
+    base = "@distroless",
+    entrypoint = ["/api-server"],
+    exposed_ports = ["50051"],
+    tars = [":tar_layer"],
+)
+
+oci_tarball(
+    name = "container",
+    image = ":image",
+    repo_tags = ["api-server:latest"],
+)
+
+container_structure_test(
+    name = "container_structure_test",
+    configs = ["container_structure_test.yaml"],
+    image = ":image",
+)

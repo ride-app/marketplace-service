@@ -1,24 +1,26 @@
 name: Buf push
+permissions: read-all
 
 on:
   push:
     paths:
-      - "api/proto/**"
+      - api/**/*.proto
     branches:
       - main
 
 jobs:
   buf-push:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
-      - uses: bufbuild/buf-setup-action@v1.28.1
+      - uses: bufbuild/buf-setup-action@382440cdb8ec7bc25a68d7b4711163d95f7cc3aa # v1.28.1
         with:
           github_token: ${{ github.token }}
 
       - uses: bufbuild/buf-push-action@v1
         with:
           buf_token: ${{ secrets.BUF_TOKEN }}
-          input: api/proto
+          input: api
