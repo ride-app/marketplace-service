@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "mocks",
+    srcs = [
+        "driver_repository.go",
+        "location_repository.go",
+        "status_repository.go",
+        "wallet_repository.go",
+    ],
+    importpath = "github.com/ride-app/marketplace-service/internal/testing/mocks",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//api/ride/marketplace/v1alpha1",
+        "//internal/repositories/location",
+        "//internal/repositories/status",
+        "//internal/utils/logger",
+        "@build_buf_gen_go_ride_driver_protocolbuffers_go//ride/driver/v1alpha1",
+        "@build_buf_gen_go_ride_wallet_protocolbuffers_go//ride/wallet/v1alpha1",
+        "@org_uber_go_mock//gomock",
+    ],
+)

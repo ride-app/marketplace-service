@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "driver",
+    srcs = ["driver_repository.go"],
+    importpath = "github.com/ride-app/marketplace-service/internal/repositories/driver",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//config",
+        "//internal/utils/logger",
+        "@build_buf_gen_go_ride_driver_connectrpc_go//ride/driver/v1alpha1/driverv1alpha1connect",
+        "@build_buf_gen_go_ride_driver_protocolbuffers_go//ride/driver/v1alpha1",
+        "@com_connectrpc_connect//:connect",
+    ],
+)

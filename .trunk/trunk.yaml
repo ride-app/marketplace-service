@@ -52,3 +52,6 @@ plugins:
     - id: trunk
       ref: v1.4.2
       uri: https://github.com/trunk-io/plugins
+tools:
+  enabled:
+    - bazel@7.0.0
