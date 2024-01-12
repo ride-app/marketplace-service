@@ -14,7 +14,7 @@ dependencies:
 
 devDependencies:
   '@types/node':
-    specifier: ^16.18.46
+    specifier: 16.18.46
     version: 16.18.46
 
 packages:
