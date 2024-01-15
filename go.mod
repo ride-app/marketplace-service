@@ -4,15 +4,14 @@ go 1.21.6
 
 require (
 	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.32.0-20231115204500-e097f827e652.1
-	buf.build/gen/go/ride/driver/connectrpc/go v1.11.0-20230814095448-9363e8bc008d.1
-	buf.build/gen/go/ride/driver/protocolbuffers/go v1.31.0-20230814095448-9363e8bc008d.1
+	buf.build/gen/go/ride/driver/connectrpc/go v1.14.0-20231016104251-358a0ee64b3f.1
+	buf.build/gen/go/ride/driver/protocolbuffers/go v1.32.0-20231016104251-358a0ee64b3f.1
 	buf.build/gen/go/ride/wallet/connectrpc/go v1.11.0-20230713133935-94c2e35c4162.1
 	buf.build/gen/go/ride/wallet/protocolbuffers/go v1.31.0-20230713133935-94c2e35c4162.1
 	cloud.google.com/go/firestore v1.14.0
 	connectrpc.com/connect v1.14.0
 	firebase.google.com/go/v4 v4.13.0
 	github.com/MicahParks/keyfunc/v2 v2.1.0
-	github.com/MicahParks/keyfunc/v3 v3.2.3
 	github.com/bufbuild/protovalidate-go v0.4.3
 	github.com/golang-jwt/jwt/v5 v5.2.0
 	github.com/google/wire v0.5.0
