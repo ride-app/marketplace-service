@@ -7,7 +7,7 @@ require (
 	buf.build/gen/go/ride/driver/connectrpc/go v1.14.0-20231016104251-358a0ee64b3f.1
 	buf.build/gen/go/ride/driver/protocolbuffers/go v1.32.0-20231016104251-358a0ee64b3f.1
 	buf.build/gen/go/ride/wallet/connectrpc/go v1.11.0-20230713133935-94c2e35c4162.1
-	buf.build/gen/go/ride/wallet/protocolbuffers/go v1.31.0-20230713133935-94c2e35c4162.1
+	buf.build/gen/go/ride/wallet/protocolbuffers/go v1.32.0-20230924153639-d33e5416a9c2.1
 	cloud.google.com/go/firestore v1.14.0
 	connectrpc.com/connect v1.14.0
 	firebase.google.com/go/v4 v4.13.0
@@ -28,7 +28,7 @@ require (
 )
 
 require (
-	buf.build/gen/go/envoyproxy/protoc-gen-validate/protocolbuffers/go v1.31.0-20221025150516-6607b10f00ed.1 // indirect
+	buf.build/gen/go/envoyproxy/protoc-gen-validate/protocolbuffers/go v1.32.0-20221025150516-6607b10f00ed.1 // indirect
 	cloud.google.com/go v0.111.0 // indirect
 	cloud.google.com/go/compute v1.23.3 // indirect
 	cloud.google.com/go/compute/metadata v0.2.3 // indirect
