@@ -316,12 +316,6 @@ def go_dependencies():
         version = "v1.9.0",
     )
     go_repository(
-        name = "com_github_micahparks_keyfunc_v2",
-        importpath = "github.com/MicahParks/keyfunc/v2",
-        sum = "h1:6ZXKb9Rp6qp1bDbJefnG7cTH8yMN1IC/4nf+GVjO99k=",
-        version = "v2.1.0",
-    )
-    go_repository(
         name = "com_github_micahparks_keyfunc_v3",
         importpath = "github.com/MicahParks/keyfunc/v3",
         sum = "h1:SuFGdd3HvlwEceJvlEEfjJjvOiq69hS0wqM5iMbTlaA=",

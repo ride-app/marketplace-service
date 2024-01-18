@@ -6,10 +6,10 @@ import (
 	"net/http"
 
 	"connectrpc.com/connect"
+	"github.com/ride-app/go/pkg/connect-interceptors"
 	"github.com/ride-app/go/pkg/logger"
 	"github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1/v1alpha1connect"
 	"github.com/ride-app/marketplace-service/config"
-	"github.com/ride-app/marketplace-service/internal/api-handlers/interceptors"
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
 )
@@ -34,7 +34,7 @@ func main() {
 		log.Fatalf("Failed to initialize panic interceptor: %v", err)
 	}
 
-	authInterceptor, err := interceptors.NewAuthInterceptor(ctx, log)
+	authInterceptor, err := interceptors.NewFirebaseAuthInterceptor(ctx, log)
 
 	if err != nil {
 		log.Fatalf("Failed to initialize auth interceptor: %v", err)
