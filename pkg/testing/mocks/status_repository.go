@@ -14,9 +14,9 @@ import (
 	reflect "reflect"
 
 	driverv1alpha1 "buf.build/gen/go/ride/driver/protocolbuffers/go/ride/driver/v1alpha1"
+	logger "github.com/ride-app/go/pkg/logger"
 	v1alpha1 "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
 	statusrepository "github.com/ride-app/marketplace-service/internal/repositories/status"
-	logger "github.com/ride-app/marketplace-service/internal/utils/logger"
 	gomock "go.uber.org/mock/gomock"
 )
 

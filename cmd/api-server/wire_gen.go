@@ -7,13 +7,13 @@
 package main
 
 import (
+	"github.com/ride-app/go/pkg/logger"
 	"github.com/ride-app/marketplace-service/config"
 	"github.com/ride-app/marketplace-service/internal/api-handlers"
 	"github.com/ride-app/marketplace-service/internal/repositories/driver"
 	"github.com/ride-app/marketplace-service/internal/repositories/location"
 	"github.com/ride-app/marketplace-service/internal/repositories/status"
 	"github.com/ride-app/marketplace-service/internal/repositories/wallet"
-	"github.com/ride-app/marketplace-service/internal/utils/logger"
 	"github.com/ride-app/marketplace-service/third-party"
 )
 

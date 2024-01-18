@@ -1,11 +1,11 @@
 package apihandlers
 
 import (
+	"github.com/ride-app/go/pkg/logger"
 	dr "github.com/ride-app/marketplace-service/internal/repositories/driver"
 	lr "github.com/ride-app/marketplace-service/internal/repositories/location"
 	sr "github.com/ride-app/marketplace-service/internal/repositories/status"
 	wr "github.com/ride-app/marketplace-service/internal/repositories/wallet"
-	"github.com/ride-app/marketplace-service/internal/utils/logger"
 )
 
 type MarketplaceServiceServer struct {

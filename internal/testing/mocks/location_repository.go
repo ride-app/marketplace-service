@@ -14,9 +14,9 @@ import (
 	reflect "reflect"
 	time "time"
 
+	logger "github.com/ride-app/go/pkg/logger"
 	v1alpha1 "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
 	locationrepository "github.com/ride-app/marketplace-service/internal/repositories/location"
-	logger "github.com/ride-app/marketplace-service/internal/utils/logger"
 	gomock "go.uber.org/mock/gomock"
 )
 

@@ -5,7 +5,7 @@ import (
 	"errors"
 
 	"connectrpc.com/connect"
-	"github.com/ride-app/marketplace-service/internal/utils/logger"
+	"github.com/ride-app/go/pkg/logger"
 )
 
 func NewPanicInterceptor(ctx context.Context, log logger.Logger) (*connect.UnaryInterceptorFunc, error) {

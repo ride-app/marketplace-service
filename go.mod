@@ -11,8 +11,7 @@ require (
 	cloud.google.com/go/firestore v1.14.0
 	connectrpc.com/connect v1.14.0
 	firebase.google.com/go/v4 v4.13.0
-	github.com/MicahParks/keyfunc/v3 v3.2.4
-	github.com/MicahParks/keyfunc/v3 v3.2.4
+	github.com/MicahParks/keyfunc/v2 v2.1.0
 	github.com/bufbuild/protovalidate-go v0.5.0
 	github.com/golang-jwt/jwt/v5 v5.2.0
 	github.com/google/wire v0.5.0
@@ -20,6 +19,7 @@ require (
 	github.com/mmcloughlin/geohash v0.10.0
 	github.com/onsi/ginkgo/v2 v2.15.0
 	github.com/onsi/gomega v1.31.0
+	github.com/ride-app/go v0.0.0-20240118060024-3d68e1bf6c3d
 	go.uber.org/mock v0.4.0
 	go.uber.org/zap v1.26.0
 	golang.org/x/net v0.20.0

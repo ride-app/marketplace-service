@@ -9,8 +9,8 @@ import (
 	walletApi "buf.build/gen/go/ride/wallet/connectrpc/go/ride/wallet/v1alpha1/walletv1alpha1connect"
 	pb "buf.build/gen/go/ride/wallet/protocolbuffers/go/ride/wallet/v1alpha1"
 	"connectrpc.com/connect"
+	"github.com/ride-app/go/pkg/logger"
 	"github.com/ride-app/marketplace-service/config"
-	"github.com/ride-app/marketplace-service/internal/utils/logger"
 )
 
 type WalletRepository interface {

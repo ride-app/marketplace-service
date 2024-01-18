@@ -6,10 +6,10 @@ import (
 	"net/http"
 
 	"connectrpc.com/connect"
+	"github.com/ride-app/go/pkg/logger"
 	"github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1/v1alpha1connect"
 	"github.com/ride-app/marketplace-service/config"
 	"github.com/ride-app/marketplace-service/internal/api-handlers/interceptors"
-	"github.com/ride-app/marketplace-service/internal/utils/logger"
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
 )
@@ -17,7 +17,7 @@ import (
 func main() {
 	config, err := config.New()
 
-	log := logger.New(config)
+	log := logger.New(!config.Production, config.LogDebug)
 
 	if err != nil {
 		log.WithError(err).Fatal("Failed to read environment variables")

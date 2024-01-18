@@ -9,8 +9,8 @@ import (
 	"cloud.google.com/go/firestore"
 	firebase "firebase.google.com/go/v4"
 	"github.com/mmcloughlin/geohash"
+	"github.com/ride-app/go/pkg/logger"
 	pb "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
-	"github.com/ride-app/marketplace-service/internal/utils/logger"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
