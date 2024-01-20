@@ -29,7 +29,7 @@ lint:
   ignore:
     - linters: [ALL]
       paths:
-        - internal/utils/tools
+        - tools
 
     - linters: [goimports]
       paths:
