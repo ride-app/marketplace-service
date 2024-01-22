@@ -2,19 +2,19 @@ package thirdparty
 
 import (
 	"context"
-	"log"
 
 	firebase "firebase.google.com/go/v4"
+	"github.com/ride-app/go/pkg/logger"
 	"github.com/ride-app/marketplace-service/config"
 )
 
-func NewFirebaseApp(config *config.Config) (*firebase.App, error) {
+func NewFirebaseApp(log logger.Logger, config *config.Config) (*firebase.App, error) {
 	ctx := context.Background()
 	conf := &firebase.Config{ProjectID: config.Project_Id}
 	app, err := firebase.NewApp(ctx, conf)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatal(err)
 		return nil, err
 	}
 

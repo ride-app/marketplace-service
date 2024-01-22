@@ -20,7 +20,7 @@ import (
 // Injectors from wire.go:
 
 func InitializeService(logger2 logger.Logger, config2 *config.Config) (*apihandlers.MarketplaceServiceServer, error) {
-	app, err := thirdparty.NewFirebaseApp(config2)
+	app, err := thirdparty.NewFirebaseApp(logger2, config2)
 	if err != nil {
 		return nil, err
 	}
