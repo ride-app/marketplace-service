@@ -3,8 +3,8 @@
 package main
 
 import (
+	"github.com/deb-tech-n-sol/go/pkg/logger"
 	"github.com/google/wire"
-	"github.com/ride-app/go/pkg/logger"
 	"github.com/ride-app/marketplace-service/config"
 	apihandlers "github.com/ride-app/marketplace-service/internal/api-handlers"
 	driverrepository "github.com/ride-app/marketplace-service/internal/repositories/driver"

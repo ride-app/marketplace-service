@@ -1,7 +1,7 @@
 package apihandlers
 
 import (
-	"github.com/ride-app/go/pkg/logger"
+	"github.com/deb-tech-n-sol/go/pkg/logger"
 	dr "github.com/ride-app/marketplace-service/internal/repositories/driver"
 	lr "github.com/ride-app/marketplace-service/internal/repositories/location"
 	sr "github.com/ride-app/marketplace-service/internal/repositories/status"

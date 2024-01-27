@@ -8,8 +8,8 @@ import (
 
 	"cloud.google.com/go/firestore"
 	firebase "firebase.google.com/go/v4"
+	"github.com/deb-tech-n-sol/go/pkg/logger"
 	"github.com/mmcloughlin/geohash"
-	"github.com/ride-app/go/pkg/logger"
 	pb "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

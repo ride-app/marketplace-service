@@ -9,17 +9,17 @@ require (
 	buf.build/gen/go/ride/wallet/connectrpc/go v1.14.0-20230924153639-d33e5416a9c2.1
 	buf.build/gen/go/ride/wallet/protocolbuffers/go v1.32.0-20230924153639-d33e5416a9c2.1
 	cloud.google.com/go/firestore v1.14.0
+	connectrpc.com/authn v0.1.0
 	connectrpc.com/connect v1.14.0
 	firebase.google.com/go/v4 v4.13.0
 	github.com/bufbuild/protovalidate-go v0.5.0
+	github.com/deb-tech-n-sol/go v0.2.3
 	github.com/google/wire v0.5.0
 	github.com/ilyakaznacheev/cleanenv v1.5.0
 	github.com/mmcloughlin/geohash v0.10.0
 	github.com/onsi/ginkgo/v2 v2.15.0
 	github.com/onsi/gomega v1.31.1
-	github.com/ride-app/go v0.0.0-20240125234728-9e3d9aaf8146
 	go.uber.org/mock v0.4.0
-	go.uber.org/zap v1.26.0
 	golang.org/x/net v0.20.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20240125205218-1f4bbc51befe
 	google.golang.org/grpc v1.61.0
@@ -35,7 +35,7 @@ require (
 	cloud.google.com/go/longrunning v0.5.4 // indirect
 	cloud.google.com/go/storage v1.30.1 // indirect
 	github.com/BurntSushi/toml v1.2.1 // indirect
-	github.com/MicahParks/jwkset v0.5.7 // indirect
+	github.com/MicahParks/jwkset v0.5.10 // indirect
 	github.com/MicahParks/keyfunc v1.9.0 // indirect
 	github.com/MicahParks/keyfunc/v3 v3.2.4 // indirect
 	github.com/antlr4-go/antlr/v4 v4.13.0 // indirect
@@ -61,7 +61,8 @@ require (
 	go.opentelemetry.io/otel v1.19.0 // indirect
 	go.opentelemetry.io/otel/metric v1.19.0 // indirect
 	go.opentelemetry.io/otel/trace v1.19.0 // indirect
-	go.uber.org/multierr v1.10.0 // indirect
+	go.uber.org/multierr v1.11.0 // indirect
+	go.uber.org/zap v1.26.0 // indirect
 	golang.org/x/crypto v0.18.0 // indirect
 	golang.org/x/exp v0.0.0-20230905200255-921286631fa9 // indirect
 	golang.org/x/mod v0.14.0 // indirect

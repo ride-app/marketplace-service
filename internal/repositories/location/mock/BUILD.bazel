@@ -8,7 +8,7 @@ go_library(
     deps = [
         "//api/ride/marketplace/v1alpha1",
         "//internal/repositories/location",
-        "@com_github_ride_app_go//pkg/logger",
+        "@com_github_deb_tech_n_sol_go//pkg/logger",
         "@org_uber_go_mock//gomock",
     ],
 )
