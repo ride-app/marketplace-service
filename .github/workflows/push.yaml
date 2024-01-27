@@ -61,5 +61,5 @@ jobs:
     timeout-minutes: 10
     name: Convert TODOs to Issues
     steps:
-      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
       - uses: alstr/todo-to-issue-action@7f763e1ee6aca4f4ccd8b508018899d2440bc887 # v4
