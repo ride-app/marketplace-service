@@ -4,8 +4,8 @@ go 1.21.6
 
 require (
 	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.32.0-20231115204500-e097f827e652.1
-	buf.build/gen/go/ride/driver/connectrpc/go v1.14.0-20231016104251-358a0ee64b3f.1
-	buf.build/gen/go/ride/driver/protocolbuffers/go v1.32.0-20231016104251-358a0ee64b3f.1
+	buf.build/gen/go/ride/driver/connectrpc/go v1.14.0-20240127091614-32d65fcb4c5c.1
+	buf.build/gen/go/ride/driver/protocolbuffers/go v1.32.0-20240127091614-32d65fcb4c5c.1
 	buf.build/gen/go/ride/wallet/connectrpc/go v1.14.0-20230924153639-d33e5416a9c2.1
 	buf.build/gen/go/ride/wallet/protocolbuffers/go v1.32.0-20230924153639-d33e5416a9c2.1
 	cloud.google.com/go/firestore v1.14.0
