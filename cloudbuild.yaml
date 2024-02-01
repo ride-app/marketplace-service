@@ -3,7 +3,7 @@ substitutions:
 
 steps:
   # Build Docker image using Bazel
-  - name: gcr.io/cloud-builders/bazel:7.0.1@sha256:8dcb69646fe026d37c3dd9d9be33719f5959989b46336b1ff3f37a1490243fd3
+  - name: gcr.io/cloud-builders/bazel:7.0.1@sha256:e7cb424f7c3cfe2c28f0c11f65131b921a39cfe1c5c2abf62fa9b78004647b2f
     id: build
     args:
       [
