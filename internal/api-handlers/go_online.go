@@ -59,7 +59,7 @@ func (service *MarketplaceServiceServer) GoOnline(ctx context.Context,
 		return nil, connect.NewError(connect.CodeInternal, err)
 	}
 
-	if wallet.Balance <= 0 {
+	if wallet.Balance < 0 {
 		log.Info("insufficient wallet balance: ", wallet.Balance)
 
 		return nil, connect.NewError(connect.CodeFailedPrecondition, errors.New("insufficient wallet balance"))
