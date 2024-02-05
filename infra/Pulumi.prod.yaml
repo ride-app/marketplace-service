@@ -2,5 +2,5 @@ environment:
   - app-prod
 
 config:
-  paymentServiceHost: https://payment-service-5iepetd3bq-em.a.run.app
+  paymentServiceHost: https://payments-service-5iepetd3bq-em.a.run.app
   driverServiceHost: https://driver-service-5iepetd3bq-em.a.run.app

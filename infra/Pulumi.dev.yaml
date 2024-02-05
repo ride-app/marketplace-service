@@ -2,5 +2,5 @@ environment:
   - app-dev
 
 config:
-  paymentServiceHost: https://payment-service-gbbsdms5pq-em.a.run.app
+  paymentServiceHost: https://payments-service-gbbsdms5pq-em.a.run.app
   driverServiceHost: https://driver-service-gbbsdms5pq-em.a.run.app
