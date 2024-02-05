@@ -7,8 +7,8 @@ go_library(
     visibility = ["//:__subpackages__"],
     deps = [
         "//config",
-        "@build_buf_gen_go_ride_wallet_connectrpc_go//ride/wallet/v1alpha1/walletv1alpha1connect",
-        "@build_buf_gen_go_ride_wallet_protocolbuffers_go//ride/wallet/v1alpha1",
+        "@build_buf_gen_go_ride_payments_connectrpc_go//ride/payments/v1alpha1/paymentsv1alpha1connect:go_default_library",
+        "@build_buf_gen_go_ride_payments_protocolbuffers_go//ride/payments/v1alpha1:go_default_library",
         "@com_connectrpc_connect//:connect",
         "@com_github_deb_tech_n_sol_go//pkg/logger",
     ],
