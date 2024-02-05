@@ -7,8 +7,10 @@ buf.build/gen/go/ride/driver/connectrpc/go v1.14.0-20240127091614-32d65fcb4c5c.1
 buf.build/gen/go/ride/driver/connectrpc/go v1.14.0-20240127091614-32d65fcb4c5c.1/go.mod h1:zJv7ZmOg6EGhtePyWtD9tlDlMBFJ2ZvEggcHzWAaDTQ=
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.32.0-20240127091614-32d65fcb4c5c.1 h1:6NWlkt5Y3IEXgPjx8qrCo7e7HGP2Sp2njuqGzJJYg9Y=
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.32.0-20240127091614-32d65fcb4c5c.1/go.mod h1:OteAdvDbNnH7cyxqFfm8D7YNdviERl+wT7SMV1DRNXM=
-buf.build/gen/go/ride/wallet/connectrpc/go v1.14.0-20230924153639-d33e5416a9c2.1 h1:JlDkt0Rx89wWh4uAgM/JJXeiwqr9sFbUIouBWAUn9NU=
-buf.build/gen/go/ride/wallet/connectrpc/go v1.14.0-20230924153639-d33e5416a9c2.1/go.mod h1:5OVUIANFNg/rOivcfiHRZFg5BCjJ21V0NbJi11pvHIA=
+buf.build/gen/go/ride/payments/connectrpc/go v1.14.0-20240130062128-31fdce7a3669.1 h1:jXuG0wkeGqQBqmhoRtJvC43WhHxAd+9CRdLT+SqAyCU=
+buf.build/gen/go/ride/payments/connectrpc/go v1.14.0-20240130062128-31fdce7a3669.1/go.mod h1:i8a18cCltYPgFFU7MV/sboVD3WR3jjYWdWkGR5Bztig=
+buf.build/gen/go/ride/payments/protocolbuffers/go v1.32.0-20240130062128-31fdce7a3669.1 h1:YXlmAeJ92WR5xqDFs8By2K0WHJYnkhEnK8nKylp4Q0E=
+buf.build/gen/go/ride/payments/protocolbuffers/go v1.32.0-20240130062128-31fdce7a3669.1/go.mod h1:fRFa1MYAmmEQd9F6j8gIUrSyNQdqQxf7/QyYiaqup6E=
 buf.build/gen/go/ride/wallet/protocolbuffers/go v1.32.0-20230924153639-d33e5416a9c2.1 h1:7FQdB9GfoYFbZrzpG7GYATamxlvROZHKbemRvRFn5hA=
 buf.build/gen/go/ride/wallet/protocolbuffers/go v1.32.0-20230924153639-d33e5416a9c2.1/go.mod h1:r8Y9b3+LrGzrQAQ/THoX9u1krIOhk7aeYZS33Llv9gw=
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=

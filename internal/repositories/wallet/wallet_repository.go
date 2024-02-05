@@ -6,8 +6,8 @@ import (
 	"context"
 	"net/http"
 
-	walletApi "buf.build/gen/go/ride/wallet/connectrpc/go/ride/wallet/v1alpha1/walletv1alpha1connect"
-	pb "buf.build/gen/go/ride/wallet/protocolbuffers/go/ride/wallet/v1alpha1"
+	walletApi "buf.build/gen/go/ride/payments/connectrpc/go/ride/payments/v1alpha1/paymentsv1alpha1connect"
+	pb "buf.build/gen/go/ride/payments/protocolbuffers/go/ride/payments/v1alpha1"
 	"connectrpc.com/connect"
 	"github.com/deb-tech-n-sol/go/pkg/logger"
 	"github.com/ride-app/marketplace-service/config"
@@ -18,12 +18,12 @@ type WalletRepository interface {
 }
 
 type Impl struct {
-	walletApi walletApi.WalletServiceClient
+	walletApi walletApi.PaymentsServiceClient
 }
 
 func New(log logger.Logger, config *config.Config) (*Impl, error) {
 	log.Debug("wallet Service Host: ", config.Payment_Service_Host)
-	client := walletApi.NewWalletServiceClient(
+	client := walletApi.NewPaymentsServiceClient(
 		http.DefaultClient,
 		config.Payment_Service_Host,
 	)
