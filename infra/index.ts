@@ -42,7 +42,7 @@ new gcp.cloudbuild.Trigger("build-trigger", {
   substitutions: {
     _BAZEL_REMOTE_CACHE_BUCKET: bucket.name,
     _LOG_DEBUG: new pulumi.Config().get("logDebug") ?? "false",
-    _WALLET_SERVICE_HOST: new pulumi.Config().require("walletServiceHost"),
+    _PAYMENT_SERVICE_HOST: new pulumi.Config().require("paymentServiceHost"),
     _DRIVER_SERVICE_HOST: new pulumi.Config().require("driverServiceHost"),
   },
   filename: "cloudbuild.yaml",
