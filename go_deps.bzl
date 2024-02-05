@@ -28,20 +28,26 @@ def go_dependencies():
     go_repository(
         name = "build_buf_gen_go_ride_driver_connectrpc_go",
         importpath = "buf.build/gen/go/ride/driver/connectrpc/go",
-        sum = "h1:DrFRC3bsYJ1M7OYDGMu+hGnfQBqE9uunJxD/2gMnUpc=",
-        version = "v1.14.0-20231016104251-358a0ee64b3f.1",
+        sum = "h1:GLBvszdHHIy8uOMHa6o5uSgLVSuwE7BYQvABjD1+Rms=",
+        version = "v1.14.0-20240127091614-32d65fcb4c5c.1",
     )
     go_repository(
         name = "build_buf_gen_go_ride_driver_protocolbuffers_go",
         importpath = "buf.build/gen/go/ride/driver/protocolbuffers/go",
-        sum = "h1:Vqm5LNtrpnhPirzRO+5LuxQI00+CJHxLtjPNHeV+oAU=",
-        version = "v1.32.0-20231016104251-358a0ee64b3f.1",
+        sum = "h1:6NWlkt5Y3IEXgPjx8qrCo7e7HGP2Sp2njuqGzJJYg9Y=",
+        version = "v1.32.0-20240127091614-32d65fcb4c5c.1",
     )
     go_repository(
-        name = "build_buf_gen_go_ride_wallet_connectrpc_go",
-        importpath = "buf.build/gen/go/ride/wallet/connectrpc/go",
-        sum = "h1:JlDkt0Rx89wWh4uAgM/JJXeiwqr9sFbUIouBWAUn9NU=",
-        version = "v1.14.0-20230924153639-d33e5416a9c2.1",
+        name = "build_buf_gen_go_ride_payments_connectrpc_go",
+        importpath = "buf.build/gen/go/ride/payments/connectrpc/go",
+        sum = "h1:jXuG0wkeGqQBqmhoRtJvC43WhHxAd+9CRdLT+SqAyCU=",
+        version = "v1.14.0-20240130062128-31fdce7a3669.1",
+    )
+    go_repository(
+        name = "build_buf_gen_go_ride_payments_protocolbuffers_go",
+        importpath = "buf.build/gen/go/ride/payments/protocolbuffers/go",
+        sum = "h1:YXlmAeJ92WR5xqDFs8By2K0WHJYnkhEnK8nKylp4Q0E=",
+        version = "v1.32.0-20240130062128-31fdce7a3669.1",
     )
     go_repository(
         name = "build_buf_gen_go_ride_wallet_protocolbuffers_go",
