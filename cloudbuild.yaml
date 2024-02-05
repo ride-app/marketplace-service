@@ -31,14 +31,6 @@ steps:
       - api-server:latest
       - asia-south2-docker.pkg.dev/$PROJECT_ID/docker-registry/$_SERVICE_NAME:$BRANCH_NAME
 
-  - name: gcr.io/cloud-builders/docker@sha256:e4e5a5761a8717c7ce9433a6fd3732027500dcea42c33b1f2603d3f290c63d32
-    waitFor:
-      - build
-    args:
-      - tag
-      - api-server:latest
-      - asia-south2-docker.pkg.dev/$PROJECT_ID/docker-registry/$_SERVICE_NAME:latest
-
   # Push image
   - name: gcr.io/cloud-builders/docker@sha256:e4e5a5761a8717c7ce9433a6fd3732027500dcea42c33b1f2603d3f290c63d32
     id: push
@@ -69,4 +61,3 @@ steps:
 images:
   - asia-south2-docker.pkg.dev/$PROJECT_ID/docker-registry/$_SERVICE_NAME:$COMMIT_SHA
   - asia-south2-docker.pkg.dev/$PROJECT_ID/docker-registry/$_SERVICE_NAME:$BRANCH_NAME
-  - asia-south2-docker.pkg.dev/$PROJECT_ID/docker-registry/$_SERVICE_NAME:latest
