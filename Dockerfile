@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1@sha256:ac85f380a63b13dfcefa89046420e1781752bab202122f8f50032edf31be0021
 
 # Build go binary
-FROM golang:1.21-alpine@sha256:a6a7f1fcf12f5efa9e04b1e75020931a616cd707f14f62ab5262bfbe109aa84a as build
+FROM golang:1.21-alpine@sha256:438bf0b13aa6d4e1de111818e3204c717f9287ede61183e82ed4e50f58434698 as build
 
 WORKDIR /go/src/app
 
