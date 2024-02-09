@@ -9,7 +9,7 @@ go_library(
         "//api/ride/marketplace/v1alpha1",
         "//internal/repositories/status",
         "@build_buf_gen_go_ride_driver_protocolbuffers_go//ride/driver/v1alpha1",
-        "@com_github_deb_tech_n_sol_go//pkg/logger",
+        "@com_github_dragonfish_tech_go//pkg/logger",
         "@org_uber_go_mock//gomock",
     ],
 )
