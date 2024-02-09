@@ -9,7 +9,7 @@ import (
 	walletApi "buf.build/gen/go/ride/payments/connectrpc/go/ride/payments/v1alpha1/paymentsv1alpha1connect"
 	pb "buf.build/gen/go/ride/payments/protocolbuffers/go/ride/payments/v1alpha1"
 	"connectrpc.com/connect"
-	"github.com/deb-tech-n-sol/go/pkg/logger"
+	"github.com/dragonfish-tech/go/pkg/logger"
 	"github.com/ride-app/marketplace-service/config"
 )
 

@@ -10,7 +10,7 @@ import (
 	driverv1alpha1 "buf.build/gen/go/ride/driver/protocolbuffers/go/ride/driver/v1alpha1"
 	"cloud.google.com/go/firestore"
 	firebase "firebase.google.com/go/v4"
-	"github.com/deb-tech-n-sol/go/pkg/logger"
+	"github.com/dragonfish-tech/go/pkg/logger"
 	pb "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
