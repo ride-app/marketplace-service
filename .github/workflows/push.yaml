@@ -62,4 +62,4 @@ jobs:
     name: Convert TODOs to Issues
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-      - uses: alstr/todo-to-issue-action@5fa8522c25f8ebf143efd4e9164c5a9fdf952d43 # v4
+      - uses: alstr/todo-to-issue-action@0736139ea6efb4e8d4f8e685fc5d019665ec7b60 # v4
