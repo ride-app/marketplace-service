@@ -1,8 +1,10 @@
 syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
+import "google/type/latlng.proto";
 import "google/api/annotations.proto";
 import "buf/validate/validate.proto";
+import "ride/driver/v1alpha1/driver_service.proto";
 
 package ride.marketplace.v1alpha1;
 
@@ -51,6 +53,52 @@ service MarketplaceService {
   rpc UpdateLocation(UpdateLocationRequest) returns (UpdateLocationResponse) {
     option (google.api.http) = {
       patch: "/v1alpha1/{location.name=drivers/*/location}"
+      body: "*"
+    };
+  }
+
+  rpc CreateTrip(CreateTripRequest) returns (CreateTripResponse) {
+    option (google.api.http) = {
+      post: "/v1alpha1/trips",
+      body: "*"
+    };
+  }
+
+  rpc GetTrip(GetTripRequest) returns (GetTripResponse) {
+    option (google.api.http) = {
+      get: "/v1alpha1/{name=trips/*}"
+    };
+  }
+
+  rpc WatchTrip(WatchTripRequest) returns (stream WatchTripResponse) {
+    option (google.api.http) = {
+      get: "/v1alpha1/{name=trips/*}:watch"
+    };
+  }
+
+  rpc TripVerification(TripVerificationRequest) returns (TripVerificationResponse) {
+    option (google.api.http) = {
+      post: "/v1alpha1/{name=trips/*}:tripVerification"
+    };
+  }
+
+  rpc StartTrip(StartTripRequest) returns (StartTripResponse) {
+    option (google.api.http) = {
+      post: "/v1alpha1/{name=trips/*}:start",
+      body: "*"
+    };
+  }
+
+  rpc CancelTrip(CancelTripRequest) returns (CancelTripResponse) {
+    option (google.api.http) = {
+      post: "/v1alpha1/{name=trips/*}:cancel",
+      body: "*"
+    };
+  }
+
+  rpc EndTrip(EndTripRequest) returns (EndTripResponse) {
+    option (google.api.http) = {
+      post: "/v1alpha1/{name=trips/*}:end",
       body: "*"
     };
   }
@@ -153,3 +201,213 @@ message UpdateLocationRequest {
 }
 
 message UpdateLocationResponse {}
+
+message Trip {
+  // Relative resource name of the Trip, for example, "trips/trip1"
+  string name = 1 [(buf.validate.field).string.pattern = "^trips/[A-Za-z0-9_-]+$",
+                   (buf.validate.field).ignore_empty= true
+                  ];
+  
+  // Output only. The current state of the Trip
+  Status status = 2;
+  
+  // Output only. The time when the Trip was created
+  google.protobuf.Timestamp create_time = 3 [(buf.validate.field).required = true,
+                                             (buf.validate.field).timestamp.lt_now = true
+                                            ];
+
+  // Output only. The time when the Trip was started
+  google.protobuf.Timestamp start_time = 15;
+
+  // Output only. The time when the Trip was ended
+  google.protobuf.Timestamp end_time = 16;
+
+  // Output only. The time when the Trip was last updated.
+  google.protobuf.Timestamp update_time = 4 [(buf.validate.field).required = true];
+
+  // // Rider's pickup location
+  // Location pickup_location = 5;
+
+  // // Rider's dropoff location
+  // Location dropoff_location = 6;
+
+  Route route = 5 [(buf.validate.field).required = true];
+
+  // Total number of passengers in the Trip
+  uint32 passengers = 7 [(buf.validate.field).uint32.gte = 1];
+
+  // The type of vehicle requested by the rider
+  ride.driver.v1alpha1.Vehicle.Type vehicle_type = 8 [(buf.validate.field).enum = {not_in: [0]}];
+
+  // The type of trip requested by the rider. Example: shared, private, etc.
+  Type type = 9 [(buf.validate.field).enum = {not_in: [0]}];
+
+  // Information about the rider
+  Rider rider = 10 [(buf.validate.field).required = true];
+
+  // Output only. The assigned Driver for this Trip
+  optional Driver driver = 11;
+
+  // Output only. The vehicle assigned to this Trip
+  optional Vehicle vehicle = 12;
+
+  // Encoded polyline string representing the path of the Trip
+  // string overview_polyline = 13;
+
+  PaymentMethod payment_method = 14 [(buf.validate.field).enum = {not_in: [0]}];
+
+  enum Status {
+    STATUS_UNSPECIFIED = 0;
+    STATUS_PENDING = 1;
+    STATUS_ACCEPTED = 2;
+    STATUS_DECLINED = 3;
+    STATUS_DRIVER_ARRIVED = 5;
+    STATUS_ACTIVE = 6;
+    STATUS_REACHED_DESTINATION = 7;
+    STATUS_COMPLETED = 8;
+    STATUS_DRIVER_CANCELLED = 9;
+    STATUS_RIDER_CANCELLED = 10;
+  }
+
+  enum Type {
+    TYPE_UNSPECIFIED = 0;
+    TYPE_SHARED = 1;
+    TYPE_PRIVATE = 2;
+    TYPE_DOORSTEP = 3;
+  }
+
+  message Location {
+    // The latitude and longitude of the location
+    google.type.LatLng coordinates = 1 [(buf.validate.field).required = true];
+
+    // The full address of the location. For example: "1600 Amphitheatre Pkwy, Mountain View, CA 94043"
+    string address = 2 [(buf.validate.field).string.min_len = 1];
+
+    optional string polyline_string = 3;
+  }
+
+  message Route {
+    // string overview_polyline = 1 [(buf.validate.field).string.min_len = 1];
+    Location walk_to_pickup = 1;
+    Location pickup = 2 [(buf.validate.field).required = true];
+    Location drop_off = 3 [(buf.validate.field).required = true];
+    Location walk_to_destination = 4;
+  }
+
+  message Rider {
+    // The relative resource name of the Rider as a user, for example, "users/rider1"
+    string name = 1 [(buf.validate.field).string.pattern = "^users/[A-Za-z0-9_-]+$"];
+
+    // The Full name of the Rider
+    string display_name = 2 [(buf.validate.field).string.min_len = 1];
+
+    // The phone number of the Rider
+    optional string phone_number = 4 [(buf.validate.field).string.pattern = "^\\+?[1-9]\\d{1,14}$"];
+  }
+
+  message Driver {
+    // The relative resource name of the Driver, for example, "drivers/driver1"
+    string name = 1 [(buf.validate.field).string.pattern = "^drivers/[A-Za-z0-9_-]+$"];
+
+    // The Full name of the Driver
+    string display_name = 2 [(buf.validate.field).string.min_len = 1];
+
+    // The uri of the Driver's picture
+    string photo_uri = 3 [(buf.validate.field).string.uri = true];
+
+    // The phone number of the Driver
+    optional string phone_number = 4 [(buf.validate.field).string.pattern = "^\\+?[1-9]\\d{1,14}$"];
+  }
+
+  message Vehicle {
+    // The relative resource name of the Vehicle, for example, "vehicles/vehicle1"
+    string name = 1 [(buf.validate.field).string.pattern = "^vehicles/[A-Za-z0-9_-]+$"];
+
+    // The identifiable description of the vehicle
+    string description = 2;
+
+    // The string on the license plate of the vehicle
+    string license_plate = 3;
+  }
+
+  enum PaymentMethod {
+    PAYMENT_METHOD_UNSPECIFIED = 0;
+    PAYMENT_METHOD_CASH = 1;
+    PAYMENT_METHOD_WALLET = 2;
+    PAYMENT_METHOD_POSTPAID = 3;
+  }
+}
+
+message CreateTripRequest {
+  // A unique request ID for server to detect duplicated requests for idempotency.
+	string request_id = 1;
+
+	// The Trip to be created. Client **must** not set the Transaction.name field.
+	Trip trip = 2 [(buf.validate.field).required = true];
+
+  // List of relative resource names of drivers to exclude from the search. For example, "drivers/driver1"
+	repeated string ignore = 3 [(buf.validate.field).repeated = {
+                              unique: true,
+                              items: {
+                                string : {
+                                  pattern: "^drivers/[A-Za-z0-9_-]+$"
+                                }
+                              }
+                            }];
+}
+
+message CreateTripResponse {
+  // The created Trip.
+  Trip trip = 1;
+}
+
+message GetTripRequest {
+  // Relative resource name of the Trip, for example, "trips/trip1"
+  string name = 1 [(buf.validate.field).string.pattern = "^trips/[A-Za-z0-9_-]+$"];
+}
+
+message GetTripResponse {
+  // The requested Trip.
+  Trip trip = 1;
+}
+
+message WatchTripRequest {
+  // Relative resource name of the Trip, for example, "trips/trip1"
+  string name = 1 [(buf.validate.field).string.pattern = "^trips/[A-Za-z0-9_-]+$"];
+}
+
+message WatchTripResponse {
+  // The latest state of requested Trip
+  Trip trip = 1;
+}
+
+message TripVerificationRequest{
+  // Relative resource name of the Trip, for example, "trips/trip1"
+  string name = 1 [(buf.validate.field).string.pattern = "^trips/[A-Za-z0-9_-]+$"];
+}
+
+message TripVerificationResponse{}
+
+message StartTripRequest {
+  // Relative resource name of the Trip, for example, "trips/trip1"
+  string name = 1 [(buf.validate.field).string.pattern = "^trips/[A-Za-z0-9_-]+$"];
+
+  // The verification code required to start the Trip
+  string verification_code = 2;
+}
+
+message StartTripResponse {}
+
+message CancelTripRequest {
+  // Relative resource name of the Trip, for example, "trips/trip1"
+  string name = 1 [(buf.validate.field).string.pattern = "^trips/[A-Za-z0-9_-]+$"];
+}
+
+message CancelTripResponse {}
+
+message EndTripRequest {
+  // Relative resource name of the Trip, for example, "trips/trip1"
+  string name = 1 [(buf.validate.field).string.pattern = "^trips/[A-Za-z0-9_-]+$"];
+}
+
+message EndTripResponse {}
