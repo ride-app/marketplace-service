@@ -10,7 +10,7 @@ import (
 	interceptors "github.com/dragonfish/go/pkg/connect/interceptors"
 	middlewares "github.com/dragonfish/go/pkg/connect/middlewares"
 	"github.com/dragonfish/go/pkg/logger"
-	"github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1/v1alpha1connect"
+	"github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1/marketplacev1alpha1connect"
 	"github.com/ride-app/marketplace-service/config"
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
@@ -47,7 +47,7 @@ func main() {
 	log.Info("Service Initialized")
 
 	mux := http.NewServeMux()
-	mux.Handle(v1alpha1connect.NewMarketplaceServiceHandler(service, connectInterceptors))
+	mux.Handle(marketplacev1alpha1connect.NewMarketplaceServiceHandler(service, connectInterceptors))
 
 	firebaseAuthMiddleware := authn.NewMiddleware(middlewares.FirebaseAuth)
 	handler := firebaseAuthMiddleware.Wrap(mux)
