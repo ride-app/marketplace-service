@@ -1,30 +1,31 @@
 version: 0.1
 cli:
-  version: 1.19.0
+  version: 1.20.0
 
 lint:
   enabled:
-    - renovate@37.129.1
-    - checkov@3.1.57
+    - buildifier@6.4.0
+    - renovate@37.192.2
+    - checkov@3.2.21
     - gokart@0.5.1
-    - osv-scanner@1.5.0
+    - osv-scanner@1.6.2
     - terrascan@1.18.11
-    - trivy@0.48.3
-    - trufflehog@3.63.8
+    - trivy@0.49.1
+    - trufflehog@3.67.6
     - git-diff-check
-    - yamllint@1.33.0
+    - yamllint@1.35.0
     - shellcheck@0.9.0
     - shfmt@3.6.0
     - goimports@0.9.1
     - actionlint@1.6.26
-    - semgrep@1.56.0
-    - prettier@3.1.1
-    - gitleaks@8.18.1
+    - semgrep@1.61.0
+    - prettier@3.2.5
+    - gitleaks@8.18.2
     - gofmt@1.20.4
-    - golangci-lint@1.55.2
+    - golangci-lint@1.56.2
     - hadolint@2.12.0
-    - buf-breaking@1.28.1
-    - buf-lint@1.28.1
+    - buf-breaking@1.29.0
+    - buf-lint@1.29.0
 
   ignore:
     - linters: [ALL]
@@ -50,7 +51,7 @@ actions:
 plugins:
   sources:
     - id: trunk
-      ref: v1.4.2
+      ref: v1.4.3
       uri: https://github.com/trunk-io/plugins
 
 merge:
@@ -59,4 +60,4 @@ merge:
 
 tools:
   enabled:
-    - bazel@7.0.0
+    - bazel@7.0.2
