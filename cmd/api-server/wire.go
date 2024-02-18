@@ -3,7 +3,7 @@
 package main
 
 import (
-	"github.com/dragonfish-tech/go/pkg/logger"
+	"github.com/dragonfish/go/pkg/logger"
 	"github.com/google/wire"
 	"github.com/ride-app/marketplace-service/config"
 	apihandlers "github.com/ride-app/marketplace-service/internal/api-handlers"
