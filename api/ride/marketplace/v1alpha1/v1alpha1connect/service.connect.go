@@ -2,7 +2,7 @@
 //
 // Source: ride/marketplace/v1alpha1/service.proto
 
-package marketplacev1alpha1connect
+package v1alpha1connect
 
 import (
 	context "context"

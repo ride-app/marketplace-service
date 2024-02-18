@@ -60,4 +60,5 @@ merge:
 
 tools:
   enabled:
+    - direnv@2.33.0
     - bazel@7.0.2

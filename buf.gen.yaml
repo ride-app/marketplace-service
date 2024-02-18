@@ -1,13 +1,13 @@
 version: v1
-managed:
-  enabled: true
-  go_package_prefix:
-    default: github.com/ride-app/marketplace-service/api
-    except:
-      - buf.build/googleapis/googleapis
-      - buf.build/bufbuild/protovalidate
-    override:
-      buf.build/ride/driver: buf.build/gen/go/ride/driver/protocolbuffers/go
+# managed:
+#   enabled: true
+#   go_package_prefix:
+#     default: github.com/ride-app/marketplace-service/api
+#     except:
+#       - buf.build/googleapis/googleapis
+#       - buf.build/bufbuild/protovalidate
+#     override:
+#       buf.build/ride/driver: buf.build/gen/go/ride/driver/protocolbuffers/go
 plugins:
   - plugin: buf.build/protocolbuffers/go
     out: api
