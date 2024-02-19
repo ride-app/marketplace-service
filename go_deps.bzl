@@ -148,8 +148,8 @@ def go_dependencies():
     go_repository(
         name = "com_github_dragonfish_go_v2",
         importpath = "github.com/dragonfish/go/v2",
-        sum = "h1:c2E6pZZ+eFoWoz0EBVt7NcD4VCfn3agMWrKs03ieHXM=",
-        version = "v2.0.0",
+        sum = "h1:FWev0KsKWtAjc6iE+eacbRrGzuh6qL6TqELUrxkdUww=",
+        version = "v2.0.1",
     )
     go_repository(
         name = "com_github_envoyproxy_go_control_plane",
