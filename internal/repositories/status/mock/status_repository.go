@@ -14,7 +14,7 @@ import (
 	reflect "reflect"
 
 	driverv1alpha1 "buf.build/gen/go/ride/driver/protocolbuffers/go/ride/driver/v1alpha1"
-	logger "github.com/dragonfish/go/pkg/logger"
+	logger "github.com/dragonfish/go/v2/pkg/logger"
 	v1alpha1 "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
 	statusrepository "github.com/ride-app/marketplace-service/internal/repositories/status"
 	gomock "go.uber.org/mock/gomock"

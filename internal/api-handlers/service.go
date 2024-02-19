@@ -1,7 +1,7 @@
 package apihandlers
 
 import (
-	"github.com/dragonfish/go/pkg/logger"
+	"github.com/dragonfish/go/v2/pkg/logger"
 	dr "github.com/ride-app/marketplace-service/internal/repositories/driver"
 	lr "github.com/ride-app/marketplace-service/internal/repositories/location"
 	sr "github.com/ride-app/marketplace-service/internal/repositories/status"
