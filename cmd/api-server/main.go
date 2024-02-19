@@ -9,7 +9,7 @@ import (
 	interceptors "github.com/dragonfish/go/v2/pkg/connect/interceptors"
 	middlewares "github.com/dragonfish/go/v2/pkg/connect/middlewares"
 	"github.com/dragonfish/go/v2/pkg/logger"
-	"github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1/v1alpha1connect"
+	"github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1/marketplacev1alpha1connect"
 	"github.com/ride-app/marketplace-service/config"
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
