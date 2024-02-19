@@ -9,7 +9,7 @@ import (
 	driverApi "buf.build/gen/go/ride/driver/connectrpc/go/ride/driver/v1alpha1/driverv1alpha1connect"
 	pb "buf.build/gen/go/ride/driver/protocolbuffers/go/ride/driver/v1alpha1"
 	"connectrpc.com/connect"
-	"github.com/dragonfish/go/pkg/logger"
+	"github.com/dragonfish/go/v2/pkg/logger"
 	"github.com/ride-app/marketplace-service/config"
 )
 
