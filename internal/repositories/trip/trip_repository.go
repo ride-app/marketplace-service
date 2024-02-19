@@ -12,6 +12,8 @@ import (
 	"github.com/dragonfish/go/v2/pkg/logger"
 	pb "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
 	"google.golang.org/genproto/googleapis/type/latlng"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
@@ -20,9 +22,14 @@ type TripRepository interface {
 
 	CreateTrip(ctx context.Context, log logger.Logger, trip *pb.Trip) (createTime *time.Time, err error)
 
-	ListenTrip(ctx context.Context, log logger.Logger, id string, locationResponseStream chan<- *pb.Trip)
+	WatchTrip(ctx context.Context, log logger.Logger, id string, watchTripResults chan<- *WatchTripResult)
 
 	UpdateTrip(ctx context.Context, log logger.Logger, id string, trip *pb.Trip) (updateTime *time.Time, err error)
+}
+
+type WatchTripResult struct {
+	Trip *pb.Trip
+	Err  error
 }
 
 type FirebaseImpl struct {
@@ -51,16 +58,85 @@ func NewFirebaseTripRepository(log logger.Logger, firebaseApp *firebase.App, aut
 }
 
 func (r *FirebaseImpl) GetTrip(ctx context.Context, log logger.Logger, id string) (*pb.Trip, error) {
-	trip := &pb.Trip{}
-
 	log.Info("querying trip from firestore")
-	doc, err := r.firestore.Collection("trips").Doc(id).Get(ctx)
+	snap, err := r.firestore.Collection("trips").Doc(id).Get(ctx)
 
 	if err != nil {
 		log.WithError(err).Error("error querying trip from firestore")
 		return nil, err
 	}
+
+	trip, err := r.docToTrip(ctx, log, snap)
+
+	if err != nil {
+		log.WithError(err).Error("could not convert firebase document to trip")
+	}
+
+	return trip, nil
+}
+
+func (r *FirebaseImpl) WatchTrip(ctx context.Context, log logger.Logger, id string, watchTripResults chan<- *WatchTripResult) {
+	iterator := r.firestore.Collection("trips").Doc(id).Snapshots(ctx)
+	defer iterator.Stop()
+
+	for {
+		snap, err := iterator.Next()
+		// DeadlineExceeded will be returned when ctx is cancelled.
+		if status.Code(err) == codes.DeadlineExceeded {
+			watchTripResults <- &WatchTripResult{
+				Trip: nil,
+				Err:  err,
+			}
+			close(watchTripResults)
+		}
+
+		if err != nil {
+			log.WithError(err).Error("could not get next snapshot")
+			watchTripResults <- &WatchTripResult{
+				Trip: nil,
+				Err:  err,
+			}
+			close(watchTripResults)
+		}
+
+		if !snap.Exists() {
+			log.WithError(err).Error("document deleted")
+			watchTripResults <- &WatchTripResult{
+				Trip: nil,
+				Err:  err,
+			}
+			close(watchTripResults)
+		}
+		trip, err := r.docToTrip(ctx, log, snap)
+
+		if err != nil {
+			log.WithError(err).Error("could not convert snapshot to trip")
+			watchTripResults <- &WatchTripResult{
+				Trip: nil,
+				Err:  err,
+			}
+			close(watchTripResults)
+		}
+
+		watchTripResults <- &WatchTripResult{
+			Trip: trip,
+			Err:  nil,
+		}
+	}
+}
+
+func (r *FirebaseImpl) CreateTrip(ctx context.Context, log logger.Logger, trip *pb.Trip) (string, error) {
+	return "shut up linter", nil
+}
+
+func (r *FirebaseImpl) UpdateTrip(ctx context.Context, trip *pb.Trip) error {
+	_, err := r.firestore.Collection("trips").Doc(trip.Name).Set(ctx, trip)
+	return err
+}
+
+func (r *FirebaseImpl) docToTrip(ctx context.Context, log logger.Logger, doc *firestore.DocumentSnapshot) (*pb.Trip, error) {
 	log.Debug("Document data: ", doc.Data())
+	trip := &pb.Trip{}
 
 	if !doc.Exists() {
 		log.Warn("trip not found")
@@ -76,7 +152,7 @@ func (r *FirebaseImpl) GetTrip(ctx context.Context, log logger.Logger, id string
 		return nil, err
 	}
 
-	trip.Name = fmt.Sprintf("trips/%s", id)
+	trip.Name = fmt.Sprintf("trips/%s", doc.Ref.ID)
 	trip.Rider = &pb.Trip_Rider{
 		Name:        fmt.Sprintf("users/%s", rider.UID),
 		DisplayName: rider.DisplayName,
@@ -132,20 +208,5 @@ func (r *FirebaseImpl) GetTrip(ctx context.Context, log logger.Logger, id string
 		}
 	}
 
-	defer log.Info("trip fetched successfully")
 	return trip, nil
-}
-
-func (r *FirebaseImpl) CreateTrip(ctx context.Context, log logger.Logger, trip *pb.Trip) (string, error) {
-	return "shut up linter", nil
-}
-
-func (r *FirebaseImpl) UpdateTrip(ctx context.Context, trip *pb.Trip) error {
-	_, err := r.firestore.Collection("trips").Doc(trip.Name).Set(ctx, trip)
-	return err
-}
-
-func (r *FirebaseImpl) DeleteTrip(ctx context.Context, tripID string) error {
-	_, err := r.firestore.Collection("trips").Doc(tripID).Delete(ctx)
-	return err
 }
