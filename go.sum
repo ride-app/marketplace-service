@@ -1,6 +1,8 @@
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.32.0-20230914171853-63dfe56cc2c4.1/go.mod h1:tiTMKD8j6Pd/D2WzREoweufjzaJKHZg35f/VGcZ2v3I=
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.32.0-20240212200630-3014d81c3a48.1 h1:rOe/itdO7+9cWOnKqvpn1K7VmTDwp3vI4juPz6aNQbc=
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.32.0-20240212200630-3014d81c3a48.1/go.mod h1:tiTMKD8j6Pd/D2WzREoweufjzaJKHZg35f/VGcZ2v3I=
+buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.32.0-20240221180331-f05a6f4403ce.1 h1:AmmAwHbvaeOIxDKG2+aTn5C36HjmFIMkrdTp49rp80Q=
+buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.32.0-20240221180331-f05a6f4403ce.1/go.mod h1:tiTMKD8j6Pd/D2WzREoweufjzaJKHZg35f/VGcZ2v3I=
 buf.build/gen/go/envoyproxy/protoc-gen-validate/protocolbuffers/go v1.32.0-20221025150516-6607b10f00ed.1 h1:jpSS08WUnCzcZrst8f1rwJGDNlgjuvVC+h3ML8v09tA=
 buf.build/gen/go/envoyproxy/protoc-gen-validate/protocolbuffers/go v1.32.0-20221025150516-6607b10f00ed.1/go.mod h1:9oGzPLZBPImpyjetSwzogW1C8HChxC25EC3WD//L/1w=
 buf.build/gen/go/ride/driver/connectrpc/go v1.15.0-20240127091614-32d65fcb4c5c.1 h1:y5UalU+Cwd5leQyAavBGHLfeqKRNGD5AE2fa1/MhLBQ=
