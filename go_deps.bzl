@@ -74,6 +74,12 @@ def go_dependencies():
         version = "v1.15.0",
     )
     go_repository(
+        name = "com_github_aidarkhanov_nanoid",
+        importpath = "github.com/aidarkhanov/nanoid",
+        sum = "h1:yxyJkgsEDFXP7+97vc6JevMcjyb03Zw+/9fqhlVXBXA=",
+        version = "v1.0.8",
+    )
+    go_repository(
         name = "com_github_antlr4_go_antlr_v4",
         importpath = "github.com/antlr4-go/antlr/v4",
         sum = "h1:lxCg3LAv+EUK6t1i0y1V6/SLeUi0eKEKdhQAlS8TVTI=",
