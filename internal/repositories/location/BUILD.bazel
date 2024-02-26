@@ -2,7 +2,13 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
 go_library(
     name = "location",
-    srcs = ["location_repository.go"],
+    srcs = [
+        "firebase_impl.go",
+        "get_location.go",
+        "listen_location.go",
+        "location_repository.go",
+        "update_location.go",
+    ],
     importpath = "github.com/ride-app/marketplace-service/internal/repositories/location",
     visibility = ["//:__subpackages__"],
     deps = [
