@@ -246,6 +246,19 @@ func (r *FirebaseCloudPubSubImpl) CreateTrip(ctx context.Context, log logger.Log
 		return nil, err
 	}
 
+	go func() {
+		data, err := proto.Marshal(trip)
+
+		if err != nil {
+			log.WithError(err).Warn("could not marshal trip into []byte")
+		}
+
+		msg := &pubsub.Message{}
+		msg.Data = data
+
+		r.pubsub.Topic("trips/created").Publish(ctx, msg)
+	}()
+
 	return &writeResult.UpdateTime, nil
 }
 
