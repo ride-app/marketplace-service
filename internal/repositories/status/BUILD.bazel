@@ -2,7 +2,14 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
 go_library(
     name = "status",
-    srcs = ["status_repository.go"],
+    srcs = [
+        "firebase_impl.go",
+        "get_status.go",
+        "go_offline.go",
+        "go_online.go",
+        "listen_status.go",
+        "status_repository.go",
+    ],
     importpath = "github.com/ride-app/marketplace-service/internal/repositories/status",
     visibility = ["//:__subpackages__"],
     deps = [
