@@ -1335,3 +1335,9 @@ def go_dependencies():
         sum = "h1:sI7k6L95XOKS281NhVKOFCUNIvv9e0w4BF8N3u+tCRo=",
         version = "v1.26.0",
     )
+    go_repository(
+        name = "tech_einride_go_aip",
+        importpath = "go.einride.tech/aip",
+        sum = "h1:XfV+NQX6L7EOYK11yoHHFtndeaWh3KbD9/cN/6iWEt8=",
+        version = "v0.66.0",
+    )

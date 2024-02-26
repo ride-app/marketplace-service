@@ -7,13 +7,16 @@ import (
 	"time"
 
 	"cloud.google.com/go/firestore"
+	"cloud.google.com/go/pubsub"
 	firebase "firebase.google.com/go/v4"
 	"firebase.google.com/go/v4/auth"
 	"github.com/dragonfish/go/v2/pkg/logger"
 	pb "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
+	types "github.com/ride-app/marketplace-service/internal/utils/types"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
@@ -21,6 +24,8 @@ type TripRepository interface {
 	GetTrip(ctx context.Context, log logger.Logger, id string) (*pb.Trip, error)
 
 	CreateTrip(ctx context.Context, log logger.Logger, trip *pb.Trip) (createTime *time.Time, err error)
+
+	WatchTripsCreated(ctx context.Context, log logger.Logger, newTripsResult chan<- *types.StreamResult[*types.Event[*pb.Trip]]) error
 
 	WatchTrip(ctx context.Context, log logger.Logger, id string, watchTripResults chan<- *WatchTripResult)
 
@@ -32,12 +37,13 @@ type WatchTripResult struct {
 	Err  error
 }
 
-type FirebaseImpl struct {
+type FirebaseCloudPubSubImpl struct {
 	firestore *firestore.Client
 	auth      *auth.Client
+	pubsub    *pubsub.Client
 }
 
-func NewFirebaseTripRepository(log logger.Logger, firebaseApp *firebase.App, auth *auth.Client) (*FirebaseImpl, error) {
+func NewFirebaseTripRepository(log logger.Logger, firebaseApp *firebase.App, auth *auth.Client, pubsub *pubsub.Client) (*FirebaseCloudPubSubImpl, error) {
 	firestore, err := firebaseApp.Firestore(context.Background())
 
 	if err != nil {
@@ -51,13 +57,13 @@ func NewFirebaseTripRepository(log logger.Logger, firebaseApp *firebase.App, aut
 	}
 
 	log.Info("firebase trip repository initialized")
-	return &FirebaseImpl{
+	return &FirebaseCloudPubSubImpl{
 		firestore: firestore,
 		auth:      auth,
 	}, nil
 }
 
-func (r *FirebaseImpl) GetTrip(ctx context.Context, log logger.Logger, id string) (*pb.Trip, error) {
+func (r *FirebaseCloudPubSubImpl) GetTrip(ctx context.Context, log logger.Logger, id string) (*pb.Trip, error) {
 	log.Info("querying trip from firestore")
 	snap, err := r.firestore.Collection("trips").Doc(id).Get(ctx)
 
@@ -94,7 +100,7 @@ func (r *FirebaseImpl) GetTrip(ctx context.Context, log logger.Logger, id string
 	return trip, nil
 }
 
-func (r *FirebaseImpl) WatchTrip(ctx context.Context, log logger.Logger, id string, watchTripResults chan<- *WatchTripResult) {
+func (r *FirebaseCloudPubSubImpl) WatchTrip(ctx context.Context, log logger.Logger, id string, watchTripResults chan<- *WatchTripResult) {
 	iterator := r.firestore.Collection("trips").Doc(id).Snapshots(ctx)
 	defer iterator.Stop()
 
@@ -170,7 +176,43 @@ func (r *FirebaseImpl) WatchTrip(ctx context.Context, log logger.Logger, id stri
 	}
 }
 
-func (r *FirebaseImpl) CreateTrip(ctx context.Context, log logger.Logger, trip *pb.Trip) (createTime *time.Time, err error) {
+func (r *FirebaseCloudPubSubImpl) WatchTripsCreated(ctx context.Context, log logger.Logger, newTripsResult chan<- *types.StreamResult[*types.Event[*pb.Trip]]) {
+	subscription := r.pubsub.Subscription("trip/created")
+
+	err := subscription.Receive(ctx, func(ctx context.Context, msg *pubsub.Message) {
+		trip := &pb.Trip{}
+
+		err := proto.Unmarshal(msg.Data, trip)
+
+		if err != nil {
+			newTripsResult <- &types.StreamResult[*types.Event[*pb.Trip]]{
+				Result: nil,
+				Error:  err,
+			}
+			msg.Nack()
+		}
+
+		newTripsResult <- &types.StreamResult[*types.Event[*pb.Trip]]{
+			Result: &types.Event[*pb.Trip]{
+				Attributes: msg.Attributes,
+				Data:       trip,
+				Timestamp:  msg.PublishTime,
+			},
+			Error: nil,
+		}
+
+		msg.Ack()
+	})
+
+	if err != nil {
+		newTripsResult <- &types.StreamResult[*types.Event[*pb.Trip]]{
+			Result: nil,
+			Error:  err,
+		}
+	}
+}
+
+func (r *FirebaseCloudPubSubImpl) CreateTrip(ctx context.Context, log logger.Logger, trip *pb.Trip) (createTime *time.Time, err error) {
 	trip.Status = pb.Trip_STATUS_PENDING
 	trip.Driver = nil
 	trip.Route.WalkToPickup = nil
@@ -207,7 +249,7 @@ func (r *FirebaseImpl) CreateTrip(ctx context.Context, log logger.Logger, trip *
 	return &writeResult.UpdateTime, nil
 }
 
-func (r *FirebaseImpl) UpdateTrip(ctx context.Context, log logger.Logger, trip *pb.Trip) (updateTime *time.Time, err error) {
+func (r *FirebaseCloudPubSubImpl) UpdateTrip(ctx context.Context, log logger.Logger, trip *pb.Trip) (updateTime *time.Time, err error) {
 	trip.CreateTime = nil
 	trip.UpdateTime = nil
 

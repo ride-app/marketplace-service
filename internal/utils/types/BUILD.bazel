@@ -1,0 +1,8 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "types",
+    srcs = ["event.go"],
+    importpath = "github.com/ride-app/marketplace-service/internal/utils/types",
+    visibility = ["//:__subpackages__"],
+)
