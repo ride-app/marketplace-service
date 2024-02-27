@@ -8,12 +8,8 @@ buf.build/gen/go/ride/driver/connectrpc/go v1.15.0-20240127091614-32d65fcb4c5c.1
 buf.build/gen/go/ride/driver/connectrpc/go v1.15.0-20240127091614-32d65fcb4c5c.1/go.mod h1:rX+QdzTkGiH4MqrCVF2KEWO4mCR4JheneXFWvnJ/L94=
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.32.0-20240127091614-32d65fcb4c5c.1 h1:6NWlkt5Y3IEXgPjx8qrCo7e7HGP2Sp2njuqGzJJYg9Y=
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.32.0-20240127091614-32d65fcb4c5c.1/go.mod h1:OteAdvDbNnH7cyxqFfm8D7YNdviERl+wT7SMV1DRNXM=
-buf.build/gen/go/ride/payments/connectrpc/go v1.15.0-20240130062128-31fdce7a3669.1 h1:bkJscQRSRGZ8P9Lo08rOuMDLKacnIy1rDe3w53pIQLQ=
-buf.build/gen/go/ride/payments/connectrpc/go v1.15.0-20240130062128-31fdce7a3669.1/go.mod h1:z0DU5EmvyruJm+/4OM/7wq8PvVq8WoR4GR18RyIE2Ls=
 buf.build/gen/go/ride/payments/connectrpc/go v1.15.0-20240224142941-a019682ec9da.1 h1:CgWUc0pSPZjXcBElK+VzADtI/WnJtnljaUu97AigTM8=
 buf.build/gen/go/ride/payments/connectrpc/go v1.15.0-20240224142941-a019682ec9da.1/go.mod h1:fSIapGbtJTnFiOIqf1Dm9NGC/OmOQrzn4Xl8/SRWnYg=
-buf.build/gen/go/ride/payments/protocolbuffers/go v1.32.0-20240130062128-31fdce7a3669.1 h1:YXlmAeJ92WR5xqDFs8By2K0WHJYnkhEnK8nKylp4Q0E=
-buf.build/gen/go/ride/payments/protocolbuffers/go v1.32.0-20240130062128-31fdce7a3669.1/go.mod h1:fRFa1MYAmmEQd9F6j8gIUrSyNQdqQxf7/QyYiaqup6E=
 buf.build/gen/go/ride/payments/protocolbuffers/go v1.32.0-20240224142941-a019682ec9da.1 h1:FviKtAp30a7vUjl+gOl89ulEpTdfnSMKaU6aphhoM3o=
 buf.build/gen/go/ride/payments/protocolbuffers/go v1.32.0-20240224142941-a019682ec9da.1/go.mod h1:zPN6CboG2Qe/paQlGHp8IC+xDGzMO1lQgkYaKKjYsJU=
 buf.build/gen/go/ride/wallet/protocolbuffers/go v1.32.0-20230924153639-d33e5416a9c2.1 h1:7FQdB9GfoYFbZrzpG7GYATamxlvROZHKbemRvRFn5hA=
@@ -50,8 +46,8 @@ github.com/MicahParks/keyfunc/v3 v3.2.4 h1:SuFGdd3HvlwEceJvlEEfjJjvOiq69hS0wqM5i
 github.com/MicahParks/keyfunc/v3 v3.2.4/go.mod h1:xXfj5uRVZsOMGpjKH/AYn7V8OJb0UMQlJLP1GRBuizg=
 github.com/antlr4-go/antlr/v4 v4.13.0 h1:lxCg3LAv+EUK6t1i0y1V6/SLeUi0eKEKdhQAlS8TVTI=
 github.com/antlr4-go/antlr/v4 v4.13.0/go.mod h1:pfChB/xh/Unjila75QW7+VU4TSnWnnk9UTnmpPaOR2g=
-github.com/bufbuild/protovalidate-go v0.5.2 h1:MPNZd6F2ekGWjWVQDv8lEYOX8ndSOzMnmTaGbDZWIcg=
-github.com/bufbuild/protovalidate-go v0.5.2/go.mod h1:DWCNjFl/HwtBiHyN5/3lKA+0MgXOlAoc3jk8Ps3iN+s=
+github.com/bufbuild/protovalidate-go v0.6.0 h1:Jgs1kFuZ2LHvvdj8SpCLA1W/+pXS8QSM3F/E2l3InPY=
+github.com/bufbuild/protovalidate-go v0.6.0/go.mod h1:1LamgoYHZ2NdIQH0XGczGTc6Z8YrTHjcJVmiBaar4t4=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/chzyer/logex v1.1.10/go.mod h1:+Ywpsq7O8HXn0nuIou7OrIPyXbp3wmkHB+jjWRnGsAI=
 github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e/go.mod h1:nSuG5e5PlCu98SY8svDHJxuZscDgtXS6KTTbou5AhLI=
@@ -104,8 +100,8 @@ github.com/golang/protobuf v1.5.0/go.mod h1:FsONVRAS9T7sI+LIUmWTfcYkHO4aIWwzhcaS
 github.com/golang/protobuf v1.5.2/go.mod h1:XVQd3VNwM+JqD3oG2Ue2ip4fOMUkwXdXDdiuN0vRsmY=
 github.com/golang/protobuf v1.5.3 h1:KhyjKVUg7Usr/dYsdSqoFveMYd5ko72D+zANwlG1mmg=
 github.com/golang/protobuf v1.5.3/go.mod h1:XVQd3VNwM+JqD3oG2Ue2ip4fOMUkwXdXDdiuN0vRsmY=
-github.com/google/cel-go v0.19.0 h1:vVgaZoHPBDd1lXCYGQOh5A06L4EtuIfmqQ/qnSXSKiU=
-github.com/google/cel-go v0.19.0/go.mod h1:kWcIzTsPX0zmQ+H3TirHstLLf9ep5QTsZBN9u4dOYLg=
+github.com/google/cel-go v0.20.0 h1:h4n6DOCppEMpWERzllyNkntl7JrDyxoE543KWS6BLpc=
+github.com/google/cel-go v0.20.0/go.mod h1:kWcIzTsPX0zmQ+H3TirHstLLf9ep5QTsZBN9u4dOYLg=
 github.com/google/go-cmp v0.2.0/go.mod h1:oXzfMopK8JAjlY9xF4vHSVASa0yLyX7SntLO5aqRK0M=
 github.com/google/go-cmp v0.3.0/go.mod h1:8QqcDgzrUqlUb/G2PQTWiueGozuR1884gddMywk6iLU=
 github.com/google/go-cmp v0.3.1/go.mod h1:8QqcDgzrUqlUb/G2PQTWiueGozuR1884gddMywk6iLU=
