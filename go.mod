@@ -3,9 +3,9 @@ module github.com/ride-app/marketplace-service
 go 1.22.0
 
 require (
-	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.32.0-20240221180331-f05a6f4403ce.1
+	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-20230914171853-63dfe56cc2c4.1
 	buf.build/gen/go/ride/driver/connectrpc/go v1.15.0-20240127091614-32d65fcb4c5c.1
-	buf.build/gen/go/ride/driver/protocolbuffers/go v1.32.0-20240127091614-32d65fcb4c5c.1
+	buf.build/gen/go/ride/driver/protocolbuffers/go v1.33.0-20240127091614-32d65fcb4c5c.1
 	buf.build/gen/go/ride/payments/connectrpc/go v1.15.0-20240224142941-a019682ec9da.1
 	buf.build/gen/go/ride/payments/protocolbuffers/go v1.32.0-20240224142941-a019682ec9da.1
 	buf.build/gen/go/ride/wallet/protocolbuffers/go v1.32.0-20230924153639-d33e5416a9c2.1
@@ -24,7 +24,7 @@ require (
 	golang.org/x/net v0.22.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20240304212257-790db918fca8
 	google.golang.org/grpc v1.62.0
-	google.golang.org/protobuf v1.32.0
+	google.golang.org/protobuf v1.33.0
 )
 
 require (
