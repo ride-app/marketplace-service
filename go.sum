@@ -1,6 +1,6 @@
-buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.32.0-20231115204500-e097f827e652.1/go.mod h1:tiTMKD8j6Pd/D2WzREoweufjzaJKHZg35f/VGcZ2v3I=
-buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-20230914171853-63dfe56cc2c4.1 h1:wms8yrZC1sb2+hKtAZYVPFTNSxIUfEjifeqz/llXkrU=
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-20230914171853-63dfe56cc2c4.1/go.mod h1:Tgn5bgL220vkFOI0KPStlcClPeOJzAv4uT+V8JXGUnw=
+buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-20231115204500-e097f827e652.1 h1:SbKXkoZduR4jQ+aCrX71I+dAcHKZPk1SiriRs/XYX9s=
+buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-20231115204500-e097f827e652.1/go.mod h1:Tgn5bgL220vkFOI0KPStlcClPeOJzAv4uT+V8JXGUnw=
 buf.build/gen/go/envoyproxy/protoc-gen-validate/protocolbuffers/go v1.32.0-20221025150516-6607b10f00ed.1 h1:jpSS08WUnCzcZrst8f1rwJGDNlgjuvVC+h3ML8v09tA=
 buf.build/gen/go/envoyproxy/protoc-gen-validate/protocolbuffers/go v1.32.0-20221025150516-6607b10f00ed.1/go.mod h1:9oGzPLZBPImpyjetSwzogW1C8HChxC25EC3WD//L/1w=
 buf.build/gen/go/ride/driver/connectrpc/go v1.15.0-20240127091614-32d65fcb4c5c.1 h1:y5UalU+Cwd5leQyAavBGHLfeqKRNGD5AE2fa1/MhLBQ=
@@ -9,8 +9,8 @@ buf.build/gen/go/ride/driver/protocolbuffers/go v1.33.0-20240127091614-32d65fcb4
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.33.0-20240127091614-32d65fcb4c5c.1/go.mod h1:PHDdAypiXLBHxJKcZdj/jYGsRe4zah/sD9SwG7J2vB4=
 buf.build/gen/go/ride/payments/connectrpc/go v1.15.0-20240224142941-a019682ec9da.1 h1:CgWUc0pSPZjXcBElK+VzADtI/WnJtnljaUu97AigTM8=
 buf.build/gen/go/ride/payments/connectrpc/go v1.15.0-20240224142941-a019682ec9da.1/go.mod h1:fSIapGbtJTnFiOIqf1Dm9NGC/OmOQrzn4Xl8/SRWnYg=
-buf.build/gen/go/ride/payments/protocolbuffers/go v1.32.0-20240224142941-a019682ec9da.1 h1:FviKtAp30a7vUjl+gOl89ulEpTdfnSMKaU6aphhoM3o=
-buf.build/gen/go/ride/payments/protocolbuffers/go v1.32.0-20240224142941-a019682ec9da.1/go.mod h1:zPN6CboG2Qe/paQlGHp8IC+xDGzMO1lQgkYaKKjYsJU=
+buf.build/gen/go/ride/payments/protocolbuffers/go v1.33.0-20240224142941-a019682ec9da.1 h1:MS2nEH2NDsGsBwUMIT0nhG8WW7ljRNuSeLelY50ZQic=
+buf.build/gen/go/ride/payments/protocolbuffers/go v1.33.0-20240224142941-a019682ec9da.1/go.mod h1:1ZXGDaLJx/6f/z1rx4i146R/ZkOJxK7um9limlQSfn8=
 buf.build/gen/go/ride/wallet/protocolbuffers/go v1.32.0-20230924153639-d33e5416a9c2.1 h1:7FQdB9GfoYFbZrzpG7GYATamxlvROZHKbemRvRFn5hA=
 buf.build/gen/go/ride/wallet/protocolbuffers/go v1.32.0-20230924153639-d33e5416a9c2.1/go.mod h1:r8Y9b3+LrGzrQAQ/THoX9u1krIOhk7aeYZS33Llv9gw=
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
