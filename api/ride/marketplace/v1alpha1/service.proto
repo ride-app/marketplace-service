@@ -76,9 +76,9 @@ service MarketplaceService {
     };
   }
 
-  rpc TripVerification(TripVerificationRequest) returns (TripVerificationResponse) {
+  rpc VerifyTrip(VerifyTripRequest) returns (VerifyTripResponse) {
     option (google.api.http) = {
-      post: "/v1alpha1/{name=trips/*}:tripVerification"
+      post: "/v1alpha1/{name=trips/*}:verifytrip"
     };
   }
 
@@ -381,12 +381,12 @@ message WatchTripResponse {
   Trip trip = 1;
 }
 
-message TripVerificationRequest{
+message VerifyTripRequest{
   // Relative resource name of the Trip, for example, "trips/trip1"
   string name = 1 [(buf.validate.field).string.pattern = "^trips/[A-Za-z0-9_-]+$"];
 }
 
-message TripVerificationResponse{}
+message VerifyTripResponse{}
 
 message StartTripRequest {
   // Relative resource name of the Trip, for example, "trips/trip1"

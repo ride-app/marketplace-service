@@ -64,9 +64,9 @@ const (
 	// MarketplaceServiceWatchTripProcedure is the fully-qualified name of the MarketplaceService's
 	// WatchTrip RPC.
 	MarketplaceServiceWatchTripProcedure = "/ride.marketplace.v1alpha1.MarketplaceService/WatchTrip"
-	// MarketplaceServiceTripVerificationProcedure is the fully-qualified name of the
-	// MarketplaceService's TripVerification RPC.
-	MarketplaceServiceTripVerificationProcedure = "/ride.marketplace.v1alpha1.MarketplaceService/TripVerification"
+	// MarketplaceServiceVerifyTripProcedure is the fully-qualified name of the MarketplaceService's
+	// VerifyTrip RPC.
+	MarketplaceServiceVerifyTripProcedure = "/ride.marketplace.v1alpha1.MarketplaceService/VerifyTrip"
 	// MarketplaceServiceStartTripProcedure is the fully-qualified name of the MarketplaceService's
 	// StartTrip RPC.
 	MarketplaceServiceStartTripProcedure = "/ride.marketplace.v1alpha1.MarketplaceService/StartTrip"
@@ -80,21 +80,21 @@ const (
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
 var (
-	marketplaceServiceServiceDescriptor                = v1alpha1.File_ride_marketplace_v1alpha1_service_proto.Services().ByName("MarketplaceService")
-	marketplaceServiceGoOnlineMethodDescriptor         = marketplaceServiceServiceDescriptor.Methods().ByName("GoOnline")
-	marketplaceServiceGoOfflineMethodDescriptor        = marketplaceServiceServiceDescriptor.Methods().ByName("GoOffline")
-	marketplaceServiceGetStatusMethodDescriptor        = marketplaceServiceServiceDescriptor.Methods().ByName("GetStatus")
-	marketplaceServiceWatchStatusMethodDescriptor      = marketplaceServiceServiceDescriptor.Methods().ByName("WatchStatus")
-	marketplaceServiceGetLocationMethodDescriptor      = marketplaceServiceServiceDescriptor.Methods().ByName("GetLocation")
-	marketplaceServiceWatchLocationMethodDescriptor    = marketplaceServiceServiceDescriptor.Methods().ByName("WatchLocation")
-	marketplaceServiceUpdateLocationMethodDescriptor   = marketplaceServiceServiceDescriptor.Methods().ByName("UpdateLocation")
-	marketplaceServiceCreateTripMethodDescriptor       = marketplaceServiceServiceDescriptor.Methods().ByName("CreateTrip")
-	marketplaceServiceGetTripMethodDescriptor          = marketplaceServiceServiceDescriptor.Methods().ByName("GetTrip")
-	marketplaceServiceWatchTripMethodDescriptor        = marketplaceServiceServiceDescriptor.Methods().ByName("WatchTrip")
-	marketplaceServiceTripVerificationMethodDescriptor = marketplaceServiceServiceDescriptor.Methods().ByName("TripVerification")
-	marketplaceServiceStartTripMethodDescriptor        = marketplaceServiceServiceDescriptor.Methods().ByName("StartTrip")
-	marketplaceServiceCancelTripMethodDescriptor       = marketplaceServiceServiceDescriptor.Methods().ByName("CancelTrip")
-	marketplaceServiceEndTripMethodDescriptor          = marketplaceServiceServiceDescriptor.Methods().ByName("EndTrip")
+	marketplaceServiceServiceDescriptor              = v1alpha1.File_ride_marketplace_v1alpha1_service_proto.Services().ByName("MarketplaceService")
+	marketplaceServiceGoOnlineMethodDescriptor       = marketplaceServiceServiceDescriptor.Methods().ByName("GoOnline")
+	marketplaceServiceGoOfflineMethodDescriptor      = marketplaceServiceServiceDescriptor.Methods().ByName("GoOffline")
+	marketplaceServiceGetStatusMethodDescriptor      = marketplaceServiceServiceDescriptor.Methods().ByName("GetStatus")
+	marketplaceServiceWatchStatusMethodDescriptor    = marketplaceServiceServiceDescriptor.Methods().ByName("WatchStatus")
+	marketplaceServiceGetLocationMethodDescriptor    = marketplaceServiceServiceDescriptor.Methods().ByName("GetLocation")
+	marketplaceServiceWatchLocationMethodDescriptor  = marketplaceServiceServiceDescriptor.Methods().ByName("WatchLocation")
+	marketplaceServiceUpdateLocationMethodDescriptor = marketplaceServiceServiceDescriptor.Methods().ByName("UpdateLocation")
+	marketplaceServiceCreateTripMethodDescriptor     = marketplaceServiceServiceDescriptor.Methods().ByName("CreateTrip")
+	marketplaceServiceGetTripMethodDescriptor        = marketplaceServiceServiceDescriptor.Methods().ByName("GetTrip")
+	marketplaceServiceWatchTripMethodDescriptor      = marketplaceServiceServiceDescriptor.Methods().ByName("WatchTrip")
+	marketplaceServiceVerifyTripMethodDescriptor     = marketplaceServiceServiceDescriptor.Methods().ByName("VerifyTrip")
+	marketplaceServiceStartTripMethodDescriptor      = marketplaceServiceServiceDescriptor.Methods().ByName("StartTrip")
+	marketplaceServiceCancelTripMethodDescriptor     = marketplaceServiceServiceDescriptor.Methods().ByName("CancelTrip")
+	marketplaceServiceEndTripMethodDescriptor        = marketplaceServiceServiceDescriptor.Methods().ByName("EndTrip")
 )
 
 // MarketplaceServiceClient is a client for the ride.marketplace.v1alpha1.MarketplaceService
@@ -110,7 +110,7 @@ type MarketplaceServiceClient interface {
 	CreateTrip(context.Context, *connect.Request[v1alpha1.CreateTripRequest]) (*connect.Response[v1alpha1.CreateTripResponse], error)
 	GetTrip(context.Context, *connect.Request[v1alpha1.GetTripRequest]) (*connect.Response[v1alpha1.GetTripResponse], error)
 	WatchTrip(context.Context, *connect.Request[v1alpha1.WatchTripRequest]) (*connect.ServerStreamForClient[v1alpha1.WatchTripResponse], error)
-	TripVerification(context.Context, *connect.Request[v1alpha1.TripVerificationRequest]) (*connect.Response[v1alpha1.TripVerificationResponse], error)
+	VerifyTrip(context.Context, *connect.Request[v1alpha1.VerifyTripRequest]) (*connect.Response[v1alpha1.VerifyTripResponse], error)
 	StartTrip(context.Context, *connect.Request[v1alpha1.StartTripRequest]) (*connect.Response[v1alpha1.StartTripResponse], error)
 	CancelTrip(context.Context, *connect.Request[v1alpha1.CancelTripRequest]) (*connect.Response[v1alpha1.CancelTripResponse], error)
 	EndTrip(context.Context, *connect.Request[v1alpha1.EndTripRequest]) (*connect.Response[v1alpha1.EndTripResponse], error)
@@ -187,10 +187,10 @@ func NewMarketplaceServiceClient(httpClient connect.HTTPClient, baseURL string, 
 			connect.WithSchema(marketplaceServiceWatchTripMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
-		tripVerification: connect.NewClient[v1alpha1.TripVerificationRequest, v1alpha1.TripVerificationResponse](
+		verifyTrip: connect.NewClient[v1alpha1.VerifyTripRequest, v1alpha1.VerifyTripResponse](
 			httpClient,
-			baseURL+MarketplaceServiceTripVerificationProcedure,
-			connect.WithSchema(marketplaceServiceTripVerificationMethodDescriptor),
+			baseURL+MarketplaceServiceVerifyTripProcedure,
+			connect.WithSchema(marketplaceServiceVerifyTripMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		startTrip: connect.NewClient[v1alpha1.StartTripRequest, v1alpha1.StartTripResponse](
@@ -216,20 +216,20 @@ func NewMarketplaceServiceClient(httpClient connect.HTTPClient, baseURL string, 
 
 // marketplaceServiceClient implements MarketplaceServiceClient.
 type marketplaceServiceClient struct {
-	goOnline         *connect.Client[v1alpha1.GoOnlineRequest, v1alpha1.GoOnlineResponse]
-	goOffline        *connect.Client[v1alpha1.GoOfflineRequest, v1alpha1.GoOfflineResponse]
-	getStatus        *connect.Client[v1alpha1.GetStatusRequest, v1alpha1.GetStatusResponse]
-	watchStatus      *connect.Client[v1alpha1.WatchStatusRequest, v1alpha1.WatchStatusResponse]
-	getLocation      *connect.Client[v1alpha1.GetLocationRequest, v1alpha1.GetLocationResponse]
-	watchLocation    *connect.Client[v1alpha1.WatchLocationRequest, v1alpha1.WatchLocationResponse]
-	updateLocation   *connect.Client[v1alpha1.UpdateLocationRequest, v1alpha1.UpdateLocationResponse]
-	createTrip       *connect.Client[v1alpha1.CreateTripRequest, v1alpha1.CreateTripResponse]
-	getTrip          *connect.Client[v1alpha1.GetTripRequest, v1alpha1.GetTripResponse]
-	watchTrip        *connect.Client[v1alpha1.WatchTripRequest, v1alpha1.WatchTripResponse]
-	tripVerification *connect.Client[v1alpha1.TripVerificationRequest, v1alpha1.TripVerificationResponse]
-	startTrip        *connect.Client[v1alpha1.StartTripRequest, v1alpha1.StartTripResponse]
-	cancelTrip       *connect.Client[v1alpha1.CancelTripRequest, v1alpha1.CancelTripResponse]
-	endTrip          *connect.Client[v1alpha1.EndTripRequest, v1alpha1.EndTripResponse]
+	goOnline       *connect.Client[v1alpha1.GoOnlineRequest, v1alpha1.GoOnlineResponse]
+	goOffline      *connect.Client[v1alpha1.GoOfflineRequest, v1alpha1.GoOfflineResponse]
+	getStatus      *connect.Client[v1alpha1.GetStatusRequest, v1alpha1.GetStatusResponse]
+	watchStatus    *connect.Client[v1alpha1.WatchStatusRequest, v1alpha1.WatchStatusResponse]
+	getLocation    *connect.Client[v1alpha1.GetLocationRequest, v1alpha1.GetLocationResponse]
+	watchLocation  *connect.Client[v1alpha1.WatchLocationRequest, v1alpha1.WatchLocationResponse]
+	updateLocation *connect.Client[v1alpha1.UpdateLocationRequest, v1alpha1.UpdateLocationResponse]
+	createTrip     *connect.Client[v1alpha1.CreateTripRequest, v1alpha1.CreateTripResponse]
+	getTrip        *connect.Client[v1alpha1.GetTripRequest, v1alpha1.GetTripResponse]
+	watchTrip      *connect.Client[v1alpha1.WatchTripRequest, v1alpha1.WatchTripResponse]
+	verifyTrip     *connect.Client[v1alpha1.VerifyTripRequest, v1alpha1.VerifyTripResponse]
+	startTrip      *connect.Client[v1alpha1.StartTripRequest, v1alpha1.StartTripResponse]
+	cancelTrip     *connect.Client[v1alpha1.CancelTripRequest, v1alpha1.CancelTripResponse]
+	endTrip        *connect.Client[v1alpha1.EndTripRequest, v1alpha1.EndTripResponse]
 }
 
 // GoOnline calls ride.marketplace.v1alpha1.MarketplaceService.GoOnline.
@@ -282,9 +282,9 @@ func (c *marketplaceServiceClient) WatchTrip(ctx context.Context, req *connect.R
 	return c.watchTrip.CallServerStream(ctx, req)
 }
 
-// TripVerification calls ride.marketplace.v1alpha1.MarketplaceService.TripVerification.
-func (c *marketplaceServiceClient) TripVerification(ctx context.Context, req *connect.Request[v1alpha1.TripVerificationRequest]) (*connect.Response[v1alpha1.TripVerificationResponse], error) {
-	return c.tripVerification.CallUnary(ctx, req)
+// VerifyTrip calls ride.marketplace.v1alpha1.MarketplaceService.VerifyTrip.
+func (c *marketplaceServiceClient) VerifyTrip(ctx context.Context, req *connect.Request[v1alpha1.VerifyTripRequest]) (*connect.Response[v1alpha1.VerifyTripResponse], error) {
+	return c.verifyTrip.CallUnary(ctx, req)
 }
 
 // StartTrip calls ride.marketplace.v1alpha1.MarketplaceService.StartTrip.
@@ -315,7 +315,7 @@ type MarketplaceServiceHandler interface {
 	CreateTrip(context.Context, *connect.Request[v1alpha1.CreateTripRequest]) (*connect.Response[v1alpha1.CreateTripResponse], error)
 	GetTrip(context.Context, *connect.Request[v1alpha1.GetTripRequest]) (*connect.Response[v1alpha1.GetTripResponse], error)
 	WatchTrip(context.Context, *connect.Request[v1alpha1.WatchTripRequest], *connect.ServerStream[v1alpha1.WatchTripResponse]) error
-	TripVerification(context.Context, *connect.Request[v1alpha1.TripVerificationRequest]) (*connect.Response[v1alpha1.TripVerificationResponse], error)
+	VerifyTrip(context.Context, *connect.Request[v1alpha1.VerifyTripRequest]) (*connect.Response[v1alpha1.VerifyTripResponse], error)
 	StartTrip(context.Context, *connect.Request[v1alpha1.StartTripRequest]) (*connect.Response[v1alpha1.StartTripResponse], error)
 	CancelTrip(context.Context, *connect.Request[v1alpha1.CancelTripRequest]) (*connect.Response[v1alpha1.CancelTripResponse], error)
 	EndTrip(context.Context, *connect.Request[v1alpha1.EndTripRequest]) (*connect.Response[v1alpha1.EndTripResponse], error)
@@ -387,10 +387,10 @@ func NewMarketplaceServiceHandler(svc MarketplaceServiceHandler, opts ...connect
 		connect.WithSchema(marketplaceServiceWatchTripMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
-	marketplaceServiceTripVerificationHandler := connect.NewUnaryHandler(
-		MarketplaceServiceTripVerificationProcedure,
-		svc.TripVerification,
-		connect.WithSchema(marketplaceServiceTripVerificationMethodDescriptor),
+	marketplaceServiceVerifyTripHandler := connect.NewUnaryHandler(
+		MarketplaceServiceVerifyTripProcedure,
+		svc.VerifyTrip,
+		connect.WithSchema(marketplaceServiceVerifyTripMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	marketplaceServiceStartTripHandler := connect.NewUnaryHandler(
@@ -433,8 +433,8 @@ func NewMarketplaceServiceHandler(svc MarketplaceServiceHandler, opts ...connect
 			marketplaceServiceGetTripHandler.ServeHTTP(w, r)
 		case MarketplaceServiceWatchTripProcedure:
 			marketplaceServiceWatchTripHandler.ServeHTTP(w, r)
-		case MarketplaceServiceTripVerificationProcedure:
-			marketplaceServiceTripVerificationHandler.ServeHTTP(w, r)
+		case MarketplaceServiceVerifyTripProcedure:
+			marketplaceServiceVerifyTripHandler.ServeHTTP(w, r)
 		case MarketplaceServiceStartTripProcedure:
 			marketplaceServiceStartTripHandler.ServeHTTP(w, r)
 		case MarketplaceServiceCancelTripProcedure:
@@ -490,8 +490,8 @@ func (UnimplementedMarketplaceServiceHandler) WatchTrip(context.Context, *connec
 	return connect.NewError(connect.CodeUnimplemented, errors.New("ride.marketplace.v1alpha1.MarketplaceService.WatchTrip is not implemented"))
 }
 
-func (UnimplementedMarketplaceServiceHandler) TripVerification(context.Context, *connect.Request[v1alpha1.TripVerificationRequest]) (*connect.Response[v1alpha1.TripVerificationResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("ride.marketplace.v1alpha1.MarketplaceService.TripVerification is not implemented"))
+func (UnimplementedMarketplaceServiceHandler) VerifyTrip(context.Context, *connect.Request[v1alpha1.VerifyTripRequest]) (*connect.Response[v1alpha1.VerifyTripResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("ride.marketplace.v1alpha1.MarketplaceService.VerifyTrip is not implemented"))
 }
 
 func (UnimplementedMarketplaceServiceHandler) StartTrip(context.Context, *connect.Request[v1alpha1.StartTripRequest]) (*connect.Response[v1alpha1.StartTripResponse], error) {
