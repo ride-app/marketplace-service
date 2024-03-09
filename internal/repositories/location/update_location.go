@@ -10,7 +10,12 @@ import (
 	pb "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
 )
 
-func (r *FirebaseImpl) UpdateLocation(ctx context.Context, log logger.Logger, id string, location *pb.Location) (updateTime *time.Time, err error) {
+func (r *FirebaseImpl) UpdateLocation(
+	ctx context.Context,
+	log logger.Logger,
+	id string,
+	location *pb.Location,
+) (updateTime *time.Time, err error) {
 	log.Info("calculating geohash")
 	hash := geohash.Encode(location.Latitude, location.Longitude)
 
@@ -29,7 +34,6 @@ func (r *FirebaseImpl) UpdateLocation(ctx context.Context, log logger.Logger, id
 			Value: hash,
 		},
 	})
-
 	if err != nil {
 		log.WithError(err).Error("error updating driver location in firestore")
 		return nil, err

@@ -10,10 +10,13 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
-func (r *FirebaseCloudPubSubImpl) GetTrip(ctx context.Context, log logger.Logger, id string) (*pb.Trip, error) {
+func (r *FirebaseCloudPubSubImpl) GetTrip(
+	ctx context.Context,
+	log logger.Logger,
+	id string,
+) (*pb.Trip, error) {
 	log.Info("querying trip from firestore")
 	snap, err := r.firestore.Collection("trips").Doc(id).Get(ctx)
-
 	if err != nil {
 		log.WithError(err).Error("error querying trip from firestore")
 		return nil, err
@@ -22,7 +25,6 @@ func (r *FirebaseCloudPubSubImpl) GetTrip(ctx context.Context, log logger.Logger
 	trip := &pb.Trip{}
 
 	jsonBytes, err := json.Marshal(snap.Data())
-
 	if err != nil {
 		log.WithError(err).Error("could not marshal trip json into bytes")
 		return nil, err

@@ -10,14 +10,17 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func (r *FirebaseCloudPubSubImpl) WatchTripsCreated(ctx context.Context, log logger.Logger, newTripsResult chan<- *types.StreamResult[*types.Event[*pb.Trip]]) {
+func (r *FirebaseCloudPubSubImpl) WatchTripsCreated(
+	ctx context.Context,
+	log logger.Logger,
+	newTripsResult chan<- *types.StreamResult[*types.Event[*pb.Trip]],
+) {
 	subscription := r.pubsub.Subscription("trip/created")
 
 	err := subscription.Receive(ctx, func(ctx context.Context, msg *pubsub.Message) {
 		trip := &pb.Trip{}
 
 		err := proto.Unmarshal(msg.Data, trip)
-
 		if err != nil {
 			newTripsResult <- &types.StreamResult[*types.Event[*pb.Trip]]{
 				Result: nil,
@@ -37,7 +40,6 @@ func (r *FirebaseCloudPubSubImpl) WatchTripsCreated(ctx context.Context, log log
 
 		msg.Ack()
 	})
-
 	if err != nil {
 		newTripsResult <- &types.StreamResult[*types.Event[*pb.Trip]]{
 			Result: nil,

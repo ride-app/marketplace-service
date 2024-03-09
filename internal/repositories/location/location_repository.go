@@ -13,7 +13,17 @@ import (
 type LocationRepository interface {
 	GetLocation(ctx context.Context, log logger.Logger, id string) (*pb.Location, error)
 
-	ListenLocation(ctx context.Context, log logger.Logger, id string, locationResponseStream chan<- *LocationStreamResponse)
+	ListenLocation(
+		ctx context.Context,
+		log logger.Logger,
+		id string,
+		locationResponseStream chan<- *LocationStreamResponse,
+	)
 
-	UpdateLocation(ctx context.Context, log logger.Logger, id string, location *pb.Location) (updateTime *time.Time, err error)
+	UpdateLocation(
+		ctx context.Context,
+		log logger.Logger,
+		id string,
+		location *pb.Location,
+	) (updateTime *time.Time, err error)
 }

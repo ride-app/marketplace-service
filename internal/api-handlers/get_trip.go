@@ -12,7 +12,8 @@ import (
 )
 
 func (service *MarketplaceServiceServer) GetTrip(ctx context.Context,
-	req *connect.Request[pb.GetTripRequest]) (*connect.Response[pb.GetTripResponse], error) {
+	req *connect.Request[pb.GetTripRequest],
+) (*connect.Response[pb.GetTripResponse], error) {
 	log := service.logger.WithFields(map[string]string{
 		"method": "GetTrip",
 	})
@@ -35,7 +36,6 @@ func (service *MarketplaceServiceServer) GetTrip(ctx context.Context,
 	log.Debug("trip id: ", tripId)
 
 	trip, err := service.tripRepository.GetTrip(ctx, log, tripId)
-
 	if err != nil {
 		log.WithError(err).Error("failed to get trip")
 		return nil, connect.NewError(connect.CodeInternal, err)

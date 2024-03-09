@@ -15,9 +15,11 @@ type FirebaseImpl struct {
 	capacities map[driverv1alpha1.Vehicle_Type]int
 }
 
-func NewFirebaseStatusRepository(log logger.Logger, firebaseApp *firebase.App) (*FirebaseImpl, error) {
+func NewFirebaseStatusRepository(
+	log logger.Logger,
+	firebaseApp *firebase.App,
+) (*FirebaseImpl, error) {
 	firestore, err := firebaseApp.Firestore(context.Background())
-
 	if err != nil {
 		log.WithError(err).Error("error initializing firestore client")
 		return nil, err

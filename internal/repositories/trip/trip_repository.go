@@ -12,13 +12,31 @@ import (
 type TripRepository interface {
 	GetTrip(ctx context.Context, log logger.Logger, id string) (*pb.Trip, error)
 
-	CreateTrip(ctx context.Context, log logger.Logger, trip *pb.Trip) (createTime *time.Time, err error)
+	CreateTrip(
+		ctx context.Context,
+		log logger.Logger,
+		trip *pb.Trip,
+	) (createTime *time.Time, err error)
 
-	WatchTripsCreated(ctx context.Context, log logger.Logger, newTripsResult chan<- *types.StreamResult[*types.Event[*pb.Trip]]) error
+	WatchTripsCreated(
+		ctx context.Context,
+		log logger.Logger,
+		newTripsResult chan<- *types.StreamResult[*types.Event[*pb.Trip]],
+	) error
 
-	WatchTrip(ctx context.Context, log logger.Logger, id string, watchTripResults chan<- *WatchTripResult)
+	WatchTrip(
+		ctx context.Context,
+		log logger.Logger,
+		id string,
+		watchTripResults chan<- *WatchTripResult,
+	)
 
-	UpdateTrip(ctx context.Context, log logger.Logger, id string, trip *pb.Trip) (updateTime *time.Time, err error)
+	UpdateTrip(
+		ctx context.Context,
+		log logger.Logger,
+		id string,
+		trip *pb.Trip,
+	) (updateTime *time.Time, err error)
 }
 
 // func (r *FirebaseImpl) docToTrip(ctx context.Context, log logger.Logger, doc *firestore.DocumentSnapshot) (*pb.Trip, error) {

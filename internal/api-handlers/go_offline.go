@@ -11,7 +11,8 @@ import (
 )
 
 func (service *MarketplaceServiceServer) GoOffline(ctx context.Context,
-	req *connect.Request[pb.GoOfflineRequest]) (*connect.Response[pb.GoOfflineResponse], error) {
+	req *connect.Request[pb.GoOfflineRequest],
+) (*connect.Response[pb.GoOfflineResponse], error) {
 	log := service.logger.WithFields(map[string]string{
 		"method": "GoOffline",
 	})

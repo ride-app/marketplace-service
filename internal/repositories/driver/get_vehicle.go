@@ -8,7 +8,12 @@ import (
 	"github.com/dragonfish/go/v2/pkg/logger"
 )
 
-func (r *Impl) GetVehicle(ctx context.Context, log logger.Logger, id string, authToken string) (*pb.Vehicle, error) {
+func (r *Impl) GetVehicle(
+	ctx context.Context,
+	log logger.Logger,
+	id string,
+	authToken string,
+) (*pb.Vehicle, error) {
 	log.Info("getting vehicle from driver service")
 	req := connect.NewRequest(&pb.GetVehicleRequest{
 		Name: "drivers/" + id + "/vehicle",

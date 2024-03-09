@@ -11,8 +11,11 @@ import (
 	statusrepository "github.com/ride-app/marketplace-service/internal/repositories/status"
 )
 
-func (service *MarketplaceServiceServer) WatchStatus(ctx context.Context,
-	req *connect.Request[pb.WatchStatusRequest], stream *connect.ServerStream[pb.WatchStatusResponse]) error {
+func (service *MarketplaceServiceServer) WatchStatus(
+	ctx context.Context,
+	req *connect.Request[pb.WatchStatusRequest],
+	stream *connect.ServerStream[pb.WatchStatusResponse],
+) error {
 	log := service.logger.WithFields(map[string]string{
 		"method": "WatchStatus",
 	})
@@ -50,7 +53,6 @@ func (service *MarketplaceServiceServer) WatchStatus(ctx context.Context,
 		log.Info("got status update")
 		status := statusResponse.Status
 		err := statusResponse.Error
-
 		if err != nil {
 			log.WithError(err).Error("failed to get status")
 			return connect.NewError(connect.CodeInternal, err)

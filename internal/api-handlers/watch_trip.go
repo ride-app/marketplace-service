@@ -12,7 +12,11 @@ import (
 	triprepository "github.com/ride-app/marketplace-service/internal/repositories/trip"
 )
 
-func (service *MarketplaceServiceServer) WatchTrip(ctx context.Context, req *connect.Request[pb.WatchStatusRequest], stream *connect.ServerStream[pb.WatchTripResponse]) error {
+func (service *MarketplaceServiceServer) WatchTrip(
+	ctx context.Context,
+	req *connect.Request[pb.WatchStatusRequest],
+	stream *connect.ServerStream[pb.WatchTripResponse],
+) error {
 	log := service.logger.WithFields(map[string]string{
 		"method": "GetTrip",
 	})
@@ -35,7 +39,6 @@ func (service *MarketplaceServiceServer) WatchTrip(ctx context.Context, req *con
 	log.Debug("trip id: ", tripId)
 
 	trip, err := service.tripRepository.GetTrip(ctx, log, tripId)
-
 	if err != nil {
 		log.WithError(err).Error("failed to get trip")
 		return connect.NewError(connect.CodeInternal, err)

@@ -12,7 +12,8 @@ import (
 )
 
 func (service *MarketplaceServiceServer) CancelTrip(ctx context.Context,
-	req *connect.Request[pb.CancelTripRequest]) (*connect.Response[pb.CancelTripResponse], error) {
+	req *connect.Request[pb.CancelTripRequest],
+) (*connect.Response[pb.CancelTripResponse], error) {
 	log := service.logger.WithFields(map[string]string{
 		"method": "CancelTrip",
 	})
@@ -35,7 +36,6 @@ func (service *MarketplaceServiceServer) CancelTrip(ctx context.Context,
 	log.Debug("trip id: ", tripId)
 
 	trip, err := service.tripRepository.GetTrip(ctx, log, tripId)
-
 	if err != nil {
 		log.WithError(err).Error("failed to get trip")
 		return nil, connect.NewError(connect.CodeInternal, err)
@@ -54,7 +54,10 @@ func (service *MarketplaceServiceServer) CancelTrip(ctx context.Context,
 
 	if trip.GetDriver() == nil {
 		log.Info("driver already assigned")
-		return nil, connect.NewError(connect.CodeFailedPrecondition, errors.New("cannot cancel, driver already assigned"))
+		return nil, connect.NewError(
+			connect.CodeFailedPrecondition,
+			errors.New("cannot cancel, driver already assigned"),
+		)
 
 	}
 

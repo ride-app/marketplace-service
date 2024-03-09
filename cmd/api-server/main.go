@@ -25,7 +25,6 @@ func main() {
 	}
 
 	panicInterceptor, err := interceptors.NewPanicInterceptor()
-
 	if err != nil {
 		log.Fatalf("Failed to initialize panic interceptor: %v", err)
 	}
@@ -33,7 +32,6 @@ func main() {
 	connectInterceptors := connect.WithInterceptors(panicInterceptor)
 
 	service, err := InitializeService(log, config)
-
 	if err != nil {
 		log.Fatalf("Failed to initialize service: %v", err)
 	}
@@ -41,7 +39,9 @@ func main() {
 	log.Info("Service Initialized")
 
 	mux := http.NewServeMux()
-	mux.Handle(marketplacev1alpha1connect.NewMarketplaceServiceHandler(service, connectInterceptors))
+	mux.Handle(
+		marketplacev1alpha1connect.NewMarketplaceServiceHandler(service, connectInterceptors),
+	)
 
 	firebaseAuthMiddleware := authn.NewMiddleware(middlewares.FirebaseAuth)
 	handler := firebaseAuthMiddleware.Wrap(mux)
@@ -52,5 +52,4 @@ func main() {
 		// Use h2c so we can serve HTTP/2 without TLS.
 		h2c.NewHandler(handler, &http2.Server{}),
 	))
-
 }

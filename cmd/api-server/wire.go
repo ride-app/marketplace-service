@@ -14,7 +14,10 @@ import (
 	thirdparty "github.com/ride-app/marketplace-service/third-party"
 )
 
-func InitializeService(logger logger.Logger, config *config.Config) (*apihandlers.MarketplaceServiceServer, error) {
+func InitializeService(
+	logger logger.Logger,
+	config *config.Config,
+) (*apihandlers.MarketplaceServiceServer, error) {
 	panic(
 		wire.Build(
 			thirdparty.NewFirebaseApp,

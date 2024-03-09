@@ -17,7 +17,12 @@ type WatchTripResult struct {
 	Err  error
 }
 
-func (r *FirebaseCloudPubSubImpl) WatchTrip(ctx context.Context, log logger.Logger, id string, watchTripResults chan<- *WatchTripResult) {
+func (r *FirebaseCloudPubSubImpl) WatchTrip(
+	ctx context.Context,
+	log logger.Logger,
+	id string,
+	watchTripResults chan<- *WatchTripResult,
+) {
 	iterator := r.firestore.Collection("trips").Doc(id).Snapshots(ctx)
 	defer iterator.Stop()
 
@@ -53,7 +58,6 @@ func (r *FirebaseCloudPubSubImpl) WatchTrip(ctx context.Context, log logger.Logg
 		trip := &pb.Trip{}
 
 		jsonBytes, err := json.Marshal(snap.Data())
-
 		if err != nil {
 			log.WithError(err).Error("could not marshal trip json into bytes")
 			watchTripResults <- &WatchTripResult{

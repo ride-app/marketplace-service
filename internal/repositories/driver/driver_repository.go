@@ -10,7 +10,17 @@ import (
 )
 
 type DriverRepository interface {
-	GetDriver(ctx context.Context, log logger.Logger, id string, authToken string) (*pb.Driver, error)
+	GetDriver(
+		ctx context.Context,
+		log logger.Logger,
+		id string,
+		authToken string,
+	) (*pb.Driver, error)
 
-	GetVehicle(ctx context.Context, log logger.Logger, id string, authToken string) (*pb.Vehicle, error)
+	GetVehicle(
+		ctx context.Context,
+		log logger.Logger,
+		id string,
+		authToken string,
+	) (*pb.Vehicle, error)
 }

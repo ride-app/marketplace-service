@@ -11,12 +11,15 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
-func (r *FirebaseCloudPubSubImpl) UpdateTrip(ctx context.Context, log logger.Logger, trip *pb.Trip) (updateTime *time.Time, err error) {
+func (r *FirebaseCloudPubSubImpl) UpdateTrip(
+	ctx context.Context,
+	log logger.Logger,
+	trip *pb.Trip,
+) (updateTime *time.Time, err error) {
 	trip.CreateTime = nil
 	trip.UpdateTime = nil
 
 	jsonData, err := protojson.Marshal(trip)
-
 	if err != nil {
 		log.WithError(err).Error("could not marshal trip into json")
 		return nil, err
@@ -33,7 +36,6 @@ func (r *FirebaseCloudPubSubImpl) UpdateTrip(ctx context.Context, log logger.Log
 
 	id := strings.Split(trip.Name, "/")[1]
 	writeResult, err := r.firestore.Collection("trips").Doc(id).Set(ctx, doc)
-
 	if err != nil {
 		log.WithError(err).Error("could not write trip data to firestore")
 		return nil, err

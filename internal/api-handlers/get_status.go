@@ -11,7 +11,8 @@ import (
 )
 
 func (service *MarketplaceServiceServer) GetStatus(ctx context.Context,
-	req *connect.Request[pb.GetStatusRequest]) (*connect.Response[pb.GetStatusResponse], error) {
+	req *connect.Request[pb.GetStatusRequest],
+) (*connect.Response[pb.GetStatusResponse], error) {
 	log := service.logger.WithFields(map[string]string{
 		"method": "GetStatus",
 	})
@@ -40,7 +41,6 @@ func (service *MarketplaceServiceServer) GetStatus(ctx context.Context,
 	}
 
 	status, err := service.statusRepository.GetStatus(ctx, log, uid)
-
 	if err != nil {
 		log.WithError(err).Error("failed to get status")
 		return nil, connect.NewError(connect.CodeInternal, err)

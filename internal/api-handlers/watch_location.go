@@ -11,8 +11,11 @@ import (
 	locationrepository "github.com/ride-app/marketplace-service/internal/repositories/location"
 )
 
-func (service *MarketplaceServiceServer) WatchLocation(ctx context.Context,
-	req *connect.Request[pb.WatchLocationRequest], stream *connect.ServerStream[pb.WatchLocationResponse]) error {
+func (service *MarketplaceServiceServer) WatchLocation(
+	ctx context.Context,
+	req *connect.Request[pb.WatchLocationRequest],
+	stream *connect.ServerStream[pb.WatchLocationResponse],
+) error {
 	log := service.logger.WithFields(map[string]string{
 		"method": "WatchLocation",
 	})
@@ -50,7 +53,6 @@ func (service *MarketplaceServiceServer) WatchLocation(ctx context.Context,
 		log.Info("got Location update")
 		Location := LocationResponse.Location
 		err := LocationResponse.Error
-
 		if err != nil {
 			log.WithError(err).Error("failed to get Location")
 			return connect.NewError(connect.CodeInternal, err)

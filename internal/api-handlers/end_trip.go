@@ -13,7 +13,8 @@ import (
 
 // TODO: properly implement
 func (service *MarketplaceServiceServer) EndTrip(ctx context.Context,
-	req *connect.Request[pb.EndTripRequest]) (*connect.Response[pb.EndTripResponse], error) {
+	req *connect.Request[pb.EndTripRequest],
+) (*connect.Response[pb.EndTripResponse], error) {
 	log := service.logger.WithFields(map[string]string{
 		"method": "EndTrip",
 	})
@@ -36,7 +37,6 @@ func (service *MarketplaceServiceServer) EndTrip(ctx context.Context,
 	log.Debug("trip id: ", tripId)
 
 	trip, err := service.tripRepository.GetTrip(ctx, log, tripId)
-
 	if err != nil {
 		log.WithError(err).Error("failed to get trip")
 		return nil, connect.NewError(connect.CodeInternal, err)

@@ -11,7 +11,8 @@ import (
 )
 
 func (service *MarketplaceServiceServer) UpdateLocation(ctx context.Context,
-	req *connect.Request[pb.UpdateLocationRequest]) (*connect.Response[pb.UpdateLocationResponse], error) {
+	req *connect.Request[pb.UpdateLocationRequest],
+) (*connect.Response[pb.UpdateLocationResponse], error) {
 	log := service.logger.WithFields(map[string]string{
 		"method": "UpdateLocation",
 	})
@@ -29,7 +30,7 @@ func (service *MarketplaceServiceServer) UpdateLocation(ctx context.Context,
 		return nil, connect.NewError(connect.CodeInvalidArgument, err)
 	}
 
-	uid := strings.Split(req.Msg.Parent, "/")[1]
+	uid := strings.Split(req.Msg.Location.Name, "/")[1]
 
 	log.Debug("uid: ", uid)
 	log.Debug("request header uid: ", req.Header().Get("uid"))
@@ -40,7 +41,6 @@ func (service *MarketplaceServiceServer) UpdateLocation(ctx context.Context,
 	}
 
 	status, err := service.statusRepository.GetStatus(ctx, log, uid)
-
 	if err != nil {
 		log.WithError(err).Error("failed to get status")
 		return nil, connect.NewError(connect.CodeInternal, err)

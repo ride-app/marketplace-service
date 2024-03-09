@@ -13,11 +13,14 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
-const INITIAL_SEARCH_RADIUS_M = 125
-const MAX_SEARCH_RADIUS_M = 2000
+const (
+	INITIAL_SEARCH_RADIUS_M = 125
+	MAX_SEARCH_RADIUS_M     = 2000
+)
 
 func (service *MarketplaceServiceServer) CreateTrip(ctx context.Context,
-	req *connect.Request[pb.CreateTripRequest]) (*connect.Response[pb.CreateTripResponse], error) {
+	req *connect.Request[pb.CreateTripRequest],
+) (*connect.Response[pb.CreateTripResponse], error) {
 	log := service.logger.WithFields(map[string]string{
 		"method": "CreateTrip",
 	})
@@ -53,7 +56,6 @@ func (service *MarketplaceServiceServer) CreateTrip(ctx context.Context,
 	log.Debug("trip id: ", tripId)
 
 	createTime, err := service.tripRepository.CreateTrip(ctx, log, trip)
-
 	if err != nil {
 		log.WithError(err).Error("failed to create trip")
 		return nil, connect.NewError(connect.CodeInternal, err)

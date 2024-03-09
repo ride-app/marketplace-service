@@ -13,7 +13,11 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func (r *FirebaseCloudPubSubImpl) CreateTrip(ctx context.Context, log logger.Logger, trip *pb.Trip) (createTime *time.Time, err error) {
+func (r *FirebaseCloudPubSubImpl) CreateTrip(
+	ctx context.Context,
+	log logger.Logger,
+	trip *pb.Trip,
+) (createTime *time.Time, err error) {
 	trip.Status = pb.Trip_STATUS_PENDING
 	trip.Driver = nil
 	trip.Route.WalkToPickup = nil
@@ -24,7 +28,6 @@ func (r *FirebaseCloudPubSubImpl) CreateTrip(ctx context.Context, log logger.Log
 	trip.EndTime = nil
 
 	jsonData, err := protojson.Marshal(trip)
-
 	if err != nil {
 		log.WithError(err).Error("could not marshal trip into json")
 		return nil, err
@@ -41,7 +44,6 @@ func (r *FirebaseCloudPubSubImpl) CreateTrip(ctx context.Context, log logger.Log
 
 	id := strings.Split(trip.Name, "/")[1]
 	writeResult, err := r.firestore.Collection("trips").Doc(id).Set(ctx, doc)
-
 	if err != nil {
 		log.WithError(err).Error("could not write trip data to firestore")
 		return nil, err
@@ -49,7 +51,6 @@ func (r *FirebaseCloudPubSubImpl) CreateTrip(ctx context.Context, log logger.Log
 
 	go func() {
 		data, err := proto.Marshal(trip)
-
 		if err != nil {
 			log.WithError(err).Warn("could not marshal trip into []byte")
 		}

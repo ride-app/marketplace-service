@@ -10,7 +10,11 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
-func (r *FirebaseImpl) GetStatus(ctx context.Context, log logger.Logger, id string) (*pb.Status, error) {
+func (r *FirebaseImpl) GetStatus(
+	ctx context.Context,
+	log logger.Logger,
+	id string,
+) (*pb.Status, error) {
 	log.Info("getting status from firestore")
 	doc, err := r.firestore.Collection("activeDrivers").Doc(id).Get(ctx)
 
