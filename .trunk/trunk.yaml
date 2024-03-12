@@ -16,21 +16,16 @@ lint:
     - linters: [goimports]
       paths:
         - "**/wire_gen.go"
-runtimes:
-  enabled:
-    - go@1.21.0
-    - node@18.12.1
-    - python@3.10.8
 plugins:
   sources:
     - id: trunk
       ref: v1.4.3
       uri: https://github.com/trunk-io/plugins
     - id: trunk-plugins
-      ref: main
+      ref: v1.0.0
       uri: https://github.com/dragonfish/trunk-plugins
     - id: trunk-configs
-      ref: main
+      ref: v1.0.0
       uri: https://github.com/dragonfish/trunk-configs
 
 merge:
