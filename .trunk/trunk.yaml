@@ -5,30 +5,6 @@ cli:
 lint:
   disabled:
     - gokart
-  enabled:
-    - golines@0.12.2
-    - gofumpt@0.5.0
-    - buildifier@6.4.0
-    - renovate@37.210.0
-    - checkov@3.2.24
-    - osv-scanner@1.6.2
-    - terrascan@1.18.11
-    - trivy@0.49.1
-    - trufflehog@3.68.0
-    - git-diff-check
-    - yamllint@1.35.1
-    - shellcheck@0.9.0
-    - shfmt@3.6.0
-    - goimports@0.9.1
-    - actionlint@1.6.26
-    - semgrep@1.62.0
-    - prettier@3.2.5
-    - gitleaks@8.18.2
-    - gofmt@1.20.4
-    - golangci-lint@1.56.2
-    - hadolint@2.12.0
-    - buf-breaking@1.29.0
-    - buf-lint@1.29.0
 
   ignore:
     - linters: [ALL]
@@ -45,24 +21,18 @@ runtimes:
     - go@1.21.0
     - node@18.12.1
     - python@3.10.8
-actions:
-  enabled:
-    - trunk-announce
-    - buf-gen
-    - go-mod-tidy
-    - trunk-upgrade-available
-    - trunk-check-pre-push
-    - trunk-fmt-pre-commit
 plugins:
   sources:
     - id: trunk
       ref: v1.4.3
       uri: https://github.com/trunk-io/plugins
+    - id: trunk-plugins
+      ref: main
+      uri: https://github.com/dragonfish/trunk-plugins
+    - id: trunk-configs
+      ref: main
+      uri: https://github.com/dragonfish/trunk-configs
 
 merge:
   required_statuses:
     - Build
-
-tools:
-  enabled:
-    - bazel@7.0.2
