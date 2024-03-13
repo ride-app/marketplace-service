@@ -14,12 +14,6 @@ def go_dependencies():
         version = "v1.33.0-20240221180331-f05a6f4403ce.1",
     )
     go_repository(
-        name = "build_buf_gen_go_envoyproxy_protoc_gen_validate_protocolbuffers_go",
-        importpath = "buf.build/gen/go/envoyproxy/protoc-gen-validate/protocolbuffers/go",
-        sum = "h1:6lI955rVaTQYWugXV/5SlUvCpF7dT3OZIZeCZMHqOMk=",
-        version = "v1.33.0-20221025150516-6607b10f00ed.1",
-    )
-    go_repository(
         name = "build_buf_gen_go_ride_driver_connectrpc_go",
         importpath = "buf.build/gen/go/ride/driver/connectrpc/go",
         sum = "h1:y5UalU+Cwd5leQyAavBGHLfeqKRNGD5AE2fa1/MhLBQ=",
@@ -42,12 +36,6 @@ def go_dependencies():
         importpath = "buf.build/gen/go/ride/payments/protocolbuffers/go",
         sum = "h1:FviKtAp30a7vUjl+gOl89ulEpTdfnSMKaU6aphhoM3o=",
         version = "v1.32.0-20240224142941-a019682ec9da.1",
-    )
-    go_repository(
-        name = "build_buf_gen_go_ride_wallet_protocolbuffers_go",
-        importpath = "buf.build/gen/go/ride/wallet/protocolbuffers/go",
-        sum = "h1:7FQdB9GfoYFbZrzpG7GYATamxlvROZHKbemRvRFn5hA=",
-        version = "v1.32.0-20230924153639-d33e5416a9c2.1",
     )
     go_repository(
         name = "co_honnef_go_tools",
