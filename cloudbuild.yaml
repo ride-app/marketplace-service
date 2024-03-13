@@ -3,7 +3,7 @@ substitutions:
 
 steps:
   # Build Docker image using Bazel
-  - name: gcr.io/cloud-builders/bazel:7.0.1@sha256:12285a2e7608d92ecd67c337a7e80379f7f1564ea5a65349407190b49f61b09a
+  - name: gcr.io/cloud-builders/bazel:7.0.1@sha256:75e6bf56af94d8879bcb6a5329a703bb6c39f37134f6e2fe81a19fe32e398432
     id: build
     args:
       [
@@ -14,7 +14,7 @@ steps:
       ]
 
   # Tag image with commit sha
-  - name: gcr.io/cloud-builders/docker@sha256:c2d274bb60246795c335d2c36bcbab40fabe4b695ec791a98f15b6346f2ae5dd
+  - name: gcr.io/cloud-builders/docker@sha256:c49f9c54385d4e8afd02940233922476a082a86324b3817d5c200e58bc44a5b7
     id: tag-sha
     waitFor:
       - build
@@ -23,7 +23,7 @@ steps:
       - api-server:latest
       - asia-south2-docker.pkg.dev/$PROJECT_ID/docker-registry/$_SERVICE_NAME:$COMMIT_SHA
 
-  - name: gcr.io/cloud-builders/docker@sha256:c2d274bb60246795c335d2c36bcbab40fabe4b695ec791a98f15b6346f2ae5dd
+  - name: gcr.io/cloud-builders/docker@sha256:c49f9c54385d4e8afd02940233922476a082a86324b3817d5c200e58bc44a5b7
     waitFor:
       - build
     args:
@@ -32,7 +32,7 @@ steps:
       - asia-south2-docker.pkg.dev/$PROJECT_ID/docker-registry/$_SERVICE_NAME:$BRANCH_NAME
 
   # Push image
-  - name: gcr.io/cloud-builders/docker@sha256:c2d274bb60246795c335d2c36bcbab40fabe4b695ec791a98f15b6346f2ae5dd
+  - name: gcr.io/cloud-builders/docker@sha256:c49f9c54385d4e8afd02940233922476a082a86324b3817d5c200e58bc44a5b7
     id: push
     waitFor:
       - tag-sha
@@ -41,7 +41,7 @@ steps:
       - asia-south2-docker.pkg.dev/$PROJECT_ID/docker-registry/$_SERVICE_NAME:$COMMIT_SHA
 
   # Deploy new Cloud Run revision
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk@sha256:e2f82c4451cf3ba5d4606759b1f14ad3597b2709cd8201bf6f9e0f7e4e5982eb
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk@sha256:4a4884995f6734698aa910e43c0966502a8e980fdaee3ac04bf956b912921ecd
     waitFor:
       - push
     entrypoint: gcloud
