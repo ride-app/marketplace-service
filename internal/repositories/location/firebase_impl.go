@@ -12,9 +12,11 @@ type FirebaseImpl struct {
 	firestore *firestore.Client
 }
 
-func NewFirebaseLocationRepository(log logger.Logger, firebaseApp *firebase.App) (*FirebaseImpl, error) {
+func NewFirebaseLocationRepository(
+	log logger.Logger,
+	firebaseApp *firebase.App,
+) (*FirebaseImpl, error) {
 	firestore, err := firebaseApp.Firestore(context.Background())
-
 	if err != nil {
 		log.WithError(err).Error("error initializing firestore client")
 		return nil, err

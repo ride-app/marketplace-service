@@ -14,7 +14,12 @@ type LocationStreamResponse struct {
 	Error    error
 }
 
-func (r *FirebaseImpl) ListenLocation(ctx context.Context, log logger.Logger, id string, locationResponseStream chan<- *LocationStreamResponse) {
+func (r *FirebaseImpl) ListenLocation(
+	ctx context.Context,
+	log logger.Logger,
+	id string,
+	locationResponseStream chan<- *LocationStreamResponse,
+) {
 	log.Info("listening for driver location changes in firestore")
 	snapshots := r.firestore.Collection("activeDrivers").Doc(id).Snapshots(ctx)
 

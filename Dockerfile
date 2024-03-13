@@ -1,7 +1,12 @@
+# trunk-ignore-all(trivy/DS026)
 # syntax=docker/dockerfile:1@sha256:ac85f380a63b13dfcefa89046420e1781752bab202122f8f50032edf31be0021
 
 # Build go binary
 FROM golang:1.22-alpine@sha256:fc5e5848529786cf1136563452b33d713d5c60b2c787f6b2a077fa6eeefd9114 as build
+
+RUN groupadd -r nonroot && useradd -r -g nonroot nonroot
+
+USER nonroot
 
 WORKDIR /go/src/app
 

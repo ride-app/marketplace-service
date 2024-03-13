@@ -7,13 +7,15 @@ require (
 	buf.build/gen/go/ride/driver/connectrpc/go v1.15.0-20240127091614-32d65fcb4c5c.1
 	buf.build/gen/go/ride/driver/protocolbuffers/go v1.33.0-20240127091614-32d65fcb4c5c.1
 	buf.build/gen/go/ride/payments/connectrpc/go v1.15.0-20240224142941-a019682ec9da.1
-	buf.build/gen/go/ride/payments/protocolbuffers/go v1.33.0-20240224142941-a019682ec9da.1
-	buf.build/gen/go/ride/wallet/protocolbuffers/go v1.33.0-20230924153639-d33e5416a9c2.1
-	cloud.google.com/go/firestore v1.15.0
+	buf.build/gen/go/ride/payments/protocolbuffers/go v1.32.0-20240224142941-a019682ec9da.1
+	buf.build/gen/go/ride/wallet/protocolbuffers/go v1.32.0-20230924153639-d33e5416a9c2.1
+	cloud.google.com/go/firestore v1.14.0
+	cloud.google.com/go/pubsub v1.36.1
 	connectrpc.com/authn v0.1.0
 	connectrpc.com/connect v1.15.0
 	firebase.google.com/go/v4 v4.13.0
-	github.com/bufbuild/protovalidate-go v0.6.0
+	github.com/aidarkhanov/nanoid v1.0.8
+	github.com/bufbuild/protovalidate-go v0.5.2
 	github.com/dragonfish/go/v2 v2.1.0
 	github.com/google/wire v0.6.0
 	github.com/ilyakaznacheev/cleanenv v1.5.0
@@ -21,9 +23,10 @@ require (
 	github.com/onsi/ginkgo/v2 v2.16.0
 	github.com/onsi/gomega v1.31.1
 	go.uber.org/mock v0.4.0
-	golang.org/x/net v0.22.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20240311173647-c811ad7063a7
-	google.golang.org/grpc v1.62.1
+	golang.org/x/net v0.21.0
+	google.golang.org/genproto v0.0.0-20240213162025-012b6fc9bca9
+	google.golang.org/genproto/googleapis/api v0.0.0-20240221002015-b0ce06bbee7c
+	google.golang.org/grpc v1.62.0
 	google.golang.org/protobuf v1.33.0
 )
 
@@ -79,8 +82,7 @@ require (
 	google.golang.org/api v0.167.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/appengine/v2 v2.0.2 // indirect
-	google.golang.org/genproto v0.0.0-20240213162025-012b6fc9bca9 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240311132316-a219d84964c2 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240221002015-b0ce06bbee7c // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	olympos.io/encoding/edn v0.0.0-20201019073823-d3554ca0b0a3 // indirect
 )

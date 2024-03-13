@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "trip",
+    srcs = [
+        "create_trip.go",
+        "firebase_pubsub_impl.go",
+        "get_trip.go",
+        "trip_repository.go",
+        "update_trip.go",
+        "watch_trip.go",
+        "watch_trips_created.go",
+    ],
+    importpath = "github.com/ride-app/marketplace-service/internal/repositories/trip",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//api/ride/marketplace/v1alpha1",
+        "//internal/utils/types",
+        "@com_github_dragonfish_go_v2//pkg/logger",
+        "@com_google_cloud_go_firestore//:firestore",
+        "@com_google_cloud_go_pubsub//:pubsub",
+        "@com_google_firebase_go_v4//:go",
+        "@com_google_firebase_go_v4//auth",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+        "@org_golang_google_protobuf//encoding/protojson",
+        "@org_golang_google_protobuf//proto",
+        "@org_golang_google_protobuf//types/known/timestamppb",
+    ],
+)

@@ -10,7 +10,11 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
-func (r *FirebaseImpl) GoOffline(ctx context.Context, log logger.Logger, id string) (*pb.Status, error) {
+func (r *FirebaseImpl) GoOffline(
+	ctx context.Context,
+	log logger.Logger,
+	id string,
+) (*pb.Status, error) {
 	log.Info("deleting active driver from firestore")
 	_, err := r.firestore.Collection("activeDrivers").Doc(id).Delete(ctx)
 

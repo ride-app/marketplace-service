@@ -9,7 +9,11 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-func (r *FirebaseImpl) GetLocation(ctx context.Context, log logger.Logger, id string) (*pb.Location, error) {
+func (r *FirebaseImpl) GetLocation(
+	ctx context.Context,
+	log logger.Logger,
+	id string,
+) (*pb.Location, error) {
 	log.Info("checking if driver is active in firestore")
 	doc, err := r.firestore.Collection("activeDrivers").Doc(id).Get(ctx)
 

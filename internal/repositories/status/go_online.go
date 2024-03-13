@@ -13,37 +13,44 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
-func (r *FirebaseImpl) GoOnline(ctx context.Context, log logger.Logger, id string, vehicle *driverv1alpha1.Vehicle) (*pb.Status, error) {
+func (r *FirebaseImpl) GoOnline(
+	ctx context.Context,
+	log logger.Logger,
+	id string,
+	vehicle *driverv1alpha1.Vehicle,
+) (*pb.Status, error) {
 	log.Info("ppdating active driver in firestore")
 
 	ref := r.firestore.Collection("activeDrivers").Doc(id)
-	err := r.firestore.RunTransaction(ctx, func(ctx context.Context, tx *firestore.Transaction) error {
-		doc, err := tx.Get(ref)
+	err := r.firestore.RunTransaction(
+		ctx,
+		func(ctx context.Context, tx *firestore.Transaction) error {
+			doc, err := tx.Get(ref)
 
-		if err != nil && !(status.Code(err) == codes.NotFound) {
-			log.WithError(err).Error("error getting active driver from firestore")
-			return err
-		}
+			if err != nil && !(status.Code(err) == codes.NotFound) {
+				log.WithError(err).Error("error getting active driver from firestore")
+				return err
+			}
 
-		if doc.Exists() {
+			if doc.Exists() {
+				return nil
+			}
+
+			err = tx.Set(ref, map[string]interface{}{
+				"vehicleId":    strings.Split(vehicle.Name, "/")[1],
+				"licensePlate": vehicle.LicensePlate,
+				"vehicleType":  strings.ToLower(vehicle.Type.String()),
+				"capacity":     r.capacities[vehicle.Type],
+			})
+
+			if err != nil {
+				log.WithError(err).Error("error setting active driver in firestore")
+				return err
+			}
+
 			return nil
-		}
-
-		err = tx.Set(ref, map[string]interface{}{
-			"vehicleId":    strings.Split(vehicle.Name, "/")[1],
-			"licensePlate": vehicle.LicensePlate,
-			"vehicleType":  strings.ToLower(vehicle.Type.String()),
-			"capacity":     r.capacities[vehicle.Type],
-		})
-
-		if err != nil {
-			log.WithError(err).Error("error setting active driver in firestore")
-			return err
-		}
-
-		return nil
-	})
-
+		},
+	)
 	if err != nil {
 		log.WithError(err).Error("error updating active driver in firestore")
 		return nil, err

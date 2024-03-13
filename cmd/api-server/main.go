@@ -9,7 +9,7 @@ import (
 	interceptors "github.com/dragonfish/go/v2/pkg/connect/interceptors"
 	middlewares "github.com/dragonfish/go/v2/pkg/connect/middlewares"
 	"github.com/dragonfish/go/v2/pkg/logger"
-	"github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1/v1alpha1connect"
+	"github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1/marketplacev1alpha1connect"
 	"github.com/ride-app/marketplace-service/config"
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
@@ -25,7 +25,6 @@ func main() {
 	}
 
 	panicInterceptor, err := interceptors.NewPanicInterceptor()
-
 	if err != nil {
 		log.Fatalf("Failed to initialize panic interceptor: %v", err)
 	}
@@ -33,7 +32,6 @@ func main() {
 	connectInterceptors := connect.WithInterceptors(panicInterceptor)
 
 	service, err := InitializeService(log, config)
-
 	if err != nil {
 		log.Fatalf("Failed to initialize service: %v", err)
 	}
@@ -41,7 +39,9 @@ func main() {
 	log.Info("Service Initialized")
 
 	mux := http.NewServeMux()
-	mux.Handle(v1alpha1connect.NewMarketplaceServiceHandler(service, connectInterceptors))
+	mux.Handle(
+		marketplacev1alpha1connect.NewMarketplaceServiceHandler(service, connectInterceptors),
+	)
 
 	firebaseAuthMiddleware := authn.NewMiddleware(middlewares.FirebaseAuth)
 	handler := firebaseAuthMiddleware.Wrap(mux)
@@ -52,5 +52,4 @@ func main() {
 		// Use h2c so we can serve HTTP/2 without TLS.
 		h2c.NewHandler(handler, &http2.Server{}),
 	))
-
 }

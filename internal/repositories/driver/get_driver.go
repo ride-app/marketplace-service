@@ -10,7 +10,12 @@ import (
 	"github.com/dragonfish/go/v2/pkg/logger"
 )
 
-func (r *Impl) GetDriver(ctx context.Context, log logger.Logger, id string, authToken string) (*pb.Driver, error) {
+func (r *Impl) GetDriver(
+	ctx context.Context,
+	log logger.Logger,
+	id string,
+	authToken string,
+) (*pb.Driver, error) {
 	log.Info("Getting driver from driver service")
 	req := connect.NewRequest(&pb.GetDriverRequest{
 		Name: "drivers/" + id,

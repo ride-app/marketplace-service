@@ -16,7 +16,12 @@ type StatusStreamResponse struct {
 	Error  error
 }
 
-func (r *FirebaseImpl) ListenStatus(ctx context.Context, log logger.Logger, id string, statusResponseStream chan<- *StatusStreamResponse) {
+func (r *FirebaseImpl) ListenStatus(
+	ctx context.Context,
+	log logger.Logger,
+	id string,
+	statusResponseStream chan<- *StatusStreamResponse,
+) {
 	log.Info("listening for status updates from firestore")
 	snapshots := r.firestore.Collection("activeDrivers").Doc(id).Snapshots(ctx)
 	defer snapshots.Stop()

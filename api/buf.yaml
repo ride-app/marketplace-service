@@ -10,3 +10,4 @@ lint:
 deps:
   - buf.build/googleapis/googleapis
   - buf.build/bufbuild/protovalidate
+  - buf.build/ride/driver

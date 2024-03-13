@@ -15,7 +15,7 @@ import (
 	time "time"
 
 	logger "github.com/dragonfish/go/v2/pkg/logger"
-	v1alpha1 "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
+	marketplacev1alpha1 "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
 	locationrepository "github.com/ride-app/marketplace-service/internal/repositories/location"
 	gomock "go.uber.org/mock/gomock"
 )
@@ -44,10 +44,10 @@ func (m *MockLocationRepository) EXPECT() *MockLocationRepositoryMockRecorder {
 }
 
 // GetLocation mocks base method.
-func (m *MockLocationRepository) GetLocation(arg0 context.Context, arg1 logger.Logger, arg2 string) (*v1alpha1.Location, error) {
+func (m *MockLocationRepository) GetLocation(arg0 context.Context, arg1 logger.Logger, arg2 string) (*marketplacev1alpha1.Location, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetLocation", arg0, arg1, arg2)
-	ret0, _ := ret[0].(*v1alpha1.Location)
+	ret0, _ := ret[0].(*marketplacev1alpha1.Location)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -71,7 +71,7 @@ func (mr *MockLocationRepositoryMockRecorder) ListenLocation(arg0, arg1, arg2, a
 }
 
 // UpdateLocation mocks base method.
-func (m *MockLocationRepository) UpdateLocation(arg0 context.Context, arg1 logger.Logger, arg2 string, arg3 *v1alpha1.Location) (*time.Time, error) {
+func (m *MockLocationRepository) UpdateLocation(arg0 context.Context, arg1 logger.Logger, arg2 string, arg3 *marketplacev1alpha1.Location) (*time.Time, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "UpdateLocation", arg0, arg1, arg2, arg3)
 	ret0, _ := ret[0].(*time.Time)

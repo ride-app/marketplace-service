@@ -11,7 +11,8 @@ import (
 )
 
 func (service *MarketplaceServiceServer) GetLocation(ctx context.Context,
-	req *connect.Request[pb.GetLocationRequest]) (*connect.Response[pb.GetLocationResponse], error) {
+	req *connect.Request[pb.GetLocationRequest],
+) (*connect.Response[pb.GetLocationResponse], error) {
 	log := service.logger.WithFields(map[string]string{
 		"method": "GetLocation",
 	})
@@ -40,7 +41,6 @@ func (service *MarketplaceServiceServer) GetLocation(ctx context.Context,
 	}
 
 	location, err := service.locationRepository.GetLocation(ctx, log, uid)
-
 	if err != nil {
 		log.WithError(err).Error("failed to get location")
 		return nil, connect.NewError(connect.CodeInternal, err)
