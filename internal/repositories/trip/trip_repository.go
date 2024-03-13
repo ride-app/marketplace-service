@@ -22,7 +22,7 @@ type TripRepository interface {
 		ctx context.Context,
 		log logger.Logger,
 		newTripsResult chan<- *types.StreamResult[*types.Event[*pb.Trip]],
-	) error
+	)
 
 	WatchTrip(
 		ctx context.Context,
@@ -34,7 +34,6 @@ type TripRepository interface {
 	UpdateTrip(
 		ctx context.Context,
 		log logger.Logger,
-		id string,
 		trip *pb.Trip,
 	) (updateTime *time.Time, err error)
 }

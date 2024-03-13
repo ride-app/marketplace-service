@@ -14,7 +14,7 @@ import (
 
 func (service *MarketplaceServiceServer) WatchTrip(
 	ctx context.Context,
-	req *connect.Request[pb.WatchStatusRequest],
+	req *connect.Request[pb.WatchTripRequest],
 	stream *connect.ServerStream[pb.WatchTripResponse],
 ) error {
 	log := service.logger.WithFields(map[string]string{

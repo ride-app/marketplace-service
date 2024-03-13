@@ -10,6 +10,7 @@ import (
 	driverrepository "github.com/ride-app/marketplace-service/internal/repositories/driver"
 	locationrepository "github.com/ride-app/marketplace-service/internal/repositories/location"
 	statusrepository "github.com/ride-app/marketplace-service/internal/repositories/status"
+	triprepository "github.com/ride-app/marketplace-service/internal/repositories/trip"
 	walletrepository "github.com/ride-app/marketplace-service/internal/repositories/wallet"
 	thirdparty "github.com/ride-app/marketplace-service/third-party"
 )
@@ -21,6 +22,7 @@ func InitializeService(
 	panic(
 		wire.Build(
 			thirdparty.NewFirebaseApp,
+			thirdparty.NewPubSubClient,
 			statusrepository.NewFirebaseStatusRepository,
 			wire.Bind(
 				new(statusrepository.StatusRepository),
@@ -40,6 +42,11 @@ func InitializeService(
 			wire.Bind(
 				new(walletrepository.WalletRepository),
 				new(*walletrepository.Impl),
+			),
+			triprepository.NewFirebaseTripRepository,
+			wire.Bind(
+				new(triprepository.TripRepository),
+				new(*triprepository.FirebaseCloudPubSubImpl),
 			),
 			apihandlers.New,
 		),

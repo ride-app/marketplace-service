@@ -2,7 +2,10 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
 go_library(
     name = "mock",
-    srcs = ["driver_repository.go"],
+    srcs = [
+        "driver_repository.go",
+        "get_driver.go",
+    ],
     importpath = "github.com/ride-app/marketplace-service/internal/repositories/driver/mock",
     visibility = ["//:__subpackages__"],
     deps = [

@@ -15,7 +15,7 @@ import (
 
 	driverv1alpha1 "buf.build/gen/go/ride/driver/protocolbuffers/go/ride/driver/v1alpha1"
 	logger "github.com/dragonfish/go/v2/pkg/logger"
-	v1alpha1 "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
+	marketplacev1alpha1 "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
 	statusrepository "github.com/ride-app/marketplace-service/internal/repositories/status"
 	gomock "go.uber.org/mock/gomock"
 )
@@ -44,10 +44,10 @@ func (m *MockStatusRepository) EXPECT() *MockStatusRepositoryMockRecorder {
 }
 
 // GetStatus mocks base method.
-func (m *MockStatusRepository) GetStatus(arg0 context.Context, arg1 logger.Logger, arg2 string) (*v1alpha1.Status, error) {
+func (m *MockStatusRepository) GetStatus(arg0 context.Context, arg1 logger.Logger, arg2 string) (*marketplacev1alpha1.Status, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetStatus", arg0, arg1, arg2)
-	ret0, _ := ret[0].(*v1alpha1.Status)
+	ret0, _ := ret[0].(*marketplacev1alpha1.Status)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -59,10 +59,10 @@ func (mr *MockStatusRepositoryMockRecorder) GetStatus(arg0, arg1, arg2 any) *gom
 }
 
 // GoOffline mocks base method.
-func (m *MockStatusRepository) GoOffline(arg0 context.Context, arg1 logger.Logger, arg2 string) (*v1alpha1.Status, error) {
+func (m *MockStatusRepository) GoOffline(arg0 context.Context, arg1 logger.Logger, arg2 string) (*marketplacev1alpha1.Status, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GoOffline", arg0, arg1, arg2)
-	ret0, _ := ret[0].(*v1alpha1.Status)
+	ret0, _ := ret[0].(*marketplacev1alpha1.Status)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -74,10 +74,10 @@ func (mr *MockStatusRepositoryMockRecorder) GoOffline(arg0, arg1, arg2 any) *gom
 }
 
 // GoOnline mocks base method.
-func (m *MockStatusRepository) GoOnline(arg0 context.Context, arg1 logger.Logger, arg2 string, arg3 *driverv1alpha1.Vehicle) (*v1alpha1.Status, error) {
+func (m *MockStatusRepository) GoOnline(arg0 context.Context, arg1 logger.Logger, arg2 string, arg3 *driverv1alpha1.Vehicle) (*marketplacev1alpha1.Status, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GoOnline", arg0, arg1, arg2, arg3)
-	ret0, _ := ret[0].(*v1alpha1.Status)
+	ret0, _ := ret[0].(*marketplacev1alpha1.Status)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }

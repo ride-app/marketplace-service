@@ -19,7 +19,6 @@ type FirebaseCloudPubSubImpl struct {
 func NewFirebaseTripRepository(
 	log logger.Logger,
 	firebaseApp *firebase.App,
-	auth *auth.Client,
 	pubsub *pubsub.Client,
 ) (*FirebaseCloudPubSubImpl, error) {
 	firestore, err := firebaseApp.Firestore(context.Background())
@@ -28,6 +27,7 @@ func NewFirebaseTripRepository(
 		return nil, err
 	}
 
+	auth, err := firebaseApp.Auth(context.Background())
 	if err != nil {
 		log.WithError(err).Error("error initializing auth client")
 		return nil, err

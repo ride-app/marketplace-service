@@ -18,6 +18,7 @@ go_library(
         "//internal/repositories/driver",
         "//internal/repositories/location",
         "//internal/repositories/status",
+        "//internal/repositories/trip",
         "//internal/repositories/wallet",
         "//third-party",
         "@com_connectrpc_authn//:authn",
