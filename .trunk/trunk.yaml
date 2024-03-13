@@ -25,7 +25,7 @@ plugins:
       ref: v1.0.0
       uri: https://github.com/dragonfish/trunk-plugins
     - id: trunk-configs
-      ref: v1.0.0
+      ref: v1.1.0
       uri: https://github.com/dragonfish/trunk-configs
 
 merge:
