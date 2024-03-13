@@ -271,7 +271,8 @@ type GoOnlineRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The relative resource name of the Driver to go online. Example: "drivers/driver1"
+	// The relative resource name of the Driver to go online. Example:
+	// "drivers/driver1"
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The location of the Driver.
 	Location *Location `protobuf:"bytes,2,opt,name=location,proto3" json:"location,omitempty"`
@@ -376,7 +377,8 @@ type GoOfflineRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The relative resource name of the Driver to go offline. Example: "drivers/driver1"
+	// The relative resource name of the Driver to go offline. Example:
+	// "drivers/driver1"
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -664,7 +666,8 @@ type Location struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The relative resource name of the Location. Example: "drivers/driver1/location"
+	// The relative resource name of the Location. Example:
+	// "drivers/driver1/location"
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The latitude of the Driver.
 	Latitude float64 `protobuf:"fixed64,2,opt,name=latitude,proto3" json:"latitude,omitempty"`
@@ -1189,11 +1192,13 @@ type CreateTripRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// A unique request ID for server to detect duplicated requests for idempotency.
+	// A unique request ID for server to detect duplicated requests for
+	// idempotency.
 	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	// The Trip to be created. Client **must** not set the Transaction.name field.
 	Trip *Trip `protobuf:"bytes,2,opt,name=trip,proto3" json:"trip,omitempty"`
-	// List of relative resource names of drivers to exclude from the search. For example, "drivers/driver1"
+	// List of relative resource names of drivers to exclude from the search. For
+	// example, "drivers/driver1"
 	Ignore []string `protobuf:"bytes,3,rep,name=ignore,proto3" json:"ignore,omitempty"`
 }
 
@@ -1850,7 +1855,8 @@ type Trip_Location struct {
 
 	// The latitude and longitude of the location
 	Coordinates *latlng.LatLng `protobuf:"bytes,1,opt,name=coordinates,proto3" json:"coordinates,omitempty"`
-	// The full address of the location. For example: "1600 Amphitheatre Pkwy, Mountain View, CA 94043"
+	// The full address of the location. For example: "1600 Amphitheatre Pkwy,
+	// Mountain View, CA 94043"
 	Address        string  `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
 	PolylineString *string `protobuf:"bytes,3,opt,name=polyline_string,json=polylineString,proto3,oneof" json:"polyline_string,omitempty"`
 }
@@ -1985,7 +1991,8 @@ type Trip_Rider struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The relative resource name of the Rider as a user, for example, "users/rider1"
+	// The relative resource name of the Rider as a user, for example,
+	// "users/rider1"
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The Full name of the Rider
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
@@ -2126,7 +2133,8 @@ type Trip_Vehicle struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The relative resource name of the Vehicle, for example, "vehicles/vehicle1"
+	// The relative resource name of the Vehicle, for example,
+	// "vehicles/vehicle1"
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The identifiable description of the vehicle
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
@@ -2685,52 +2693,55 @@ func file_ride_marketplace_v1alpha1_service_proto_rawDescGZIP() []byte {
 	return file_ride_marketplace_v1alpha1_service_proto_rawDescData
 }
 
-var file_ride_marketplace_v1alpha1_service_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_ride_marketplace_v1alpha1_service_proto_msgTypes = make([]protoimpl.MessageInfo, 36)
-var file_ride_marketplace_v1alpha1_service_proto_goTypes = []interface{}{
-	(Trip_Status)(0),               // 0: ride.marketplace.v1alpha1.Trip.Status
-	(Trip_Type)(0),                 // 1: ride.marketplace.v1alpha1.Trip.Type
-	(Trip_PaymentMethod)(0),        // 2: ride.marketplace.v1alpha1.Trip.PaymentMethod
-	(*Status)(nil),                 // 3: ride.marketplace.v1alpha1.Status
-	(*GoOnlineRequest)(nil),        // 4: ride.marketplace.v1alpha1.GoOnlineRequest
-	(*GoOnlineResponse)(nil),       // 5: ride.marketplace.v1alpha1.GoOnlineResponse
-	(*GoOfflineRequest)(nil),       // 6: ride.marketplace.v1alpha1.GoOfflineRequest
-	(*GoOfflineResponse)(nil),      // 7: ride.marketplace.v1alpha1.GoOfflineResponse
-	(*GetStatusRequest)(nil),       // 8: ride.marketplace.v1alpha1.GetStatusRequest
-	(*GetStatusResponse)(nil),      // 9: ride.marketplace.v1alpha1.GetStatusResponse
-	(*WatchStatusRequest)(nil),     // 10: ride.marketplace.v1alpha1.WatchStatusRequest
-	(*WatchStatusResponse)(nil),    // 11: ride.marketplace.v1alpha1.WatchStatusResponse
-	(*Location)(nil),               // 12: ride.marketplace.v1alpha1.Location
-	(*GetLocationRequest)(nil),     // 13: ride.marketplace.v1alpha1.GetLocationRequest
-	(*GetLocationResponse)(nil),    // 14: ride.marketplace.v1alpha1.GetLocationResponse
-	(*WatchLocationRequest)(nil),   // 15: ride.marketplace.v1alpha1.WatchLocationRequest
-	(*WatchLocationResponse)(nil),  // 16: ride.marketplace.v1alpha1.WatchLocationResponse
-	(*UpdateLocationRequest)(nil),  // 17: ride.marketplace.v1alpha1.UpdateLocationRequest
-	(*UpdateLocationResponse)(nil), // 18: ride.marketplace.v1alpha1.UpdateLocationResponse
-	(*Trip)(nil),                   // 19: ride.marketplace.v1alpha1.Trip
-	(*CreateTripRequest)(nil),      // 20: ride.marketplace.v1alpha1.CreateTripRequest
-	(*CreateTripResponse)(nil),     // 21: ride.marketplace.v1alpha1.CreateTripResponse
-	(*GetTripRequest)(nil),         // 22: ride.marketplace.v1alpha1.GetTripRequest
-	(*GetTripResponse)(nil),        // 23: ride.marketplace.v1alpha1.GetTripResponse
-	(*WatchTripRequest)(nil),       // 24: ride.marketplace.v1alpha1.WatchTripRequest
-	(*WatchTripResponse)(nil),      // 25: ride.marketplace.v1alpha1.WatchTripResponse
-	(*VerifyTripRequest)(nil),      // 26: ride.marketplace.v1alpha1.VerifyTripRequest
-	(*VerifyTripResponse)(nil),     // 27: ride.marketplace.v1alpha1.VerifyTripResponse
-	(*StartTripRequest)(nil),       // 28: ride.marketplace.v1alpha1.StartTripRequest
-	(*StartTripResponse)(nil),      // 29: ride.marketplace.v1alpha1.StartTripResponse
-	(*CancelTripRequest)(nil),      // 30: ride.marketplace.v1alpha1.CancelTripRequest
-	(*CancelTripResponse)(nil),     // 31: ride.marketplace.v1alpha1.CancelTripResponse
-	(*EndTripRequest)(nil),         // 32: ride.marketplace.v1alpha1.EndTripRequest
-	(*EndTripResponse)(nil),        // 33: ride.marketplace.v1alpha1.EndTripResponse
-	(*Trip_Location)(nil),          // 34: ride.marketplace.v1alpha1.Trip.Location
-	(*Trip_Route)(nil),             // 35: ride.marketplace.v1alpha1.Trip.Route
-	(*Trip_Rider)(nil),             // 36: ride.marketplace.v1alpha1.Trip.Rider
-	(*Trip_Driver)(nil),            // 37: ride.marketplace.v1alpha1.Trip.Driver
-	(*Trip_Vehicle)(nil),           // 38: ride.marketplace.v1alpha1.Trip.Vehicle
-	(*timestamppb.Timestamp)(nil),  // 39: google.protobuf.Timestamp
-	(v1alpha1.Vehicle_Type)(0),     // 40: ride.driver.v1alpha1.Vehicle.Type
-	(*latlng.LatLng)(nil),          // 41: google.type.LatLng
-}
+var (
+	file_ride_marketplace_v1alpha1_service_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
+	file_ride_marketplace_v1alpha1_service_proto_msgTypes  = make([]protoimpl.MessageInfo, 36)
+	file_ride_marketplace_v1alpha1_service_proto_goTypes   = []interface{}{
+		(Trip_Status)(0),               // 0: ride.marketplace.v1alpha1.Trip.Status
+		(Trip_Type)(0),                 // 1: ride.marketplace.v1alpha1.Trip.Type
+		(Trip_PaymentMethod)(0),        // 2: ride.marketplace.v1alpha1.Trip.PaymentMethod
+		(*Status)(nil),                 // 3: ride.marketplace.v1alpha1.Status
+		(*GoOnlineRequest)(nil),        // 4: ride.marketplace.v1alpha1.GoOnlineRequest
+		(*GoOnlineResponse)(nil),       // 5: ride.marketplace.v1alpha1.GoOnlineResponse
+		(*GoOfflineRequest)(nil),       // 6: ride.marketplace.v1alpha1.GoOfflineRequest
+		(*GoOfflineResponse)(nil),      // 7: ride.marketplace.v1alpha1.GoOfflineResponse
+		(*GetStatusRequest)(nil),       // 8: ride.marketplace.v1alpha1.GetStatusRequest
+		(*GetStatusResponse)(nil),      // 9: ride.marketplace.v1alpha1.GetStatusResponse
+		(*WatchStatusRequest)(nil),     // 10: ride.marketplace.v1alpha1.WatchStatusRequest
+		(*WatchStatusResponse)(nil),    // 11: ride.marketplace.v1alpha1.WatchStatusResponse
+		(*Location)(nil),               // 12: ride.marketplace.v1alpha1.Location
+		(*GetLocationRequest)(nil),     // 13: ride.marketplace.v1alpha1.GetLocationRequest
+		(*GetLocationResponse)(nil),    // 14: ride.marketplace.v1alpha1.GetLocationResponse
+		(*WatchLocationRequest)(nil),   // 15: ride.marketplace.v1alpha1.WatchLocationRequest
+		(*WatchLocationResponse)(nil),  // 16: ride.marketplace.v1alpha1.WatchLocationResponse
+		(*UpdateLocationRequest)(nil),  // 17: ride.marketplace.v1alpha1.UpdateLocationRequest
+		(*UpdateLocationResponse)(nil), // 18: ride.marketplace.v1alpha1.UpdateLocationResponse
+		(*Trip)(nil),                   // 19: ride.marketplace.v1alpha1.Trip
+		(*CreateTripRequest)(nil),      // 20: ride.marketplace.v1alpha1.CreateTripRequest
+		(*CreateTripResponse)(nil),     // 21: ride.marketplace.v1alpha1.CreateTripResponse
+		(*GetTripRequest)(nil),         // 22: ride.marketplace.v1alpha1.GetTripRequest
+		(*GetTripResponse)(nil),        // 23: ride.marketplace.v1alpha1.GetTripResponse
+		(*WatchTripRequest)(nil),       // 24: ride.marketplace.v1alpha1.WatchTripRequest
+		(*WatchTripResponse)(nil),      // 25: ride.marketplace.v1alpha1.WatchTripResponse
+		(*VerifyTripRequest)(nil),      // 26: ride.marketplace.v1alpha1.VerifyTripRequest
+		(*VerifyTripResponse)(nil),     // 27: ride.marketplace.v1alpha1.VerifyTripResponse
+		(*StartTripRequest)(nil),       // 28: ride.marketplace.v1alpha1.StartTripRequest
+		(*StartTripResponse)(nil),      // 29: ride.marketplace.v1alpha1.StartTripResponse
+		(*CancelTripRequest)(nil),      // 30: ride.marketplace.v1alpha1.CancelTripRequest
+		(*CancelTripResponse)(nil),     // 31: ride.marketplace.v1alpha1.CancelTripResponse
+		(*EndTripRequest)(nil),         // 32: ride.marketplace.v1alpha1.EndTripRequest
+		(*EndTripResponse)(nil),        // 33: ride.marketplace.v1alpha1.EndTripResponse
+		(*Trip_Location)(nil),          // 34: ride.marketplace.v1alpha1.Trip.Location
+		(*Trip_Route)(nil),             // 35: ride.marketplace.v1alpha1.Trip.Route
+		(*Trip_Rider)(nil),             // 36: ride.marketplace.v1alpha1.Trip.Rider
+		(*Trip_Driver)(nil),            // 37: ride.marketplace.v1alpha1.Trip.Driver
+		(*Trip_Vehicle)(nil),           // 38: ride.marketplace.v1alpha1.Trip.Vehicle
+		(*timestamppb.Timestamp)(nil),  // 39: google.protobuf.Timestamp
+		(v1alpha1.Vehicle_Type)(0),     // 40: ride.driver.v1alpha1.Vehicle.Type
+		(*latlng.LatLng)(nil),          // 41: google.type.LatLng
+	}
+)
+
 var file_ride_marketplace_v1alpha1_service_proto_depIdxs = []int32{
 	39, // 0: ride.marketplace.v1alpha1.Status.update_time:type_name -> google.protobuf.Timestamp
 	12, // 1: ride.marketplace.v1alpha1.GoOnlineRequest.location:type_name -> ride.marketplace.v1alpha1.Location

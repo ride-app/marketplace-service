@@ -11,6 +11,7 @@ import (
 	strings "strings"
 
 	connect "connectrpc.com/connect"
+
 	v1alpha1 "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
 )
 
