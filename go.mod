@@ -9,7 +9,7 @@ require (
 	buf.build/gen/go/ride/payments/connectrpc/go v1.15.0-20240224142941-a019682ec9da.1
 	buf.build/gen/go/ride/payments/protocolbuffers/go v1.32.0-20240224142941-a019682ec9da.1
 	cloud.google.com/go/firestore v1.14.0
-	cloud.google.com/go/pubsub v1.36.1
+	cloud.google.com/go/pubsub v1.37.0
 	connectrpc.com/authn v0.1.0
 	connectrpc.com/connect v1.15.0
 	firebase.google.com/go/v4 v4.13.0
@@ -24,7 +24,7 @@ require (
 	go.uber.org/mock v0.4.0
 	golang.org/x/net v0.21.0
 	google.golang.org/genproto v0.0.0-20240213162025-012b6fc9bca9
-	google.golang.org/genproto/googleapis/api v0.0.0-20240221002015-b0ce06bbee7c
+	google.golang.org/genproto/googleapis/api v0.0.0-20240304161311-37d4d3c04a78
 	google.golang.org/grpc v1.62.0
 	google.golang.org/protobuf v1.33.0
 )
@@ -80,7 +80,7 @@ require (
 	google.golang.org/api v0.167.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/appengine/v2 v2.0.2 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240221002015-b0ce06bbee7c // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240228224816-df926f6c8641 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	olympos.io/encoding/edn v0.0.0-20201019073823-d3554ca0b0a3 // indirect
 )
