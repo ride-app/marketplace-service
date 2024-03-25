@@ -10,7 +10,7 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
-func (r *FirebaseCloudPubSubImpl) GetTrip(
+func (r *FirebaseImpl) GetTrip(
 	ctx context.Context,
 	log logger.Logger,
 	id string,

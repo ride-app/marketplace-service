@@ -41,14 +41,10 @@ func InitializeService(logger2 logger.Logger, config2 *config.Config) (*apihandl
 	if err != nil {
 		return nil, err
 	}
-	client, err := thirdparty.NewPubSubClient(logger2, config2)
+	triprepositoryFirebaseImpl, err := triprepository.NewFirebaseTripRepository(logger2, app)
 	if err != nil {
 		return nil, err
 	}
-	firebaseCloudPubSubImpl, err := triprepository.NewFirebaseTripRepository(logger2, app, client)
-	if err != nil {
-		return nil, err
-	}
-	marketplaceServiceServer := apihandlers.New(firebaseImpl, locationrepositoryFirebaseImpl, impl, driverrepositoryImpl, firebaseCloudPubSubImpl, logger2)
+	marketplaceServiceServer := apihandlers.New(firebaseImpl, locationrepositoryFirebaseImpl, impl, driverrepositoryImpl, triprepositoryFirebaseImpl, logger2)
 	return marketplaceServiceServer, nil
 }

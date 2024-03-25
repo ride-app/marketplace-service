@@ -34,8 +34,8 @@ def go_dependencies():
     go_repository(
         name = "build_buf_gen_go_ride_payments_protocolbuffers_go",
         importpath = "buf.build/gen/go/ride/payments/protocolbuffers/go",
-        sum = "h1:FviKtAp30a7vUjl+gOl89ulEpTdfnSMKaU6aphhoM3o=",
-        version = "v1.32.0-20240224142941-a019682ec9da.1",
+        sum = "h1:MS2nEH2NDsGsBwUMIT0nhG8WW7ljRNuSeLelY50ZQic=",
+        version = "v1.33.0-20240224142941-a019682ec9da.1",
     )
     go_repository(
         name = "co_honnef_go_tools",
@@ -1316,10 +1316,4 @@ def go_dependencies():
         importpath = "go.uber.org/zap",
         sum = "h1:sI7k6L95XOKS281NhVKOFCUNIvv9e0w4BF8N3u+tCRo=",
         version = "v1.26.0",
-    )
-    go_repository(
-        name = "tech_einride_go_aip",
-        importpath = "go.einride.tech/aip",
-        sum = "h1:XfV+NQX6L7EOYK11yoHHFtndeaWh3KbD9/cN/6iWEt8=",
-        version = "v0.66.0",
     )

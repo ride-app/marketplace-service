@@ -11,7 +11,7 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
-func (r *FirebaseCloudPubSubImpl) UpdateTrip(
+func (r *FirebaseImpl) UpdateTrip(
 	ctx context.Context,
 	log logger.Logger,
 	trip *pb.Trip,

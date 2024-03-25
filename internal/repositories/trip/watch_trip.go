@@ -17,7 +17,7 @@ type WatchTripResult struct {
 	Err  error
 }
 
-func (r *FirebaseCloudPubSubImpl) WatchTrip(
+func (r *FirebaseImpl) WatchTrip(
 	ctx context.Context,
 	log logger.Logger,
 	id string,

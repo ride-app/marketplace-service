@@ -22,7 +22,6 @@ func InitializeService(
 	panic(
 		wire.Build(
 			thirdparty.NewFirebaseApp,
-			thirdparty.NewPubSubClient,
 			statusrepository.NewFirebaseStatusRepository,
 			wire.Bind(
 				new(statusrepository.StatusRepository),
@@ -46,7 +45,7 @@ func InitializeService(
 			triprepository.NewFirebaseTripRepository,
 			wire.Bind(
 				new(triprepository.TripRepository),
-				new(*triprepository.FirebaseCloudPubSubImpl),
+				new(*triprepository.FirebaseImpl),
 			),
 			apihandlers.New,
 		),

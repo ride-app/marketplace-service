@@ -1,5 +1,3 @@
-//go:generate go run go.uber.org/mock/mockgen -destination ./mock/$GOFILE . DriverRepository
-
 package driverrepository
 
 import (

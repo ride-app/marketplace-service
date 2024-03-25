@@ -6,14 +6,12 @@ import (
 	"strings"
 	"time"
 
-	"cloud.google.com/go/pubsub"
 	"github.com/dragonfish/go/v2/pkg/logger"
 	pb "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
 	"google.golang.org/protobuf/encoding/protojson"
-	"google.golang.org/protobuf/proto"
 )
 
-func (r *FirebaseCloudPubSubImpl) CreateTrip(
+func (r *FirebaseImpl) CreateTrip(
 	ctx context.Context,
 	log logger.Logger,
 	trip *pb.Trip,
@@ -48,18 +46,5 @@ func (r *FirebaseCloudPubSubImpl) CreateTrip(
 		log.WithError(err).Error("could not write trip data to firestore")
 		return nil, err
 	}
-
-	go func() {
-		data, err := proto.Marshal(trip)
-		if err != nil {
-			log.WithError(err).Warn("could not marshal trip into []byte")
-		}
-
-		msg := &pubsub.Message{}
-		msg.Data = data
-
-		r.pubsub.Topic("trips/created").Publish(ctx, msg)
-	}()
-
 	return &writeResult.UpdateTime, nil
 }

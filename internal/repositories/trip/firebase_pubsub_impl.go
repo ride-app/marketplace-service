@@ -4,23 +4,20 @@ import (
 	"context"
 
 	"cloud.google.com/go/firestore"
-	"cloud.google.com/go/pubsub"
 	firebase "firebase.google.com/go/v4"
 	"firebase.google.com/go/v4/auth"
 	"github.com/dragonfish/go/v2/pkg/logger"
 )
 
-type FirebaseCloudPubSubImpl struct {
+type FirebaseImpl struct {
 	firestore *firestore.Client
 	auth      *auth.Client
-	pubsub    *pubsub.Client
 }
 
 func NewFirebaseTripRepository(
 	log logger.Logger,
 	firebaseApp *firebase.App,
-	pubsub *pubsub.Client,
-) (*FirebaseCloudPubSubImpl, error) {
+) (*FirebaseImpl, error) {
 	firestore, err := firebaseApp.Firestore(context.Background())
 	if err != nil {
 		log.WithError(err).Error("error initializing firestore client")
@@ -34,7 +31,7 @@ func NewFirebaseTripRepository(
 	}
 
 	log.Info("firebase trip repository initialized")
-	return &FirebaseCloudPubSubImpl{
+	return &FirebaseImpl{
 		firestore: firestore,
 		auth:      auth,
 	}, nil

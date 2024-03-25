@@ -6,7 +6,6 @@ import (
 
 	"github.com/dragonfish/go/v2/pkg/logger"
 	pb "github.com/ride-app/marketplace-service/api/ride/marketplace/v1alpha1"
-	types "github.com/ride-app/marketplace-service/internal/utils/types"
 )
 
 type TripRepository interface {
@@ -17,12 +16,6 @@ type TripRepository interface {
 		log logger.Logger,
 		trip *pb.Trip,
 	) (createTime *time.Time, err error)
-
-	WatchTripsCreated(
-		ctx context.Context,
-		log logger.Logger,
-		newTripsResult chan<- *types.StreamResult[*types.Event[*pb.Trip]],
-	)
 
 	WatchTrip(
 		ctx context.Context,
