@@ -33,7 +33,10 @@ jobs:
       # - name: Build protobuf
       #   run: buf generate
       - name: Build
-        run: bazelisk build //...
+        run: |
+          bazelisk run //:gazelle-update-repos-go
+          bazelisk run //:gazelle
+          bazelisk build //...
         # env:
         #   USE_BAZEL_VERSION: 6.4.0
 
