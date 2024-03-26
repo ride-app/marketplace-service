@@ -7,13 +7,13 @@ replace google.golang.org/protobuf => google.golang.org/protobuf v1.32.0
 
 require (
 	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-20240221180331-f05a6f4403ce.1
-	buf.build/gen/go/ride/driver/connectrpc/go v1.15.0-20240127091614-32d65fcb4c5c.1
+	buf.build/gen/go/ride/driver/connectrpc/go v1.16.0-20240127091614-32d65fcb4c5c.1
 	buf.build/gen/go/ride/driver/protocolbuffers/go v1.33.0-20240127091614-32d65fcb4c5c.1
 	buf.build/gen/go/ride/payments/connectrpc/go v1.15.0-20240224142941-a019682ec9da.1
 	buf.build/gen/go/ride/payments/protocolbuffers/go v1.33.0-20240224142941-a019682ec9da.1
 	cloud.google.com/go/firestore v1.14.0
 	connectrpc.com/authn v0.1.0
-	connectrpc.com/connect v1.15.0
+	connectrpc.com/connect v1.16.0
 	firebase.google.com/go/v4 v4.13.0
 	github.com/aidarkhanov/nanoid v1.0.8
 	github.com/bufbuild/protovalidate-go v0.6.0
