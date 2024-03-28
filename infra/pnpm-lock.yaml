@@ -10,7 +10,7 @@ dependencies:
     version: 7.16.0
   '@pulumi/pulumi':
     specifier: ^3.79.0
-    version: 3.111.1
+    version: 3.112.0
 
 devDependencies:
   '@types/node':
@@ -19,16 +19,16 @@ devDependencies:
 
 packages:
 
-  /@grpc/grpc-js@1.10.3:
-    resolution: {integrity: sha512-qiO9MNgYnwbvZ8MK0YLWbnGrNX3zTcj6/Ef7UHu5ZofER3e2nF3Y35GaPo9qNJJ/UJQKa4KL+z/F4Q8Q+uCdUQ==}
+  /@grpc/grpc-js@1.10.4:
+    resolution: {integrity: sha512-MqBisuxTkYvPFnEiu+dag3xG/NBUDzSbAFAWlzfkGnQkjVZ6by3h4atbBc+Ikqup1z5BfB4BN18gKWR1YyppNw==}
     engines: {node: '>=12.10.0'}
     dependencies:
-      '@grpc/proto-loader': 0.7.10
+      '@grpc/proto-loader': 0.7.11
       '@js-sdsl/ordered-map': 4.4.2
     dev: false
 
-  /@grpc/proto-loader@0.7.10:
-    resolution: {integrity: sha512-CAqDfoaQ8ykFd9zqBDn4k6iWT9loLAlc2ETmDFS9JCD70gDcnA4L3AFEo2iV7KyAtAAHFW9ftq1Fz+Vsgq80RQ==}
+  /@grpc/proto-loader@0.7.11:
+    resolution: {integrity: sha512-amjhSfJ+xYnTP+hncJMmkchoRtjIdi+uO3FaymGSCr07yu5xfpXFEnhZkTU1mj2lPJB3oVToau7j9YkqB+YNdg==}
     engines: {node: '>=6'}
     hasBin: true
     dependencies:
@@ -422,7 +422,7 @@ packages:
   /@pulumi/gcp@7.16.0:
     resolution: {integrity: sha512-mpWUKAHRci6vllzLfoRZ6inIx2/AemtRjWkKyj8+X3nrouF0O/Q6DDBKg/OcwF8l8f7a++0t+BkU18SKilCMmQ==}
     dependencies:
-      '@pulumi/pulumi': 3.111.1
+      '@pulumi/pulumi': 3.112.0
       '@types/express': 4.17.21
       read-package-json: 2.1.2
     transitivePeerDependencies:
@@ -430,11 +430,11 @@ packages:
       - supports-color
     dev: false
 
-  /@pulumi/pulumi@3.111.1:
-    resolution: {integrity: sha512-dWDePVPoFPOlX1Wv8zoLmywAq+/iD7jkis/V6xhuTQ7vYbkMxQhDHCSuSn3cx1EaqqSzcBe8AqEbg/IcuN68jA==}
+  /@pulumi/pulumi@3.112.0:
+    resolution: {integrity: sha512-RfAIT0k6Ny7vVjgWP4dauG6EmNz/hkiNXXrVQIYSiD5EfZRwoMML7uhijWf8H5lWUkZwKTcvZdlVkwwgdsJdww==}
     engines: {node: '>=8.13.0 || >=10.10.0'}
     dependencies:
-      '@grpc/grpc-js': 1.10.3
+      '@grpc/grpc-js': 1.10.4
       '@logdna/tail-file': 2.2.0
       '@npmcli/arborist': 7.4.0
       '@opentelemetry/api': 1.8.0
@@ -1049,7 +1049,7 @@ packages:
       jackspeak: 2.3.6
       minimatch: 9.0.3
       minipass: 7.0.4
-      path-scurry: 1.10.1
+      path-scurry: 1.10.2
     dev: false
 
   /glob@7.2.3:
@@ -1699,8 +1699,8 @@ packages:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
     dev: false
 
-  /path-scurry@1.10.1:
-    resolution: {integrity: sha512-MkhCqzzBEpPvxxQ71Md0b1Kk51W01lrYvlMzSUaIzNsODdd7mqhiimSZlr+VegAz5Z6Vzt9Xg2ttE//XBhH3EQ==}
+  /path-scurry@1.10.2:
+    resolution: {integrity: sha512-7xTavNy5RQXnsjANvVvMkEjvloOinkAjv/Z6Ildz9v2RinZ4SBKTWFOVRbaF8p0vpHnyjV/UwNDdKuUv6M5qcA==}
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       lru-cache: 10.2.0
