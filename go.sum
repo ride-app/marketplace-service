@@ -8,6 +8,8 @@ buf.build/gen/go/ride/driver/protocolbuffers/go v1.33.0-20240127091614-32d65fcb4
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.33.0-20240127091614-32d65fcb4c5c.1/go.mod h1:PHDdAypiXLBHxJKcZdj/jYGsRe4zah/sD9SwG7J2vB4=
 buf.build/gen/go/ride/payments/connectrpc/go v1.16.0-20240224142941-a019682ec9da.1 h1:8dB/KP2umPs1G7Zzd+mQPhsMBKHF2FV5gLWKtovoc8U=
 buf.build/gen/go/ride/payments/connectrpc/go v1.16.0-20240224142941-a019682ec9da.1/go.mod h1:saKy962E4AC1vPZWLulVJ2/KRHyi5nSVt52vzcWLNEM=
+buf.build/gen/go/ride/payments/connectrpc/go v1.16.1-20240224142941-a019682ec9da.1 h1:IhQnMtigAo3GLhOqUnTCwKl2lxVO+a2FuWMUCKQ8784=
+buf.build/gen/go/ride/payments/connectrpc/go v1.16.1-20240224142941-a019682ec9da.1/go.mod h1:B0TRMQYWRGAi8kN9O+H1XD50bJ7pN69Z0EJB2bIUZNw=
 buf.build/gen/go/ride/payments/protocolbuffers/go v1.33.0-20240224142941-a019682ec9da.1 h1:MS2nEH2NDsGsBwUMIT0nhG8WW7ljRNuSeLelY50ZQic=
 buf.build/gen/go/ride/payments/protocolbuffers/go v1.33.0-20240224142941-a019682ec9da.1/go.mod h1:1ZXGDaLJx/6f/z1rx4i146R/ZkOJxK7um9limlQSfn8=
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
