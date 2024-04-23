@@ -2,14 +2,10 @@ buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-2023091417185
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-20231115204500-e097f827e652.1/go.mod h1:Tgn5bgL220vkFOI0KPStlcClPeOJzAv4uT+V8JXGUnw=
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-20240401165935-b983156c5e99.1 h1:2IGhRovxlsOIQgx2ekZWo4wTPAYpck41+18ICxs37is=
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-20240401165935-b983156c5e99.1/go.mod h1:Tgn5bgL220vkFOI0KPStlcClPeOJzAv4uT+V8JXGUnw=
-buf.build/gen/go/ride/driver/connectrpc/go v1.16.0-20240127091614-32d65fcb4c5c.1 h1:Y2O4G7BZ0SqE55UBySU10yQAkLSHTZJaHpEGmkhBeNQ=
-buf.build/gen/go/ride/driver/connectrpc/go v1.16.0-20240127091614-32d65fcb4c5c.1/go.mod h1:hsw917RELW6k5DSxr8Q0UrvvMuXBB4uvuuDFJ4qJT5s=
 buf.build/gen/go/ride/driver/connectrpc/go v1.16.1-20240127091614-32d65fcb4c5c.1 h1:YV1BApGbTVbROXM7TeC23vUTOuDVume+jNNrVN6jzPc=
 buf.build/gen/go/ride/driver/connectrpc/go v1.16.1-20240127091614-32d65fcb4c5c.1/go.mod h1:cIRaZLmTVQRcdlSxHljwfE1nqZTJBERaIU6mh05lKFo=
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.33.0-20240127091614-32d65fcb4c5c.1 h1:o3oVl4mG+pgMW2p/vlVCnQC8HcfaaVKqBpi/UV8CCHw=
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.33.0-20240127091614-32d65fcb4c5c.1/go.mod h1:PHDdAypiXLBHxJKcZdj/jYGsRe4zah/sD9SwG7J2vB4=
-buf.build/gen/go/ride/payments/connectrpc/go v1.16.0-20240224142941-a019682ec9da.1 h1:8dB/KP2umPs1G7Zzd+mQPhsMBKHF2FV5gLWKtovoc8U=
-buf.build/gen/go/ride/payments/connectrpc/go v1.16.0-20240224142941-a019682ec9da.1/go.mod h1:saKy962E4AC1vPZWLulVJ2/KRHyi5nSVt52vzcWLNEM=
 buf.build/gen/go/ride/payments/connectrpc/go v1.16.1-20240224142941-a019682ec9da.1 h1:IhQnMtigAo3GLhOqUnTCwKl2lxVO+a2FuWMUCKQ8784=
 buf.build/gen/go/ride/payments/connectrpc/go v1.16.1-20240224142941-a019682ec9da.1/go.mod h1:B0TRMQYWRGAi8kN9O+H1XD50bJ7pN69Z0EJB2bIUZNw=
 buf.build/gen/go/ride/payments/protocolbuffers/go v1.33.0-20240224142941-a019682ec9da.1 h1:MS2nEH2NDsGsBwUMIT0nhG8WW7ljRNuSeLelY50ZQic=
@@ -31,8 +27,6 @@ cloud.google.com/go/storage v1.40.0 h1:VEpDQV5CJxFmJ6ueWNsKxcr1QAYOXEgxDa+sBbJah
 cloud.google.com/go/storage v1.40.0/go.mod h1:Rrj7/hKlG87BLqDJYtwR0fbPld8uJPbQ2ucUMY7Ir0g=
 connectrpc.com/authn v0.1.0 h1:m5weACjLWwgwcjttvUDyTPICJKw74+p2obBVrf8hT9E=
 connectrpc.com/authn v0.1.0/go.mod h1:AwNZK/KYbqaJzRYadTuAaoz6sYQSPdORPqh1TOPIkgY=
-connectrpc.com/connect v1.16.0 h1:rdtfQjZ0OyFkWPTegBNcH7cwquGAN1WzyJy80oFNibg=
-connectrpc.com/connect v1.16.0/go.mod h1:XpZAduBQUySsb4/KO5JffORVkDI4B6/EYPi7N8xpNZw=
 connectrpc.com/connect v1.16.1 h1:rOdrK/RTI/7TVnn3JsVxt3n028MlTRwmK5Q4heSpjis=
 connectrpc.com/connect v1.16.1/go.mod h1:XpZAduBQUySsb4/KO5JffORVkDI4B6/EYPi7N8xpNZw=
 firebase.google.com/go/v4 v4.14.0 h1:Tc9jWzMUApUFUA5UUx/HcBeZ+LPjlhG2vNRfWJrcMwU=
@@ -50,8 +44,8 @@ github.com/aidarkhanov/nanoid v1.0.8 h1:yxyJkgsEDFXP7+97vc6JevMcjyb03Zw+/9fqhlVX
 github.com/aidarkhanov/nanoid v1.0.8/go.mod h1:vadfZHT+m4uDhttg0yY4wW3GKtl2T6i4d2Age+45pYk=
 github.com/antlr4-go/antlr/v4 v4.13.0 h1:lxCg3LAv+EUK6t1i0y1V6/SLeUi0eKEKdhQAlS8TVTI=
 github.com/antlr4-go/antlr/v4 v4.13.0/go.mod h1:pfChB/xh/Unjila75QW7+VU4TSnWnnk9UTnmpPaOR2g=
-github.com/bufbuild/protovalidate-go v0.6.1 h1:uzW8r0CDvqApUChNj87VzZVoQSKhcVdw5UWOE605UIw=
-github.com/bufbuild/protovalidate-go v0.6.1/go.mod h1:4BR3rKEJiUiTy+sqsusFn2ladOf0kYmA2Reo6BHSBgQ=
+github.com/bufbuild/protovalidate-go v0.6.2 h1:U/V3CGF0kPlR12v41rjO4DrYZtLcS4ZONLmWN+rJVCQ=
+github.com/bufbuild/protovalidate-go v0.6.2/go.mod h1:4BR3rKEJiUiTy+sqsusFn2ladOf0kYmA2Reo6BHSBgQ=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/chzyer/logex v1.1.10/go.mod h1:+Ywpsq7O8HXn0nuIou7OrIPyXbp3wmkHB+jjWRnGsAI=
 github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e/go.mod h1:nSuG5e5PlCu98SY8svDHJxuZscDgtXS6KTTbou5AhLI=
