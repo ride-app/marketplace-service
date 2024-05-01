@@ -2,6 +2,7 @@ buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-2023091417185
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-20231115204500-e097f827e652.1/go.mod h1:Tgn5bgL220vkFOI0KPStlcClPeOJzAv4uT+V8JXGUnw=
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-20240401165935-b983156c5e99.1 h1:2IGhRovxlsOIQgx2ekZWo4wTPAYpck41+18ICxs37is=
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-20240401165935-b983156c5e99.1/go.mod h1:Tgn5bgL220vkFOI0KPStlcClPeOJzAv4uT+V8JXGUnw=
+buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.0-20230914171853-63dfe56cc2c4.1/go.mod h1:bA3yUO1NvxekGLbOgvUaCBCATnJHy4UDBAygCPD7z/w=
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.0-20240401165935-b983156c5e99.1 h1:CX+739UtmZMp913WhJ3z2v87wJC5WiBeml6URXygYGw=
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.0-20240401165935-b983156c5e99.1/go.mod h1:bA3yUO1NvxekGLbOgvUaCBCATnJHy4UDBAygCPD7z/w=
 buf.build/gen/go/ride/driver/connectrpc/go v1.16.0-20240127091614-32d65fcb4c5c.1 h1:Y2O4G7BZ0SqE55UBySU10yQAkLSHTZJaHpEGmkhBeNQ=
@@ -10,6 +11,8 @@ buf.build/gen/go/ride/driver/connectrpc/go v1.16.1-20240127091614-32d65fcb4c5c.1
 buf.build/gen/go/ride/driver/connectrpc/go v1.16.1-20240127091614-32d65fcb4c5c.1/go.mod h1:cIRaZLmTVQRcdlSxHljwfE1nqZTJBERaIU6mh05lKFo=
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.33.0-20240127091614-32d65fcb4c5c.1 h1:o3oVl4mG+pgMW2p/vlVCnQC8HcfaaVKqBpi/UV8CCHw=
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.33.0-20240127091614-32d65fcb4c5c.1/go.mod h1:PHDdAypiXLBHxJKcZdj/jYGsRe4zah/sD9SwG7J2vB4=
+buf.build/gen/go/ride/driver/protocolbuffers/go v1.34.0-20240127091614-32d65fcb4c5c.1 h1:WlO2AIofGQR8FGpkJ14t48kR7pjtMkPf86zKDpa7i3Q=
+buf.build/gen/go/ride/driver/protocolbuffers/go v1.34.0-20240127091614-32d65fcb4c5c.1/go.mod h1:mw8/AsLnejr21PBpOH2hAeRoqj+C4ReKgaNwx83JnDQ=
 buf.build/gen/go/ride/payments/connectrpc/go v1.16.0-20240224142941-a019682ec9da.1 h1:8dB/KP2umPs1G7Zzd+mQPhsMBKHF2FV5gLWKtovoc8U=
 buf.build/gen/go/ride/payments/connectrpc/go v1.16.0-20240224142941-a019682ec9da.1/go.mod h1:saKy962E4AC1vPZWLulVJ2/KRHyi5nSVt52vzcWLNEM=
 buf.build/gen/go/ride/payments/connectrpc/go v1.16.1-20240224142941-a019682ec9da.1 h1:IhQnMtigAo3GLhOqUnTCwKl2lxVO+a2FuWMUCKQ8784=
