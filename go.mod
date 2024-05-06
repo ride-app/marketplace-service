@@ -3,7 +3,7 @@ module github.com/ride-app/marketplace-service
 go 1.22.2
 
 // HACK: pin protobuf version to fix build failure
-replace google.golang.org/protobuf => google.golang.org/protobuf v1.32.0
+replace google.golang.org/protobuf => google.golang.org/protobuf v1.34.1
 
 require (
 	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.0-20240401165935-b983156c5e99.1
@@ -28,7 +28,7 @@ require (
 	google.golang.org/genproto v0.0.0-20240429193739-8cf5692501f6
 	google.golang.org/genproto/googleapis/api v0.0.0-20240429193739-8cf5692501f6
 	google.golang.org/grpc v1.63.2
-	google.golang.org/protobuf v1.34.0
+	google.golang.org/protobuf v1.34.1
 )
 
 require (
