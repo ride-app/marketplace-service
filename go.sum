@@ -3,6 +3,7 @@ buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.0-2023111520450
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.0-20240401165935-b983156c5e99.1 h1:CX+739UtmZMp913WhJ3z2v87wJC5WiBeml6URXygYGw=
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.0-20240401165935-b983156c5e99.1/go.mod h1:bA3yUO1NvxekGLbOgvUaCBCATnJHy4UDBAygCPD7z/w=
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.1-20230914171853-63dfe56cc2c4.1/go.mod h1:XF+P8+RmfdufmIYpGUC+6bF7S+IlmHDEnCrO3OXaUAQ=
+buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.1-20231115204500-e097f827e652.1/go.mod h1:XF+P8+RmfdufmIYpGUC+6bF7S+IlmHDEnCrO3OXaUAQ=
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.1-20240401165935-b983156c5e99.1 h1:npqzxtoNbSdWs7XBDzqvqA1ANrQQGc8QpN0zFq9sVHA=
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.1-20240401165935-b983156c5e99.1/go.mod h1:XF+P8+RmfdufmIYpGUC+6bF7S+IlmHDEnCrO3OXaUAQ=
 buf.build/gen/go/ride/driver/connectrpc/go v1.16.1-20240127091614-32d65fcb4c5c.1 h1:YV1BApGbTVbROXM7TeC23vUTOuDVume+jNNrVN6jzPc=
@@ -15,6 +16,8 @@ buf.build/gen/go/ride/payments/connectrpc/go v1.16.1-20240224142941-a019682ec9da
 buf.build/gen/go/ride/payments/connectrpc/go v1.16.1-20240224142941-a019682ec9da.1/go.mod h1:B0TRMQYWRGAi8kN9O+H1XD50bJ7pN69Z0EJB2bIUZNw=
 buf.build/gen/go/ride/payments/protocolbuffers/go v1.34.0-20240224142941-a019682ec9da.1 h1:zOcoTN8VbCzbuPM9VoJGXWpSLWie5rxWEaNUXAlZH6g=
 buf.build/gen/go/ride/payments/protocolbuffers/go v1.34.0-20240224142941-a019682ec9da.1/go.mod h1:Oah64v+degAY/2RKReI66wO4e14vkga2dk2gA0QlGbU=
+buf.build/gen/go/ride/payments/protocolbuffers/go v1.34.1-20240224142941-a019682ec9da.1 h1:qyyDgHMe0II9wj55/3oKqCT/fCev/LswIhUYYOtR6Ps=
+buf.build/gen/go/ride/payments/protocolbuffers/go v1.34.1-20240224142941-a019682ec9da.1/go.mod h1:hJGzPP0qdhPbwNit9x27g2OjpnQlneozB+De+L3eFrE=
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 cloud.google.com/go v0.112.2 h1:ZaGT6LiG7dBzi6zNOvVZwacaXlmf3lRqnC4DQzqyRQw=
 cloud.google.com/go v0.112.2/go.mod h1:iEqjp//KquGIJV/m+Pk3xecgKNhV+ry+vVTsy4TbDms=
