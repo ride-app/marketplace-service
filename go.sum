@@ -6,6 +6,8 @@ buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.1-2023091417185
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.1-20231115204500-e097f827e652.1/go.mod h1:XF+P8+RmfdufmIYpGUC+6bF7S+IlmHDEnCrO3OXaUAQ=
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.1-20240401165935-b983156c5e99.1 h1:npqzxtoNbSdWs7XBDzqvqA1ANrQQGc8QpN0zFq9sVHA=
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.1-20240401165935-b983156c5e99.1/go.mod h1:XF+P8+RmfdufmIYpGUC+6bF7S+IlmHDEnCrO3OXaUAQ=
+buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.1-20240508200655-46a4cf4ba109.1 h1:LEXWFH/xZ5oOWrC3oOtHbUyBdzRWMCPpAQmKC9v05mA=
+buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.1-20240508200655-46a4cf4ba109.1/go.mod h1:XF+P8+RmfdufmIYpGUC+6bF7S+IlmHDEnCrO3OXaUAQ=
 buf.build/gen/go/ride/driver/connectrpc/go v1.16.1-20240127091614-32d65fcb4c5c.1 h1:YV1BApGbTVbROXM7TeC23vUTOuDVume+jNNrVN6jzPc=
 buf.build/gen/go/ride/driver/connectrpc/go v1.16.1-20240127091614-32d65fcb4c5c.1/go.mod h1:cIRaZLmTVQRcdlSxHljwfE1nqZTJBERaIU6mh05lKFo=
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.34.0-20240127091614-32d65fcb4c5c.1 h1:WlO2AIofGQR8FGpkJ14t48kR7pjtMkPf86zKDpa7i3Q=
