@@ -2,7 +2,7 @@
 # syntax=docker/dockerfile:1@sha256:ac85f380a63b13dfcefa89046420e1781752bab202122f8f50032edf31be0021
 
 # Build go binary
-FROM golang:1.22-alpine@sha256:f1fe698725f6ed14eb944dc587591f134632ed47fc0732ec27c7642adbe90618 as build
+FROM golang:1.22-alpine@sha256:769c0a3571477715d919360cd58b4300c47b1d9a868c072a6e16bd45cd1e49e6 as build
 
 RUN groupadd -r nonroot && useradd -r -g nonroot nonroot
 
