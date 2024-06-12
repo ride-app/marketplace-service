@@ -21,6 +21,8 @@ buf.build/gen/go/ride/driver/protocolbuffers/go v1.34.1-20240127091614-32d65fcb4
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.34.1-20240127091614-32d65fcb4c5c.1/go.mod h1:cjNGVZaNZ8/M6NkPIOZ4ab50frUNtqmGyyrBRoNdTf8=
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.34.2-20240127091614-32d65fcb4c5c.1 h1:Z1j+l2kprhZaIaYSvjgxx3YCEUHQ5VIqvjO+Epi29G0=
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.34.2-20240127091614-32d65fcb4c5c.1/go.mod h1:0+1szzPCOEbXlnb6SGgaGUddtKMUaW2AVz2jQUIFmC8=
+buf.build/gen/go/ride/driver/protocolbuffers/go v1.34.2-20240127091614-32d65fcb4c5c.2 h1:Z+vrkpcdbbPN/g0fx7oFv8WGIbr8XQkJM0qJRwcWoks=
+buf.build/gen/go/ride/driver/protocolbuffers/go v1.34.2-20240127091614-32d65fcb4c5c.2/go.mod h1:0JLlMY8EY3X55w3LzXPffFhiMHzz6bBniHXEU0vp9tI=
 buf.build/gen/go/ride/payments/connectrpc/go v1.16.1-20240224142941-a019682ec9da.1 h1:IhQnMtigAo3GLhOqUnTCwKl2lxVO+a2FuWMUCKQ8784=
 buf.build/gen/go/ride/payments/connectrpc/go v1.16.1-20240224142941-a019682ec9da.1/go.mod h1:B0TRMQYWRGAi8kN9O+H1XD50bJ7pN69Z0EJB2bIUZNw=
 buf.build/gen/go/ride/payments/connectrpc/go v1.16.2-20240224142941-a019682ec9da.1 h1:I5DlN9gA4cOp4r5JRQXg0aZQsdLw67n6mx9p1hwy4j0=
