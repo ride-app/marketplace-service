@@ -4,8 +4,8 @@ buf.build/gen/go/ride/driver/connectrpc/go v1.16.2-20240127091614-32d65fcb4c5c.1
 buf.build/gen/go/ride/driver/connectrpc/go v1.16.2-20240127091614-32d65fcb4c5c.1/go.mod h1:pjlNbbm+PYNI2Xi4YVZM8HY0xzPRUXp7P7XVybS7wKI=
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.34.2-20240127091614-32d65fcb4c5c.2 h1:Z+vrkpcdbbPN/g0fx7oFv8WGIbr8XQkJM0qJRwcWoks=
 buf.build/gen/go/ride/driver/protocolbuffers/go v1.34.2-20240127091614-32d65fcb4c5c.2/go.mod h1:0JLlMY8EY3X55w3LzXPffFhiMHzz6bBniHXEU0vp9tI=
-buf.build/gen/go/ride/payments/connectrpc/go v1.16.2-20240224142941-a019682ec9da.1 h1:I5DlN9gA4cOp4r5JRQXg0aZQsdLw67n6mx9p1hwy4j0=
-buf.build/gen/go/ride/payments/connectrpc/go v1.16.2-20240224142941-a019682ec9da.1/go.mod h1:buFxXG2MzWyfRA+pR36KFjTJGEjM1dHTgsapkH/ceo0=
+buf.build/gen/go/ride/payments/connectrpc/go v1.17.0-20240224142941-a019682ec9da.1 h1:Xoj+F70cwtHWoSJ9oPLqg7UhRebfE9q73ReEA+zyCkM=
+buf.build/gen/go/ride/payments/connectrpc/go v1.17.0-20240224142941-a019682ec9da.1/go.mod h1:L/shX3uH2zJYnqM2uaHmtSs9IFyoycr7AD4BWA74wSM=
 buf.build/gen/go/ride/payments/protocolbuffers/go v1.34.2-20240224142941-a019682ec9da.2 h1:aXRg72cEawdJVjwJBwd8d/6ZI/j0cyaA99vhTuUDXk4=
 buf.build/gen/go/ride/payments/protocolbuffers/go v1.34.2-20240224142941-a019682ec9da.2/go.mod h1:cxnU4i9Y9yszZOjxNCF99t5FTumb7YuiUKYFRhj6qXo=
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
@@ -27,8 +27,8 @@ cloud.google.com/go/storage v1.43.0 h1:CcxnSohZwizt4LCzQHWvBf1/kvtHUn7gk9QERXPyX
 cloud.google.com/go/storage v1.43.0/go.mod h1:ajvxEa7WmZS1PxvKRq4bq0tFT3vMd502JwstCcYv0Q0=
 connectrpc.com/authn v0.1.0 h1:m5weACjLWwgwcjttvUDyTPICJKw74+p2obBVrf8hT9E=
 connectrpc.com/authn v0.1.0/go.mod h1:AwNZK/KYbqaJzRYadTuAaoz6sYQSPdORPqh1TOPIkgY=
-connectrpc.com/connect v1.16.2 h1:ybd6y+ls7GOlb7Bh5C8+ghA6SvCBajHwxssO2CGFjqE=
-connectrpc.com/connect v1.16.2/go.mod h1:n2kgwskMHXC+lVqb18wngEpF95ldBHXjZYJussz5FRc=
+connectrpc.com/connect v1.17.0 h1:W0ZqMhtVzn9Zhn2yATuUokDLO5N+gIuBWMOnsQrfmZk=
+connectrpc.com/connect v1.17.0/go.mod h1:0292hj1rnx8oFrStN7cB4jjVBeqs+Yx5yDIC2prWDO8=
 firebase.google.com/go/v4 v4.14.1 h1:4qiUETaFRWoFGE1XP5VbcEdtPX93Qs+8B/7KvP2825g=
 firebase.google.com/go/v4 v4.14.1/go.mod h1:fgk2XshgNDEKaioKco+AouiegSI9oTWVqRaBdTTGBoM=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
