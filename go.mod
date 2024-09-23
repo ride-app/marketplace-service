@@ -6,7 +6,7 @@ require (
 	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.2-20240717164558-a6c49f84cc0f.2
 	buf.build/gen/go/ride/driver/connectrpc/go v1.17.0-20240127091614-32d65fcb4c5c.1
 	buf.build/gen/go/ride/driver/protocolbuffers/go v1.34.2-20240127091614-32d65fcb4c5c.2
-	buf.build/gen/go/ride/payments/connectrpc/go v1.16.2-20240224142941-a019682ec9da.1
+	buf.build/gen/go/ride/payments/connectrpc/go v1.17.0-20240224142941-a019682ec9da.1
 	buf.build/gen/go/ride/payments/protocolbuffers/go v1.34.2-20240224142941-a019682ec9da.2
 	cloud.google.com/go/firestore v1.17.0
 	connectrpc.com/authn v0.1.0
