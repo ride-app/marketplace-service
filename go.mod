@@ -3,7 +3,7 @@ module github.com/ride-app/marketplace-service
 go 1.22.2
 
 require (
-	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.2-20240717164558-a6c49f84cc0f.2
+	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.2-20240920164238-5a7b106cbb87.2
 	buf.build/gen/go/ride/driver/connectrpc/go v1.17.0-20240127091614-32d65fcb4c5c.1
 	buf.build/gen/go/ride/driver/protocolbuffers/go v1.34.2-20240127091614-32d65fcb4c5c.2
 	buf.build/gen/go/ride/payments/connectrpc/go v1.17.0-20240224142941-a019682ec9da.1
@@ -13,7 +13,7 @@ require (
 	connectrpc.com/connect v1.17.0
 	firebase.google.com/go/v4 v4.14.1
 	github.com/aidarkhanov/nanoid v1.0.8
-	github.com/bufbuild/protovalidate-go v0.6.5
+	github.com/bufbuild/protovalidate-go v0.7.0
 	github.com/dragonfish/go/v2 v2.1.0
 	github.com/google/wire v0.6.0
 	github.com/ilyakaznacheev/cleanenv v1.5.0
