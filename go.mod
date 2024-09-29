@@ -22,7 +22,7 @@ require (
 	github.com/onsi/gomega v1.34.2
 	go.uber.org/mock v0.4.0
 	golang.org/x/net v0.29.0
-	google.golang.org/genproto v0.0.0-20240903143218-8af14fe29dc1
+	google.golang.org/genproto v0.0.0-20240924160255-9d4c2d233b61
 	google.golang.org/genproto/googleapis/api v0.0.0-20240903143218-8af14fe29dc1
 	google.golang.org/grpc v1.67.0
 	google.golang.org/protobuf v1.34.2
@@ -33,8 +33,8 @@ require (
 	cloud.google.com/go/auth v0.9.3 // indirect
 	cloud.google.com/go/auth/oauth2adapt v0.2.4 // indirect
 	cloud.google.com/go/compute/metadata v0.5.0 // indirect
-	cloud.google.com/go/iam v1.2.0 // indirect
-	cloud.google.com/go/longrunning v0.6.0 // indirect
+	cloud.google.com/go/iam v1.2.1 // indirect
+	cloud.google.com/go/longrunning v0.6.1 // indirect
 	cloud.google.com/go/storage v1.43.0 // indirect
 	github.com/BurntSushi/toml v1.2.1 // indirect
 	github.com/MicahParks/jwkset v0.5.10 // indirect
