@@ -9,7 +9,7 @@ require (
 	buf.build/gen/go/ride/payments/connectrpc/go v1.17.0-20240224142941-a019682ec9da.1
 	buf.build/gen/go/ride/payments/protocolbuffers/go v1.35.1-20240224142941-a019682ec9da.1
 	cloud.google.com/go/firestore v1.17.0
-	connectrpc.com/authn v0.1.0
+	connectrpc.com/authn v0.2.0
 	connectrpc.com/connect v1.17.0
 	firebase.google.com/go/v4 v4.14.1
 	github.com/aidarkhanov/nanoid v1.0.8
