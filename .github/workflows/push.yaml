@@ -43,7 +43,7 @@ jobs:
     name: Cache Bazel
     steps:
       - name: Checkout Code
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4
 
       - uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
         with:
@@ -61,5 +61,5 @@ jobs:
     timeout-minutes: 10
     name: Convert TODOs to Issues
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4
       - uses: alstr/todo-to-issue-action@4120fdbb02461dd1abf18756a7464b8e45347863 # v4
